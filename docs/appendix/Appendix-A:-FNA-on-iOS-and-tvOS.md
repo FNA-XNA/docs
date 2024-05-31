@@ -16,7 +16,8 @@ In order to build and deploy FNA apps for iOS/tvOS, you must have the following:
 4. The iOS/tvOS workloads for the .NET SDK. Once you have installed .NET on your Mac, run the following commands:
 
 ```
-sudo dotnet workload install ios` and `sudo dotnet workload install tvos
+sudo dotnet workload install ios
+sudo dotnet workload install tvos
 ```
 
 ### Building fnalibs
