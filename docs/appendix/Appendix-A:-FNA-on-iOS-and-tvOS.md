@@ -9,10 +9,15 @@ This is the basic guide to getting your game running in iOS/tvOS. Once these ste
 ### Prerequisites
 
 In order to build and deploy FNA apps for iOS/tvOS, you must have the following:
+
 1. Mac hardware (required by Apple)
 2. The latest [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet) for macOS
 3. The latest version of Xcode, downloaded from the macOS App Store or from the Apple Developer site
-4. The iOS/tvOS workloads for the .NET SDK. Once you have installed .NET on your Mac, run the following commands: `sudo dotnet workload install ios` and `sudo dotnet workload install tvos`
+4. The iOS/tvOS workloads for the .NET SDK. Once you have installed .NET on your Mac, run the following commands:
+
+```
+sudo dotnet workload install ios` and `sudo dotnet workload install tvos
+```
 
 ### Building fnalibs
 
@@ -23,6 +28,7 @@ The process of building all the fnalibs is normally very tedious, and everybody 
 Creating a .NET iOS project is almost identical to the process of [creating a desktop .NET project](https://github.com/FNA-XNA/FNA/wiki/1%3A-Setting-Up-FNA#chapter-5-creating-new-projects).
 The only difference is that instead of `dotnet new console`, you must run `dotnet new ios`.
 This will generate an "iOS Application" template project we can then modify like so:
+
 1. Delete the `SceneDelegate.cs` and `AppDelegate.cs` files
 2. Update the `Info.plist` file as follows:
   - Set your application metadata (display name, bundle identifier, etc.)
@@ -59,6 +65,7 @@ See [this Apple documentation](https://developer.apple.com/documentation/bundler
 Creating a .NET tvOS project is almost identical to the process of [creating a desktop .NET project](https://github.com/FNA-XNA/FNA/wiki/1%3A-Setting-Up-FNA#chapter-5-creating-new-projects).
 The only difference is that instead of `dotnet new console`, you must run `dotnet new tvos`.
 This will generate a "tvOS Application" template project we can then modify like so:
+
 1. Delete the `ViewController.cs`, `ViewController.designer.cs`, and `AppDelegate.cs` files
 2. Rename `Main.storyboard` to `LaunchScreen.storyboard` and delete the following from line 10 of the file:
 `customClass="ViewController"`
