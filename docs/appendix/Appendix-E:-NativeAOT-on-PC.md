@@ -67,19 +67,19 @@ If you don't want to run the program yourself, you can just download the latest 
 Finally, to actually link the fnalibs, follow these platform-specific instructions:
 
 * **Windows:**
-  * Download the MSVC development build of SDL2, then use it to build the other libraries from source.
-  * Grab the .lib files from SDL2, FNA3D, FAudio, and Theorafile and place them in your app's .csproj directory.
-  * Build the application.
-  * Copy the contents of `fnalibs/x64` into the generated output directory.
+    * Download the MSVC development build of SDL2, then use it to build the other libraries from source.
+    * Grab the .lib files from SDL2, FNA3D, FAudio, and Theorafile and place them in your app's .csproj directory.
+    * Build the application.
+    * Copy the contents of `fnalibs/x64` into the generated output directory.
 * **MacOS:**
-  * Build SDL2 from source or install the SDL2 development package from a package manager, then use it to build the other libraries from source.
-  * Copy the resulting \*.dylib files from SDL2, FNA3D, FAudio, and Theorafile into `/usr/local/lib`.
-  * Build the application.
-  * Copy the contents of `fnalibs/osx` into the generated output directory.
-  * Finally, to ensure your application uses the correct search path for SDL2, use `install_name_tool -change /usr/local/lib/libSDL2-2.0.0.dylib @rpath/libSDL2-2.0.0.dylib <my-app-name>`.
+    * Build SDL2 from source or install the SDL2 development package from a package manager, then use it to build the other libraries from source.
+    * Copy the resulting \*.dylib files from SDL2, FNA3D, FAudio, and Theorafile into `/usr/local/lib`.
+    * Build the application.
+    * Copy the contents of `fnalibs/osx` into the generated output directory.
+    * Finally, to ensure your application uses the correct search path for SDL2, use `install_name_tool -change /usr/local/lib/libSDL2-2.0.0.dylib @rpath/libSDL2-2.0.0.dylib <my-app-name>`.
 * **Linux:**
-  * NOTE: For maximum compatibility, we recommend you build using a distro with a low glibc version, like CentOS 7.
-  * Build SDL2 from source or install the SDL2 development package from a package manager, then use it to build FNA3D, FAudio, and Theorafile from source.
-  * Copy all the resulting \*.so files into your LD_LIBRARY_PATH (e.g. `/usr/local/lib64`). Make sure the symversioning is preserved during the copy!
-  * Build the application.
-  * Copy the contents of `fnalibs/lib64` into the generated output directory.
+    * NOTE: For maximum compatibility, we recommend you build using a distro with a low glibc version, like CentOS 7.
+    * Build SDL2 from source or install the SDL2 development package from a package manager, then use it to build FNA3D, FAudio, and Theorafile from source.
+    * Copy all the resulting \*.so files into your LD_LIBRARY_PATH (e.g. `/usr/local/lib64`). Make sure the symversioning is preserved during the copy!
+    * Build the application.
+    * Copy the contents of `fnalibs/lib64` into the generated output directory.
