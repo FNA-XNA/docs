@@ -4,7 +4,6 @@ While we have set out to make our XNA reimplementation as portable as possible, 
 
 Here are some common things we've seen that will get in the way of making your game 100% portable:
 
-- [4: FNA and Windows API](#4-fna-and-windows-api)
 - [64-bit Support](#64-bit-support)
 - [DirectInput Support](#directinput-support)
 - [Filesystem Portability](#filesystem-portability)
