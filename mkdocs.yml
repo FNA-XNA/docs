@@ -1,0 +1,10 @@
+site_name: FNA Docs
+
+repo_url: https://github.com/FNA-XNA/docs
+site_description: Documentation for FNA
+
+theme:
+  name: readthedocs
+  
+extra_css: 
+  - css/styles.css
