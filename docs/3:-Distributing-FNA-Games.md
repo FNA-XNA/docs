@@ -291,6 +291,7 @@ When signing for Steam, the first key should be `false`, otherwise it won't be a
 The above guide works for .NET Framework and Mono applications, but does not work with .NET 8. The publishing system for modern .NET has completely changed and is described below.
 
 `dotnet publish -r <win-x64/linux-x64/osx-x64> -c Release --self-contained` will produce the executable package, but each platform has different requirements for where the fnalibs must be placed.
+
 * **Windows:** Place the x64 fnalibs in the `publish` directory alongside your executable.
 * **MacOS:** Place the osx fnalibs in the `publish` directory alongside your executable. Then use `install_name_tool -add_rpath @executable_path <your_app_executable_name>` to force the application to first look in the executable directory for the fnalibs, instead of `/usr/local/lib`.
 * **Linux:** Place the lib64 fnalibs in the `publish` directory, in a sub-directory called `netcoredeps`.
