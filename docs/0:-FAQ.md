@@ -56,7 +56,7 @@ Android is not and cannot be supported. The solution you just thought of does no
 
 Internally, we have what's called a "body count" for anyone that tries to add support. It was pretty funny, at least for the first dozen increments.
 
-We intend to look at Fuchsia once production devices are available. In the meantime, FNA is known to work on [PinePhone](https://www.pine64.org/pinephone/) with various Free mobile operating systems.
+We intend to look at [Fuchsia](https://en.wikipedia.org/wiki/Fuchsia_(operating_system)) once production devices are available. In the meantime, FNA is known to work on [PinePhone](https://www.pine64.org/pinephone/) with various Free mobile operating systems.
 
 ## I get a BadImageFormatException, and-
 
