@@ -4,7 +4,7 @@ This page has two parts: The first sets up the FNA team's recommended developmen
 
 ## Chapter 1a: Linux Setup
 
-The Linux development environment for FNA is supported on all distributions with Flatpak support, including SteamOS!
+The Linux development environment for FNA is supported on all distributions with Flatpak support, including SteamOS! (But, if you absolutely _must_ know, the FNA team uses [Fedora Workstation](https://fedoraproject.org/workstation/).)
 
 You may be able to find VSCode and the .NET SDKs via apps like KDE Discover, but it's easier to get everything at once with a single portable terminal command:
 
