@@ -12,7 +12,7 @@ You may be able to find VSCode and the .NET SDKs via apps like KDE Discover, but
 flatpak install com.visualstudio.code org.freedesktop.Sdk.Extension.mono6 org.freedesktop.Sdk.Extension.dotnet8
 ```
 
-This installs VSCode, Mono, and .NET 8 all at once! If it asks which version of the SDKs to install, select 23.08.
+This installs VSCode, Mono, and .NET 8 all at once! If it asks which version of the SDKs to install, select 24.08.
 
 All that's left is to expose the .NET and Mono SDKs to VSCode's sandbox:
 
