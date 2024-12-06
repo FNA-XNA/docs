@@ -65,10 +65,7 @@ FNA uses several native libraries for various pieces of functionality, such as w
 
 Here's what we use and why:
 
-**REQUIRED:**
 * SDL2: Used for window management, input, image I/O, etc.
-
-**OPTIONAL:**
 * FNA3D: Only required if you use the Graphics namespace.
 * FAudio: Only required if you use the Audio or Media namespaces.
 * Theorafile: Only required if you use VideoPlayer.
