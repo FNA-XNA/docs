@@ -1,3 +1,9 @@
+*,h1, h2, h3, h4, h5, h6 {
+
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+
 .wy-side-nav-search {
 
     background-color: #7933ea;
@@ -10,8 +16,27 @@
 
 }
 
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+
+    color: #ac78ff;
+
+}
+
+a {
+
+    color:#7933ea;
+
+}
+
 a:hover {
 
+    color: #111;
     text-decoration: underline;
+
+}
+
+.wy-side-nav-search input[type="text"] {
+
+    border-radius: 5px;
 
 }
