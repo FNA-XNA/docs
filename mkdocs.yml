@@ -6,6 +6,7 @@ edit_uri: blob/main/docs/
 
 theme:
   name: readthedocs
+  logo: img/logo.png
   
 extra_css: 
   - css/styles.css
