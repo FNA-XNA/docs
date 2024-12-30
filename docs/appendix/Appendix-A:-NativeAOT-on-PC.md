@@ -6,6 +6,8 @@ FNA now has support for [NativeAOT](https://learn.microsoft.com/en-us/dotnet/cor
 
 To get started, please read through the [official NativeAOT documentation](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/). Make sure to install the prerequisites listed for your OS.
 
+To make a NativeAOT build, you should make .NET 8 project files for your game - instead of the usual FNA.csproj, you will reference FNA.Core.csproj. The code and content should largely be able to stay the same, with the exception of code that requires a JIT (i.e. you can't emit IL at runtime, as you might expect from ahead-of-time compilation).
+
 To make your .csproj compatible with NativeAOT, add the following:
 ```
   <PropertyGroup>
