@@ -32,11 +32,11 @@ A macOS project is essentially the same as any other .NET Core build; the differ
 
 For NativeAOT, the directions in Appendix A largely apply here, with these added steps:
 
-    * Build SDL3 from source or install the SDL3 development package from a package manager, then use it to build the other libraries from source.
-    * Copy the resulting \*.dylib files from SDL3, FNA3D, FAudio, and Theorafile into `/usr/local/lib`.
-    * Build the application.
-    * Copy the contents of `fnalibs/osx` into the generated output directory.
-    * Finally, to ensure your application uses the correct search path for SDL3, use `install_name_tool -change /usr/local/lib/libSDL3.0.dylib @rpath/libSDL3.0.dylib <my-app-name>`.
+* Build SDL3 from source or install the SDL3 development package from a package manager, then use it to build the other libraries from source.
+* Copy the resulting \*.dylib files from SDL3, FNA3D, FAudio, and Theorafile into `/usr/local/lib`.
+* Build the application.
+* Copy the contents of `fnalibs/osx` into the generated output directory.
+* Finally, to ensure your application uses the correct search path for SDL3, use `install_name_tool -change /usr/local/lib/libSDL3.0.dylib @rpath/libSDL3.0.dylib <my-app-name>`.
 
 That about covers macOS - iOS/tvOS are a whole different story:
 
