@@ -1,10 +1,10 @@
-# Appendix A: FNA on iOS and tvOS
+# Appendix C: FNA on Apple Platforms
 
-As of FNA 24.03, FNA supports deploying to iOS and tvOS via the .NET SDK. FNA does not have special branches or configurations for each platform; the public master branch of FNA and the configuration you're already used to is exactly what is used to ship for these targets. The platform code is contained entirely in SDL.
+FNA supports deploying to macOS/iOS/tvOS via the .NET SDK. FNA does not have special branches or configurations for each platform; the public master branch of FNA and the configuration you're already used to is exactly what is used to ship for these targets. The platform code is contained entirely in SDL.
 
 ## Getting Started
 
-This is the basic guide to getting your game running in iOS/tvOS. Once these steps are followed, your game should be able to boot on real hardware.
+This is the basic guide to getting your game running on macOS/iOS/tvOS. Once these steps are followed, your game should be able to boot on real hardware.
 
 ### Prerequisites
 
@@ -23,6 +23,22 @@ sudo dotnet workload install tvos
 ### Building fnalibs
 
 The process of building all the fnalibs is normally very tedious, and everybody _loves_ how good Xcode is, so as an alternative to building each project by hand, we have a pair of [build scripts](https://github.com/TheSpydog/fnalibs-ios-builder) that automatically download and build all of the fnalibs at once. If you would like to see the process in detail, take a look at the script sources - they're human-readable!
+
+### Creating/Publishing a macOS Project
+
+A macOS project is essentially the same as any other .NET Core build; the difference is in the publishing process:
+
+`dotnet publish -r <osx-x64> -c Release --self-contained` will produce the executable package. Place the osx version of your fnalibs in the `publish` directory alongside your executable. Then use `install_name_tool -add_rpath @executable_path <your_app_executable_name>` to force the application to first look in the executable directory for the fnalibs, instead of `/usr/local/lib`.
+
+For NativeAOT, the directions in Appendix A largely apply here, with these added steps:
+
+    * Build SDL3 from source or install the SDL3 development package from a package manager, then use it to build the other libraries from source.
+    * Copy the resulting \*.dylib files from SDL3, FNA3D, FAudio, and Theorafile into `/usr/local/lib`.
+    * Build the application.
+    * Copy the contents of `fnalibs/osx` into the generated output directory.
+    * Finally, to ensure your application uses the correct search path for SDL3, use `install_name_tool -change /usr/local/lib/libSDL3.0.dylib @rpath/libSDL3.0.dylib <my-app-name>`.
+
+That about covers macOS - iOS/tvOS are a whole different story:
 
 ### Creating an iOS Project
 

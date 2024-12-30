@@ -10,6 +10,10 @@ For all console builds, you should make .NET 8 project files for your game - ins
 
 While the runtimes require a console NDA, there are some things you can do to make your game more robust that just-so-happens to make console support easier, without access to any particular SDK. If you're familiar with consoles, none of these will be surprising:
 
+### NativeAOT
+
+All platforms use NativeAOT as the runtime. If you want a solid head-start, you should read Appendix A. Don't underestimate this step, especially if your game heavily depends on .NET's reflection features!
+
 ### Window Size Changes
 Even if your window is not resizable, operating systems (including Windows!) may forcibly change the window size for a multitude of reasons, and so the graphics device will reset.
 

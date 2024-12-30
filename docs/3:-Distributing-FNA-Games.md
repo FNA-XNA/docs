@@ -20,11 +20,6 @@ OS: glibc 2.28+, 64-bit only
 Graphics (Minimum): OpenGL 3.0+ support (2.1 with ARB extensions acceptable)
 Graphics (Recommended): Vulkan support
 
-macOS:
-OS: 10.9 Mavericks and newer
-Graphics (Minimum): OpenGL 3.0+ support (2.1 with ARB extensions acceptable)
-Graphics (Recommended): Metal support
-
 Other: SDL_GameController devices fully supported
 ```
 
@@ -120,180 +115,13 @@ A good publicly-available example of this layout is the PC version of [I MAED A 
 
 ***
 
-### macOS
-Download the latest version of MonoKickstart:
-
-https://github.com/flibitijibibo/MonoKickstart
-
-You only need the latest revision; it is actually _not_ recommended to download using Git, as the repository is mostly binary blobs, so the download time will be much longer.
-
-In the precompiled/ folder you will notice the following:
-
-* `kick.bin.osx`, `kick.bin.x86_64`, `monoconfig`, `monomachineconfig`
-	* For macOS, you care about all of these except `kick.bin.x86_64`
-* Lots and lots of DLL files.
-	* If you don't know which ones you need, just use them all.
-
-What follows is really convoluted and annoying, because that's the Apple Way:
-
-You'll start by making a series of seemingly-arbitrary folders that will look something like this:
-
-```
-flibitGame.app/
-	Contents/
-		MacOS/
-		Resources/
-```
-
-Next, you will put `kick.bin.osx` into the `MacOS/` folder and rename it to the name of your main EXE. For example, for `flibitGame.exe` you will name it `flibitGame`, no extension. Next to that you will put the `osx/` folder (NOT ITS CONTENTS) from the [fnalibs.tar.bz2 package](1:-Setting-Up-FNA.md#step-2-download-native-libraries). The `vulkan/` folder from fnalibs.tar.bz2 will go in the `Resources/` folder. Any other native libraries you have will also go in the `osx/` folder (for example, if you're using Steamworks.NET, you would put libsteam_api.dylib in the `osx/` folder). Lastly, if you're shipping on Steam, you will put your `steam_appid.txt` file in `Resources/`.
-
-So now your bundle should look like this:
-
-```
-flibitGame.app/
-	Contents/
-		MacOS/
-			flibitGame
-			osx/
-		Resources/
-			vulkan/
-			steam_appid.txt
-```
-
-Now, onto the `Resources/` folder. You will put `monoconfig`, `monomachineconfig`, and the DLL files into this folder.
-
-Those DLL files, config files, and `kick.bin.osx` are actually a highly compacted Mono runtime that will be executing the C# assemblies, just as .NET would on Windows. The upside is, there are no system dependencies - the whole runtime is in this one folder, and all the native dependencies are in the lib folder. Convenient!
-
-However, note that not every single DLL in the C# standard library exists in this folder. Libs like System.Web.Services are not provided by default to save disk space, but if you need these you can just grab these from any Mono runtime and we'll recognize it. These libs are typically found in the lib/mono/4.x/ folder (the precompiled folder uses 4.5).
-
-Finally, you will put _your whole game_ into the `Resources/` folder. After that, the bundle should look like this:
-
-```
-flibitGame.app/
-	Contents/
-		MacOS/
-			flibitGame
-			osx/
-			steam_appid.txt
-		Resources/
-			vulkan/
-			monoconfig
-			monomachineconfig
-			mscorlib.dll, System.dll, blah blah
-			flibitGame.exe
-			Content/
-			etc...
-```
-
-At this point, we're now ready for the Mac-specific data. No, seriously, we haven't even gotten to that part yet.
-
-First, you will need to put a `.icns` file in the `Resources/` folder. An icns file can be generated with any image using this website:
-
-https://cloudconvert.com/png-to-icns
-
-It is _strongly_ recommended that you use an image that is at least 512x512 in size. For certification, Apple actually requires a 4096x4096 image for your icon!
-
-The very last file that will be made before your bundle is done is an `Info.plist` file, which will go in the `Contents/` folder. Here's an example Info.plist file:
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
-	<key>CFBundleExecutable</key>
-	<string>EscapeGoat2</string>
-	<key>CFBundleIconFile</key>
-	<string>EscapeGoat2</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.magicaltimebean.Bastille2</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>Escape Goat 2</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
-	<key>CFBundleSignature</key>
-	<string>GOAT</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.games</string>
-	<key>LSMinimumSystemVersion</key>
-	<string>10.9</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2014 MagicalTimeBean. All rights reserved.</string>
-	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
-	<key>NSHighResolutionCapable</key>
-	<string>True</string>
-</dict>
-</plist>
-```
-
-With that, the final look of the bundle:
-
-```
-flibitGame.app/
-	Contents/
-		Info.plist
-		MacOS/
-			flibitGame
-			osx/
-		Resources/
-			vulkan/
-			steam_appid.txt
-			monoconfig
-			monomachineconfig
-			mscorlib.dll, System.dll, blah blah
-			flibitGame.exe
-			flibitGame.icns
-			Content/
-			etc...
-```
-
-Once you've compiled all of this together, you should have a working app bundle! FINALLY! Place your app bundle and any other items you want to include with your game into a folder, then you are ready to upload via [SteamPipe](https://partner.steamgames.com/doc/sdk/uploading), [butler](https://itch.io/docs/butler/), or the [GOG Galaxy builder](https://docs.gog.com/bc-build-game/).
-
-One extra note: If for some reason you want to codesign your app (**this is optional**), you will want to have this in an `entitlements.plist` file when signing:
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>com.apple.security.app-sandbox</key>
-	<true/>
-	<key>com.apple.security.automation.apple-events</key>
-	<true/>
-	<key>com.apple.security.cs.allow-dyld-environment-variables</key>
-	<true/>
-	<key>com.apple.security.cs.allow-jit</key>
-	<true/>
-	<key>com.apple.security.cs.allow-unsigned-executable-memory</key>
-	<true/>
-	<key>com.apple.security.cs.disable-executable-page-protection</key>
-	<true/>
-	<key>com.apple.security.cs.disable-library-validation</key>
-	<true/>
-	<key>com.apple.security.device.usb</key>
-	<true/>
-</dict>
-</plist>
-```
-
-When signing for Steam, the first key should be `false`, otherwise it won't be able to detect when Steam is running.
-
 ### .NET Core
 
 The above guide works for .NET Framework and Mono applications, but does not work with .NET 8. The publishing system for modern .NET has completely changed and is described below.
 
-`dotnet publish -r <win-x64/linux-x64/osx-x64> -c Release --self-contained` will produce the executable package, but each platform has different requirements for where the fnalibs must be placed.
+`dotnet publish -r <win-x64/linux-x64> -c Release --self-contained` will produce the executable package, but each platform has different requirements for where the fnalibs must be placed.
 
 * **Windows:** Place the x64 fnalibs in the `publish` directory alongside your executable.
-* **MacOS:** Place the osx fnalibs in the `publish` directory alongside your executable. Then use `install_name_tool -add_rpath @executable_path <your_app_executable_name>` to force the application to first look in the executable directory for the fnalibs, instead of `/usr/local/lib`.
 * **Linux:** Place the lib64 fnalibs in the `publish` directory, in a sub-directory called `netcoredeps`.
 
 #### Single-File Applications
