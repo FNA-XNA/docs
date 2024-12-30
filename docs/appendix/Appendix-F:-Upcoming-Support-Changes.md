@@ -6,7 +6,7 @@ While very rare, FNA does occasionally make changes to its support matrix, usual
 
 As of April 1, 2023, FNA requires glibc 2.28 or newer. The fnalibs build OS is Rocky Linux 8.
 
-On April 1, 2025, glibc 2.31 will be required. The fnalibs build OS will be [Steam Linux Runtime 3.0 (Sniper)](https://gitlab.steamos.cloud/steamrt/sniper/sdk).
+Upon the release of SDL 3.0 (or April 1, 2025, whichever is sooner), glibc 2.31 will be required. The fnalibs build OS will be [Steam Linux Runtime 3.0 (Sniper)](https://gitlab.steamos.cloud/steamrt/sniper/sdk).
 
 ## macOS Support (Single-Assembly)
 
