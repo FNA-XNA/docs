@@ -96,9 +96,10 @@ Your code should be able to stay the same except for the Main function:
     static void Main(string[] args)
 #if GDK
     {
+        Environment.SetEnvironmentVariable("FNA_PLATFORM_BACKEND", "SDL3");
         realArgs = args;
-        SDL2.SDL.SDL_main_func mainFunction = FakeMain;
-        SDL2.SDL.SDL_GDKRunApp(mainFunction, IntPtr.Zero);
+        SDL3.SDL.SDL_main_func mainFunction = FakeMain;
+        SDL3.SDL.SDL_RunApp(0, IntPtr.Zero, mainFunction, IntPtr.Zero);
     }
 
     static string[] realArgs;
