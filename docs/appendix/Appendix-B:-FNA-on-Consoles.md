@@ -81,12 +81,7 @@ Unless you're working with savedata, using `System.IO.File` is highly discourage
 To load files, use `TitleContainer.OpenStream` instead. Save data should be handled with `Microsoft.Xna.Framework.Storage`, but if you already have established savedata out in the wild, isolate your filesystem calls as much as possible. Lord knows how many times I've done [this](../4:-FNA-and-Windows-API.md#environmentspecialfolder) to make Linux savedata not go directly in `$HOME`...
 
 ## Xbox GDK
-GDK support is now available to ID@Xbox licensees. SDL supports GDK on both PC and Xbox, and FAudio/Theorafile work as-is. FNA3D is currently targeting GDKX via a port of GLon12, which we upstreamed for release in Mesa 23.1.
-
-Developers can request NativeAOT-GDKX access via Discord once they have signed the GDK agreements with Microsoft. 
-
-### Building fnalibs
-[SDL](https://github.com/libsdl-org/SDL/), FNA3D, FAudio, and Theorafile all have VisualC-GDK folders with pre-made project files. Compile, grab the DLLs, add said DLLs to your project.
+GDK support is now available to ID@Xbox licensees. All of the source code is fully public except for the NativeAOT toolchain; developers can request NativeAOT-GDKX access via Discord once they have signed the GDK agreements with Microsoft.
 
 ### Code Differences
 Your code should be able to stay the same except for the Main function:
@@ -122,6 +117,6 @@ While there is no special code needed for Nintendo Switch support (100% of the p
 
 ## PlayStation
 
-FNA for PlayStation 4 and 5 is now in progress - the first draft of SDL-playstation was recently finished, with FNA3D support coming up next. FAudio and Theorafile are already working on PlayStation targets! For runtimes we are currently using NativeAOT, with Mono as our fallback plan.
+FNA for PlayStation 4 and 5 is nearly complete - FNA and the fnalibs work, we just need to finish the port of SDL3 (particularly SDL_GPU). For runtimes we are currently using NativeAOT, with Mono as our fallback plan.
 
 If you are a licensee, please get in touch with [Ryan](mailto:icculus@icculus.org) for SDL access, then once you have access to that, let us know!
