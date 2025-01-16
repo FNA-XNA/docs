@@ -12,6 +12,35 @@ While the runtimes require a console NDA, there are some things you can do to ma
 
 All console builds use NativeAOT as the runtime. If you want a solid head-start, you should read Appendix A. Don't underestimate this step, especially if your game heavily depends on .NET's reflection features!
 
+### Bootstrapping
+
+For non-PC builds it is generally a good idea to assume that platform-specific bootstrapping is needed - in FNA's case we make use of SDL3's `SDL_RunApp` functionality; your code should be able to stay the same except for the Main function:
+
+```
+    [STAThread]
+    static void Main(string[] args)
+#if NET
+    {
+        Environment.SetEnvironmentVariable("FNA_PLATFORM_BACKEND", "SDL3");
+        realArgs = args;
+        SDL3.SDL.SDL_main_func mainFunction = FakeMain;
+        SDL3.SDL.SDL_RunApp(0, IntPtr.Zero, mainFunction, IntPtr.Zero);
+    }
+
+    static string[] realArgs;
+    static int FakeMain(int argc, IntPtr argv)
+    {
+        RealMain(realArgs);
+        return 0;
+    }
+
+    static void RealMain(string[] args)
+#endif
+    {
+        // blah blah blah
+    }
+```
+
 ### Window Size Changes
 Even if your window is not resizable, operating systems (including Windows!) may forcibly change the window size for a multitude of reasons, and so the graphics device will reset.
 
@@ -82,34 +111,6 @@ To load files, use `TitleContainer.OpenStream` instead. Save data should be hand
 
 ## Xbox GDK
 GDK support is now available to ID@Xbox licensees. All of the source code is fully public except for the NativeAOT toolchain; developers can request NativeAOT-GDKX access via Discord once they have signed the GDK agreements with Microsoft.
-
-### Code Differences
-Your code should be able to stay the same except for the Main function:
-
-```
-    [STAThread]
-    static void Main(string[] args)
-#if GDK
-    {
-        Environment.SetEnvironmentVariable("FNA_PLATFORM_BACKEND", "SDL3");
-        realArgs = args;
-        SDL3.SDL.SDL_main_func mainFunction = FakeMain;
-        SDL3.SDL.SDL_RunApp(0, IntPtr.Zero, mainFunction, IntPtr.Zero);
-    }
-
-    static string[] realArgs;
-    static int FakeMain(int argc, IntPtr argv)
-    {
-        RealMain(realArgs);
-        return 0;
-    }
-
-    static void RealMain(string[] args)
-#endif
-    {
-        // blah blah blah
-    }
-```
 
 ## Nintendo Switch
 
