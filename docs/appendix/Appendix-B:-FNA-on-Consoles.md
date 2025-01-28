@@ -118,6 +118,8 @@ While there is no special code needed for Nintendo Switch support (100% of the p
 
 ## PlayStation
 
-FNA for PlayStation 4 and 5 is nearly complete - FNA and the fnalibs work, we just need to finish the port of SDL3 (particularly SDL_GPU). For runtimes we are currently using NativeAOT, with Mono as our fallback plan.
+FNA for PlayStation 5 is nearly complete - FNA and the fnalibs work (including SDL3), we just need to finish the port of SDL_GPU. For runtimes we are currently using NativeAOT, with Mono as our fallback plan.
+
+PlayStation 4 is in a similar state, except we are not planning to port SDL_GPU to PS4, so unless someone else does it this platform support will likely be canceled.
 
 If you are a licensee, please get in touch with [Ryan](mailto:icculus@icculus.org) for SDL access, then once you have access to that, let us know!
