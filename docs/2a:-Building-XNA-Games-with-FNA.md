@@ -12,7 +12,7 @@ One thing you will NOT need to recreate is the content projects. When deploying 
 
 (As an aside, if you are creating _new_ content instead of porting existing content, you should not feel pressured to use processing tools like the XNA/MonoGame content pipeline tools! It is perfectly reasonable to develop your own content system that can be designed and optimized to work well with you and your development team, and in fact that is what we recommend doing for new projects.)
 
-Once you've remade your solution with all of your game's subprojects, add FNA.csproj into your solution. FNA, despite using many different C# wrappers, is just a single project file. This simplifies project generation and quickly gives you access to, for example, SDL2# if you need it in your game code.
+Once you've remade your solution with all of your game's subprojects, add FNA.csproj into your solution. FNA, despite using many different C# wrappers, is just a single project file. This simplifies project generation and quickly gives you access to, for example, SDL3# if you need it in your game code.
 
 Your projects' references are going to be the same as they were in XNA4, except now you will reference FNA instead of the XNA libraries.
 

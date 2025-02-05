@@ -52,7 +52,7 @@ We strongly recommend using Git to download and update FNA. This tutorial will g
 If you are using an official zipped release of FNA, you only need to worry about step 2.
 
 ### Step 1: Clone FNA
-FNA uses several Git submodules to access the source to additional libraries, such as SDL2# and FAudio. To fully download FNA, add the `--recursive` parameter to your `git clone` command:
+FNA uses several Git submodules to access the source to additional libraries, such as SDL3# and FAudio. To fully download FNA, add the `--recursive` parameter to your `git clone` command:
 
 ```
 git clone --recursive https://github.com/FNA-XNA/FNA
@@ -65,7 +65,7 @@ FNA uses several native libraries for various pieces of functionality, such as w
 
 Here's what we use and why:
 
-* SDL2: Used for window management, input, image I/O, etc.
+* SDL: Used for window management, input, image I/O, etc.
 * FNA3D: Only required if you use the Graphics namespace.
 * FAudio: Only required if you use the Audio or Media namespaces.
 * Theorafile: Only required if you use VideoPlayer.

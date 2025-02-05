@@ -34,7 +34,7 @@ _All_ other environments and runtimes are unsupported and should not be used.
 ## Where is the NuGet package?
 FNA and its sublibraries do not use NuGet in any capacity. We _strongly_ recommend avoiding NuGet in general, and for FNA we recommend adding FNA.csproj (or FNA.Core.csproj) directly to your solution. FNA itself compiles almost instantly, and debug builds are incredibly valuable to have during development.
 
-Any and all NuGet packages for any of our code (FNA, SDL2#, etc.) are unauthorized and should be avoided. If the package claims that we're the authors, please report the package as it is misrepresenting its authors and potentially violating the copyright license (i.e. "... must not be misrepresented as being the original software").
+Any and all NuGet packages for any of our code (FNA, SDL3#, etc.) are unauthorized and should be avoided. If the package claims that we're the authors, please report the package as it is misrepresenting its authors and potentially violating the copyright license (i.e. "... must not be misrepresented as being the original software").
 
 ## What is the FNA content system?
 FNA supports the XNA content pipeline for preservation reasons, but we _strongly_ recommend against using it on new projects. FNA supports loading common data formats like PNG, WAV and OGG directly, and the community maintains a few libraries for font loading and rendering. For anything more specialized you can bring in an external library or write your own processing and importing tools. Your content system does not have to be complex and there is nothing wrong with simple approaches like loading textures from PNG files.
@@ -74,7 +74,7 @@ The bug is that you are using VirtualBox. Please use [VMware Player](https://www
 Your LD_LIBRARY_PATH is busted. You can do one of three things:
 
 - Preserve the lib64 folder (like you're supposed to anyway) and set LD_LIBRARY_PATH to include that folder
-- Delete your output's copy of libSDL2-2.0.so.0, keeping the rest of the libs next to your exe, and be sure your distribution provides the latest stable SDL release (maybe don't do this one since it's not the official build)
+- Delete your output's copy of libSDL3.so.0, keeping the rest of the libs next to your exe, and be sure your distribution provides the latest stable SDL release (maybe don't do this one since it's not the official build)
 - Throw the fnalibs into /usr/local/lib (definitely don't do this one)
 
 For shipping builds, [use MonoKickstart](3:-Distributing-FNA-Games.md#gnulinux), do NOT use system dependencies!

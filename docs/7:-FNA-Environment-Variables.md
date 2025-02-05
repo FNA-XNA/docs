@@ -64,7 +64,7 @@ For some reason they didn't expose a quality parameter to SaveAsJpeg, so we adde
 ### FNA_KEYBOARD_USE_SCANCODES
 XNA keys are based on keycodes, rather than scancodes.
 
-With SDL2, for example, you can actually pick between SDL_Keycode and SDL_Scancode, but scancodes will not be accurate to XNA4. The benefit is that scancodes will ignore "foreign" keyboard layouts, making default keyboard layouts work out of the box everywhere (unless the actual symbol for the keys matters in your game).
+With SDL, for example, you can actually pick between SDL_Keycode and SDL_Scancode, but scancodes will not be accurate to XNA4. The benefit is that scancodes will ignore "foreign" keyboard layouts, making default keyboard layouts work out of the box everywhere (unless the actual symbol for the keys matters in your game).
 
 While FNA provides the [GetKeyFromScancodeEXT](5:-FNA-Extensions.md#getkeyfromscancodeext) extension and developers are encouraged to use it, this is not a required function and users may benefit from this environment variable in the event that layouts are not checked in-game.
 
@@ -75,7 +75,7 @@ To use scancodes instead of keycodes, set this variable to "1" before starting t
 This variable is accessible to users by passing `/usescancodes:1` as a launch option.
 
 ### FNA_GAMEPAD_NUM_GAMEPADS
-XNA4 supports four controllers, per XInput's limitations. However, SDL2 gives us the ability to support more controllers when available. You can set this environment variable on/before program startup to set a controller count without modifying FNA:
+XNA4 supports four controllers, per XInput's limitations. However, SDL gives us the ability to support more controllers when available. You can set this environment variable on/before program startup to set a controller count without modifying FNA:
 
 ```
 Environment.SetEnvironmentVariable("FNA_GAMEPAD_NUM_GAMEPADS", "8");
@@ -121,10 +121,10 @@ This variable is accessible to users by passing `/backbufferscalenearest:1` as a
 OpenGL contexts are very clunky and require the RGB/Depth/Stencil sizes at window creation time rather than context creation time, and cannot be reset without destroying the window and GL context. By default we play it safe and create a window with a `Depth24Stencil8` backbuffer, but if you want to optimize on this you can set this environment variable to a `DepthFormat` enum value at program startup to override our settings. For example:
 
 ```
-SDL2.SDL.SDL_SetHintWithPriority(
+SDL3.SDL.SDL_SetHintWithPriority(
     "FNA3D_OPENGL_WINDOW_DEPTHSTENCILFORMAT",
     "None",
-    SDL2.SDL.SDL_HintPriority.SDL_HINT_OVERRIDE
+    SDL3.SDL.SDL_HintPriority.SDL_HINT_OVERRIDE
 );
 ```
 

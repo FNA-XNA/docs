@@ -187,13 +187,12 @@ public void AssignDefaultKeys()
 To use the TextInputEXT extension:
 ```
 using Microsoft.Xna.Framework.Input;
-using SDL2;
 
 private void OnTextInput(char c)
 {
 	if (c == (char) 22)
 	{
-		System.Console.WriteLine("PASTED: " + SDL.SDL_GetClipboardText());
+		System.Console.WriteLine("PASTED: " + SDL3.SDL.SDL_GetClipboardText());
 	}
 	System.Console.WriteLine("TEXT ENTERED: " + c.ToString());
 }

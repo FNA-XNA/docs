@@ -106,7 +106,7 @@ Here's an example for determining the save location at runtime:
 ```
 using System;
 using System.IO;
-using SDL2;
+using SDL3;
 
 public const string GameName = "flibitGame";
 public static readonly string SaveDirectory = GetSaveDirectory();
@@ -124,7 +124,7 @@ private static string GetSaveDirectory()
 			GameName
 		);
 	}
-	else if (platform.Equals("Mac OS X"))
+	else if (platform.Equals("macOS"))
 	{
 		string osConfigDir = Environment.GetEnvironmentVariable("HOME");
 		if (String.IsNullOrEmpty(osConfigDir))
@@ -187,7 +187,7 @@ https://wiki.libsdl.org/CategorySurface
 ### System.Windows.Forms
 In many XNA games, there is frequent use of the `System.Windows.Forms` namespace for various operations, mostly related to window management.
 
-We strongly recommend replacing this with SDL2 when moving to FNA. The SDL2 documentation can be found here:
+We strongly recommend replacing this with SDL when moving to FNA. The SDL documentation can be found here:
 
 https://wiki.libsdl.org/APIByCategory
 
@@ -196,9 +196,9 @@ Subsystems like SDL_Video, SDL_Cursor, and SDL_Clipboard should be able to provi
 For example, if you want to use a messagebox:
 
 ```
-#if SDL2
-	SDL2.SDL.SDL_ShowSimpleMessageBox(
-		SDL2.SDL.SDL_MessageBoxFlags.SDL_MESSAGEBOX_ERROR,
+#if SDL3
+	SDL3.SDL.SDL_ShowSimpleMessageBox(
+		SDL3.SDL.SDL_MessageBoxFlags.SDL_MESSAGEBOX_ERROR,
 		title,
 		message,
 		game.Window.Handle

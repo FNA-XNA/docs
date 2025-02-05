@@ -29,7 +29,7 @@ A major rule for FNA is that we do NOT fork external libraries! Anything we chan
 
 The sources can be found here:
 
-- [SDL2](https://github.com/libsdl-org/SDL)
+- [SDL](https://github.com/libsdl-org/SDL)
 - [FNA3D](https://github.com/FNA-XNA/FNA3D)
 - [FAudio](https://github.com/FNA-XNA/FAudio)
 - [Theorafile](https://github.com/FNA-XNA/Theorafile)
