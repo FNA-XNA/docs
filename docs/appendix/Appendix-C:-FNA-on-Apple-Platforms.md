@@ -22,7 +22,7 @@ sudo dotnet workload install tvos
 
 ### Building fnalibs
 
-The process of building all the fnalibs is normally very tedious, and everybody _loves_ how good Xcode is, so as an alternative to building each project by hand, we have a pair of [build scripts](https://github.com/TheSpydog/fnalibs-ios-builder) that automatically download and build all of the fnalibs at once. If you would like to see the process in detail, take a look at the script sources - they're human-readable!
+macOS, iOS, and tvOS libraries are now built automatically and can be downloaded from [fnalibs-dailies(https://github.com/FNA-XNA/fnalibs-dailies/actions)].  You may need to be logged into github to download these.  Simulator libraries are not currently provided, so you will need to build those yourself if desired.
 
 ### Creating/Publishing a macOS Project
 
@@ -70,8 +70,9 @@ See [this Apple documentation](https://developer.apple.com/documentation/bundler
 ```
 <PropertyGroup>
   <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-  <MtouchExtraArgs>--cxx --gcc_flags "-L$(MSBuildProjectDirectory) -force_load $(MSBuildProjectDirectory)/libSDL2.a -force_load $(MSBuildProjectDirectory)/libFAudio.a -force_load $(MSBuildProjectDirectory)/libFNA3D.a -force_load $(MSBuildProjectDirectory)/libtheorafile.a -force_load $(MSBuildProjectDirectory)/libMoltenVK.a -framework AudioToolbox -framework AVFoundation -framework AVFAudio -framework CoreBluetooth -framework CoreHaptics -framework GameController -framework OpenGLES -framework QuartzCore -framework Metal -framework CoreMotion -framework CoreGraphics -framework IOSurface"</MtouchExtraArgs>
+  <MtouchExtraArgs>--cxx --gcc_flags "-L$(MSBuildProjectDirectory) -force_load $(MSBuildProjectDirectory)/libSDL3.a -force_load $(MSBuildProjectDirectory)/libFAudio.a -force_load $(MSBuildProjectDirectory)/libFNA3D.a -force_load $(MSBuildProjectDirectory)/libtheorafile.a -force_load $(MSBuildProjectDirectory)/libmojoshader.a -framework AudioToolbox -framework CoreBluetooth -framework CoreHaptics -framework CoreMotion -framework OpenGLES -framework Metal"</MtouchExtraArgs>
   <_ExportSymbolsExplicitly>false</_ExportSymbolsExplicitly>
+  <OptimizePNGs>false</OptimizePNGs>
 </PropertyGroup>
 ```
 4. Place all the native libraries in your project directory. They will be linked on build, as specified by the `MtouchExtraArgs` property you just added to the project.
@@ -117,8 +118,9 @@ This will generate a "tvOS Application" template project we can then modify like
 ```
 <PropertyGroup>
   <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-  <MtouchExtraArgs>--cxx --gcc_flags "-L$(MSBuildProjectDirectory) -force_load $(MSBuildProjectDirectory)/libSDL2.a -force_load $(MSBuildProjectDirectory)/libFAudio.a -force_load $(MSBuildProjectDirectory)/libFNA3D.a -force_load $(MSBuildProjectDirectory)/libtheorafile.a -force_load $(MSBuildProjectDirectory)/libMoltenVK.a $(MSBuildProjectDirectory)/libtvStubs.a -framework AVFoundation -framework AudioToolbox -framework CoreGraphics -framework Metal -framework QuartzCore -framework OpenGLES -framework GameController -framework CoreBluetooth -framework MobileCoreServices -framework ImageIO -framework IOSurface -framework CoreHaptics"</MtouchExtraArgs>
+  <MtouchExtraArgs>--cxx --gcc_flags "-L$(MSBuildProjectDirectory) -force_load $(MSBuildProjectDirectory)/libSDL3.a -force_load $(MSBuildProjectDirectory)/libFAudio.a -force_load $(MSBuildProjectDirectory)/libFNA3D.a -force_load $(MSBuildProjectDirectory)/libtheorafile.a -force_load $(MSBuildProjectDirectory)/libmojoshader.a $(MSBuildProjectDirectory)/libtvStubs.a -framework AudioToolbox -framework CoreBluetooth -framework CoreHaptics -framework OpenGLES -framework Metal"</MtouchExtraArgs>
   <_ExportSymbolsExplicitly>false</_ExportSymbolsExplicitly>
+  <OptimizePNGs>false</OptimizePNGs>
 </PropertyGroup>
 ```
 5. Place all the native libraries in your project directory. They will be linked on build, as specified by the `MtouchExtraArgs` property you just added to the project.
@@ -134,22 +136,22 @@ To get your game booting on iOS/tvOS, update your `Main.cs` as follows:
 #if __IOS__ || __TVOS__
 	{
 		// Enable high DPI "Retina" support. Trust us, you'll want this.
-		SDL2.SDL.SDL_SetHint("FNA_GRAPHICS_ENABLE_HIGHDPI", "1");
+		SDL3.SDL.SDL_SetHint("FNA_GRAPHICS_ENABLE_HIGHDPI", "1");
 
 		// Keep mouse and touch input separate.
-		SDL2.SDL.SDL_SetHint(SDL2.SDL.SDL_HINT_MOUSE_TOUCH_EVENTS, "0");
-		SDL2.SDL.SDL_SetHint(SDL2.SDL.SDL_HINT_TOUCH_MOUSE_EVENTS, "0");
+		SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_MOUSE_TOUCH_EVENTS, "0");
+		SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_TOUCH_MOUSE_EVENTS, "0");
 
 		// Don't let the accelerometer take over controller slot 0.
-		SDL2.SDL.SDL_SetHint(SDL2.SDL.SDL_HINT_ACCELEROMETER_AS_JOYSTICK, "0");
+		SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_ACCELEROMETER_AS_JOYSTICK, "0");
 
 		realArgs = args;
-		SDL2.SDL.SDL_UIKitRunApp(0, IntPtr.Zero, FakeMain);
+		SDL3.SDL.SDL_RunApp(0, IntPtr.Zero, FakeMain, IntPtr.Zero);
 	}
 	
 	static string[] realArgs;
 
-	[ObjCRuntime.MonoPInvokeCallback(typeof(SDL2.SDL.SDL_main_func))]
+	[ObjCRuntime.MonoPInvokeCallback(typeof(SDL3.SDL.SDL_main_func))]
 	static int FakeMain(int argc, IntPtr argv)
 	{
 		RealMain(realArgs);
