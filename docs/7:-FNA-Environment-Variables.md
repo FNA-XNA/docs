@@ -23,9 +23,6 @@ FNA3D:
 - [FNA3D_OPENGL_FORCE_ES3](#fna3d_opengl_force_es3)
 - [FNA3D_OPENGL_FORCE_CORE_PROFILE](#fna3d_opengl_force_core_profile)
 - [FNA3D_OPENGL_FORCE_COMPATIBILITY_PROFILE](#fna3d_opengl_force_compatibility_profile)
-- [FNA3D_VULKAN_FORCE_MAILBOX_VSYNC](#fna3d_vulkan_force_mailbox_vsync)
-- [FNA3D_VULKAN_PIPELINE_CACHE_FILE_NAME](#fna3d_vulkan_pipeline_cache_file_name)
-- [FNA3D_VULKAN_DEVICE_LOCAL_HEAP_USAGE_FACTOR](#fna3d_vulkan_device_local_heap_usage_factor)
 
 ***
 
@@ -148,18 +145,3 @@ This variable is accessible to users by passing `/glprofile:core` as a launch op
 Some devices (i.e. NVIDIA Tegra) will default to either an OpenGL ES context or a modern OpenGL context that is incompatible with certain legacy OpenGL features. However, sometimes those devices will support the context version that FNA3D tries to aim for, so this variable exists to let developers attempt a 2.1 Compatibility context for those situations. That said, if your device wants a context version that your data isn't compatible with, try fixing the data at some point!
 
 This variable is accessible to users by passing `/glprofile:compatibility` as a launch option.
-
-### FNA3D_VULKAN_FORCE_MAILBOX_VSYNC
-"Mailbox" vsync is effectively triple-buffer vsync - no tearing is present, but presentation does not wait for vblank, it simply stages the finished frame and continues immediately, allowing for high framerates and low latency without having to trade off a constant tear line on the screen. This has a very narrow use case and is not recommended unless you absolutely know what you're doing!
-
-This variable is accessible to users by passing `/forcemailboxvsync:1` as a launch option.
-
-### FNA3D_VULKAN_PIPELINE_CACHE_FILE_NAME
-To improve loading performance, FNA3D saves Vulkan pipeline objects to a file. This cache is hardware- and driver-specific, so expect a recompile any time the graphics hardware changes in any way.
-
-For debug builds we save to the game folder, and for release builds we save to a separate `FNA3D/` folder where app data is traditionally stored. You can set this to any path you want as long as you set it as soon as the program starts.
-
-### FNA3D_VULKAN_DEVICE_LOCAL_HEAP_USAGE_FACTOR
-Vulkan puts 100% of the memory management responsibilities on the application, rather than the driver. Because of this, we also have to manage memory from all of its possible locations, including memory on the "host" (CPU memory) and memory that is "device-local" (GPU memory). This distinction has a dramatic effect on the behavior of games, particularly the variations in available device-local memory, so this variable exists to emulate low-VRAM situations for debugging possible issues with the memory allocator and defragmenter.
-
-This value can be set between 0.0 and 1.0 (exclusive), representing the percentage of VRAM that you want to restrict the FNA3D device to. Note that this is _very_ much a developer-only tool, do not use this unless you're trying to diagnose Vulkan memory allocation bugs!
