@@ -80,7 +80,7 @@ Your LD_LIBRARY_PATH is busted. You can do one of three things:
 For shipping builds, [use MonoKickstart](3:-Distributing-FNA-Games.md#gnulinux), do NOT use system dependencies!
 
 ## Where can I get fnalibs for CPU architecture X?
-If it is not included in the standard fnalibs.tar.bz2 you will need to build the libraries from source. The instructions for each library can be found in their respective README files.
+If it is not included in the standard fnalibs.zip you will need to build the libraries from source. The instructions for each library can be found in their respective README files.
 
 ## What happens if I ask a question that's answered in this wiki?
 \**Bubs voice*\* That'll be [five dollars](https://github.com/sponsors/flibitijibibo/). No, this isn't a joke. Expect a link to the sponsors page for each of your requests.

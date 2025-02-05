@@ -70,14 +70,10 @@ Here's what we use and why:
 * FAudio: Only required if you use the Audio or Media namespaces.
 * Theorafile: Only required if you use VideoPlayer.
 
-Currently, you can find the libraries precompiled here:
-
-https://fna.flibitijibibo.com/archive/fnalibs.tar.bz2
-
-This archive contains all of the native libraries for Windows, Linux, and x86\_64 macOS. For arm64 macOS, iOS and tvOS, it is recommended to build libraries using [these third-party build scripts](https://github.com/TheSpydog/fnalibs-apple-builder).
+You can find the libraries precompiled at our [fnalibs-dailies]([fnalibs-dailies](https://github.com/FNA-XNA/fnalibs-dailies/actions).) repository. The "fnalibs" archive contains all of the native libraries for Windows and Linux.
 
 ### Step 3: Update FNA
-It is _strongly_ recommended that you update at least once a month. FNA releases are always on the first of every month, so you may simply want to make a calendar reminder for yourself to redownload FNA and fnalibs.tar.bz2 at the beginning of each month.
+It is _strongly_ recommended that you update at least once a month. FNA releases are always on the first of every month, so you may simply want to make a calendar reminder for yourself to redownload FNA and fnalibs.zip at the beginning of each month.
 
 To update FNA, simply enter the FNA directory and run `git pull`. This will update to the latest FNA version, assuming you have not made local changes that conflict with the upstream changes. If you do have local changes, store them elsewhere and update, or revert your changes. (By the way, if you really do have local changes, please let us know! We want working code in upstream, and it will make your life easier, we promise!)
 

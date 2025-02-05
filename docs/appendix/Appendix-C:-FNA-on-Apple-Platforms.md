@@ -22,7 +22,7 @@ sudo dotnet workload install tvos
 
 ### Building fnalibs
 
-macOS, iOS, and tvOS libraries are now built automatically and can be downloaded from [fnalibs-dailies](https://github.com/FNA-XNA/fnalibs-dailies/actions).  You may need to be logged into github to download these.  Simulator libraries are not currently provided, so you will need to build those yourself if desired.
+macOS, iOS, and tvOS libraries are now built automatically and can be downloaded from [fnalibs-dailies](https://github.com/FNA-XNA/fnalibs-dailies/actions). You may need to be logged into GitHub to download these. Simulator libraries are not currently provided, so you will need to build those yourself if desired.
 
 ### Creating/Publishing a macOS Project
 

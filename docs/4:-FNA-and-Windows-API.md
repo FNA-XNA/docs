@@ -66,7 +66,7 @@ static void Main(string[] args)
 	...
 }
 ```
-With this you can keep the C# binaries at the top level, and the native libraries can be in `x86` and `x64` separately (we do this for you already in fnalibs.tar.bz2).
+With this you can keep the C# binaries at the top level, and the native libraries can be in `x86` and `x64` separately (we do this for you already in fnalibs.zip).
 
 ### DirectInput Support
 If you have a specialized DirectInput path for your XNA game, go ahead and take it out of your FNA build. FNA uses SDL_GameController for its GamePad implementation, which supports both XInput and DirectInput on Windows (and for Linux/macOS, we support the standard joystick input interfaces). Even for non-XInput controllers you can expect them to map to the 360 layout provided by GamePad; SDL_GameController pulls in configurations from its own internal database as well as the Steam Big Picture Mode database to automap any known joystick to the 360 layout. Additionally, FNA checks for [gamecontrollerdb.txt](https://github.com/gabomdq/SDL_GameControllerDB/) in the game's root folder so that developers and customers without access to the other databases may add their own configurations as well. Lastly, our implementation is far more flexible - we support numerous extensions and environment variables to allow modernized input support, including vendor/product detection, higher player counts, motion controls, etc.

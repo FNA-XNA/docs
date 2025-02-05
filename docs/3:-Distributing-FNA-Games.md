@@ -30,7 +30,7 @@ Because you're no longer shipping with XNA, you no longer need to provide the XN
 
 However, as you might expect, you still need to include the appropriate .NET Framework installer. Match the version that you're targeting in VS and you're good to go.
 
-The native libraries needed by FNA are in the [fnalibs.tar.bz2 package](1:-Setting-Up-FNA.md#step-2-download-native-libraries) under the `x86/` folder. The `x64/` folder will only apply if you add [64-bit support](4:-FNA-and-Windows-API.md#64-bit-support) to your Windows version.
+The native libraries needed by FNA are in the [fnalibs.zip package](1:-Setting-Up-FNA.md#step-2-download-native-libraries) under the `x86/` folder. The `x64/` folder will only apply if you add [64-bit support](4:-FNA-and-Windows-API.md#64-bit-support) to your Windows version.
 
 ***
 
@@ -49,7 +49,7 @@ In the precompiled/ folder you will notice the following:
 * Lots and lots of DLL files.
 	* If you don't know which ones you need, just use them all.
 
-What you're going to do is place the game itself into the same folder as these Kick/DLL files, and you're also going to put the `lib64/` folder (NOT ITS CONTENTS) from the [fnalibs.tar.bz2 package](1:-Setting-Up-FNA.md#step-2-download-native-libraries) next to your game files. Any other native libaries you have will also go into the `lib64/` folder (for example, if you're using Steamworks.NET, you would put libsteam_api.so in that folder).
+What you're going to do is place the game itself into the same folder as these Kick/DLL files, and you're also going to put the `lib64/` folder (NOT ITS CONTENTS) from the [fnalibs.zip package](1:-Setting-Up-FNA.md#step-2-download-native-libraries) next to your game files. Any other native libaries you have will also go into the `lib64/` folder (for example, if you're using Steamworks.NET, you would put libsteam_api.so in that folder).
 
 These files you're looking at are a highly compacted Mono runtime that will be executing the C# assemblies, just as .NET would on Windows. The upside is, there are no system dependencies - the whole runtime is in this one folder, and all the native dependencies are in the lib folder. Convenient!
 

@@ -37,13 +37,11 @@ XACT for Windows supports a codec called [xWMA](http://wiki.multimedia.cx/index.
 ### 3. Window Icons
 Typically a Windows application will use the embedded .ico image for both the window icon and the icon used in other parts of the OS, such as the taskbar. While this does work on Windows, it actually turns out to be unusable on other platforms, so we instead use a separate bitmap file to set the process icon.
 
-For macOS you don't have to worry about this; the icns file that is discussed in the "[Distributing](3:-Distributing-FNA-Games.md#macos)" section will cover everything there.
-
 For Linux (and optionally Windows, if you want a higher-res icon), simply place a bitmap file in the game's root directory. The bitmap's filename is the same string as the window title, minus the characters that are not allowed for filenames. The recommended image size is at least 512x512, as many desktops will use this icon for more than just the 16x16 image next to the window title.
 
 ### 4. Running the FNA Output
 Once the FNA version has been built, copy over your Content folder and native libraries (which you should have downloaded along with FNA itself) into the output folder. From there, the game should be able to run!
 
-This exact output will be what you run on Linux and macOS. The only difference will be the native libraries in addition to `FNA.dll.config`, which should be in your output folder even if you're on Windows. `FNA.dll.config` is what remaps the native DLL names to the proper names of the native libraries on non-Windows operating systems. Aside from this, everything else should work - the C# assemblies, the Content, everything. [Push this output to a Linux/macOS box and try them out!](3:-Distributing-FNA-Games.md)
+This exact output will be what you run on Linux and Windows. The only difference will be the native libraries in addition to `FNA.dll.config`, which should be in your output folder even if you're on Windows. `FNA.dll.config` is what remaps the native DLL names to the proper names of the native libraries on non-Windows operating systems. Aside from this, everything else should work - the C# assemblies, the Content, everything. [Push this output to a Linux box and try them out!](3:-Distributing-FNA-Games.md)
 
 When using a developer environment on macOS, you will want to add an environment variable that sets `DYLD_LIBRARY_PATH=./osx/`, so that the IDE's runtime environment will find the fnalibs binaries.
