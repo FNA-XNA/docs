@@ -33,14 +33,14 @@ To make your .csproj compatible with NativeAOT, add the following:
   </ItemGroup>
 
   <ItemGroup>
-    <DirectPInvokeList Include="SDLApis.txt" />
+    <DirectPInvoke Include="SDL3" />
     <DirectPInvoke Include="FNA3D" />
     <DirectPInvoke Include="FAudio" />
     <DirectPInvoke Include="libtheorafile" />
   </ItemGroup>
 ```
 
-You will also need to add two more files to your project directory: rd.xml and SDLApis.txt. These will be explained in the next sections.
+You will also need to add an "rd.xml" file to your project directory. This will be explained in the next sections.
 
 ## AOT Type Preservation
 
