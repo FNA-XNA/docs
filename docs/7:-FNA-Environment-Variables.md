@@ -10,7 +10,7 @@ FNA:
 - [FNA_GRAPHICS_JPEG_SAVE_QUALITY](#fna_graphics_jpeg_save_quality)
 - [FNA_KEYBOARD_USE_SCANCODES](#fna_keyboard_use_scancodes)
 - [FNA_GAMEPAD_NUM_GAMEPADS](#fna_gamepad_num_gamepads)
-- [FNA_SDL2_FORCE_BASE_PATH](#fna_sdl2_force_base_path)
+- [FNA_SDL_FORCE_BASE_PATH](#fna_sdl_force_base_path)
 
 FNA3D:
 
@@ -78,7 +78,7 @@ XNA4 supports four controllers, per XInput's limitations. However, SDL gives us 
 Environment.SetEnvironmentVariable("FNA_GAMEPAD_NUM_GAMEPADS", "8");
 ```
 
-### FNA_SDL2_FORCE_BASE_PATH
+### FNA_SDL_FORCE_BASE_PATH
 For the desktop, we use `AppDomain.CurrentDomain.BaseDirectory` as the root path, as this is more accurate on platforms where the "real" EXE path is the path of the CLR. However, there may be some scenarios even on desktop where SDL_GetBasePath() is more appropriate. If you want to override our defaults, this variable can be set on startup.
 
 ### FNA3D_FORCE_DRIVER
