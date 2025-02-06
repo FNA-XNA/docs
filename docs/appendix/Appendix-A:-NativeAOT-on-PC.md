@@ -70,7 +70,7 @@ Finally, to actually link the fnalibs, follow these platform-specific instructio
     * Build the application.
     * Copy the contents of `fnalibs/x64` into the generated output directory.
 * **Linux:**
-    * NOTE: For maximum compatibility, we recommend you build using a distro with a low glibc version, like Rocky Linux 8.
+    * NOTE: For maximum compatibility, we recommend you build using an environment with a low glibc version, such as Steam Linux Runtime 3.0.
     * Build SDL3 from source or install the SDL3 development package from a package manager, then use it to build FNA3D, FAudio, and Theorafile from source.
     * Copy all the resulting \*.so files into your LD_LIBRARY_PATH (e.g. `/usr/local/lib64`). Make sure the symversioning is preserved during the copy!
     * Build the application.

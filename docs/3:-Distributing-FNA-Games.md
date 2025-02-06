@@ -16,7 +16,7 @@ Graphics (Minimum): Direct3D 11 support (feature level 10_0)
 Graphics (Recommended): Vulkan support
 
 Linux:
-OS: glibc 2.28+, 64-bit only
+OS: glibc 2.31+, 64-bit only
 Graphics (Minimum): OpenGL 3.0+ support (2.1 with ARB extensions acceptable)
 Graphics (Recommended): Vulkan support
 
