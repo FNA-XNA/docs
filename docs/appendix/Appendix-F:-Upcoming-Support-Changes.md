@@ -6,4 +6,4 @@ While very rare, FNA does occasionally make changes to its support matrix, usual
 
 As of February 2025, FNA requires glibc 2.31 or newer. The fnalibs build OS is [Steam Linux Runtime 3.0 (Sniper)](https://gitlab.steamos.cloud/steamrt/sniper/sdk).
 
-There are currently no plans o update the glibc requirement at this time.
+There are currently no plans to update the glibc requirement at this time.
