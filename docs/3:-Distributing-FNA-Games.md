@@ -36,16 +36,11 @@ The native libraries needed by FNA are in the [fnalibs.zip package](1:-Setting-U
 
 ### GNU/Linux
 
-Download the latest version of MonoKickstart:
+Download the latest version of MonoKickstart [from CI](https://github.com/flibitijibibo/MonoKickstart/actions). You care mostly about the "Linux-x86_64" artifact; the BCL and MonoPosixHelper artifacts are optional.
 
-https://github.com/flibitijibibo/MonoKickstart
+In the main archive you will notice the following:
 
-You only need the latest revision; it is actually _not_ recommended to download using Git, as the repository is mostly binary blobs, so the download time will be much longer.
-
-In the precompiled/ folder you will notice the following:
-
-* `kick.bin.x86_64`, `kick.bin.osx`, `monoconfig`, `monomachineconfig`
-	* For Linux, you care about all of these except `kick.bin.osx`
+* `kick.bin.x86_64`, `monoconfig`, `monomachineconfig`
 * Lots and lots of DLL files.
 	* If you don't know which ones you need, just use them all.
 
@@ -53,7 +48,7 @@ What you're going to do is place the game itself into the same folder as these K
 
 These files you're looking at are a highly compacted Mono runtime that will be executing the C# assemblies, just as .NET would on Windows. The upside is, there are no system dependencies - the whole runtime is in this one folder, and all the native dependencies are in the lib folder. Convenient!
 
-However, note that not every single DLL in the C# standard library exists in this folder. Libs like System.Web.Services are not provided by default to save disk space, but if you need these you can just grab these from any Mono runtime and we'll recognize it. These libs are typically found in the lib/mono/4.x/ folder (the precompiled folder uses 4.5).
+However, note that not every single DLL in the C# standard library exists in this folder. Libs like System.Web.Services are not provided by default to save disk space, but if you need these you can grab them from the BCL archive.
 
 `kick.bin.x86_64` is going to be renamed to the name of your main EXE file. For example:
 
