@@ -46,10 +46,15 @@ FNA uses Direct3D 9 Effects, to match XNA's shader content format. Using fxc.exe
 fxc.exe /T fx_2_0 MyEffect.fx /Fo MyEffect.fxb
 ```
 
-Other shader formats, languages, etc are not supported. While FXC is a Windows binary, the native d3dcompiler used to build these binaries is known to work with Wine.
+Other shader formats, languages, etc are not and will not be supported. While FXC is a Windows binary, the native d3dcompiler used to build these binaries is known to work with Wine.
 
-## Where is PlayStation support?
-If a project comes along and there's money behind it, we'll do it. There are a couple pending projects already, but you should not hesitate to get in touch if you have SDK access and are willing to develop and/or fund the completion of FNA PS4/PS5.
+## Where is support for GLSL, raw HLSL, SM4+...
+
+Per the line _directly above_:
+
+> Other shader formats, languages, etc are not and will not be supported.
+
+If you want a different shader pipeline you are strongly encourage to use [SDL_GPU](https://wiki.libsdl.org/SDL3/CategoryGPU) instead, possibly with [SDL_shadercross](https://github.com/libsdl-org/SDL_shadercross).
 
 ## Where is Android support?
 Android is not and cannot be supported. The solution you just thought of does not work. No, not that other one either. Or even the [one someone got booting, almost](https://github.com/0x0ade/FNADroid).
