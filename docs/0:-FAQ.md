@@ -54,7 +54,7 @@ Per the line _directly above_:
 
 > Other shader formats, languages, etc are not and will not be supported.
 
-If you want a different shader pipeline you are strongly encourage to use [SDL_GPU](https://wiki.libsdl.org/SDL3/CategoryGPU) instead, possibly with [SDL_shadercross](https://github.com/libsdl-org/SDL_shadercross).
+If you want a different shader pipeline you are strongly encouraged to use [SDL_GPU](https://wiki.libsdl.org/SDL3/CategoryGPU) instead, possibly with [SDL_shadercross](https://github.com/libsdl-org/SDL_shadercross).
 
 ## Where is Android support?
 Android is not and cannot be supported. The solution you just thought of does not work. No, not that other one either. Or even the [one someone got booting, almost](https://github.com/0x0ade/FNADroid).
