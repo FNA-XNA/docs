@@ -70,7 +70,7 @@ Here's what we use and why:
 * FAudio: Only required if you use the Audio or Media namespaces.
 * Theorafile: Only required if you use VideoPlayer.
 
-You can find the libraries precompiled at our [fnalibs-dailies]([fnalibs-dailies](https://github.com/FNA-XNA/fnalibs-dailies/actions).) repository. The "fnalibs" archive contains all of the native libraries for Windows and Linux.
+You can find the libraries precompiled at our [fnalibs-dailies](https://github.com/FNA-XNA/fnalibs-dailies/actions) repository. The "fnalibs" archive contains all of the native libraries for Windows and Linux.
 
 ### Step 3: Update FNA
 It is _strongly_ recommended that you update at least once a month. FNA releases are always on the first of every month, so you may simply want to make a calendar reminder for yourself to redownload FNA and fnalibs.zip at the beginning of each month.
