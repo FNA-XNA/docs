@@ -84,9 +84,9 @@ For the desktop, we use `AppDomain.CurrentDomain.BaseDirectory` as the root path
 ### FNA3D_FORCE_DRIVER
 FNA3D supports multiple graphics backends with a single binary. Sometimes the default may not produce the optimal result for specific hardware, or a backend may exhibit graphics driver bugs that are not present in other backends. The list of available driver strings for this environment variable is as follows, in order of the current default priority:
 
+- SDL_GPU (Vulkan, Metal, D3D12)
 - D3D11
 - OpenGL
-- Vulkan
 
 This variable is accessible to users by passing `/gldevice:%s` as a launch option, where `%s` can be one of the above strings. Note that the string must match an available driver _exactly_, or device creation will fail!
 
