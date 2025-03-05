@@ -141,6 +141,7 @@ To get your game booting on iOS/tvOS, update your `Main.cs` as follows:
 		// Keep mouse and touch input separate.
 		SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_MOUSE_TOUCH_EVENTS, "0");
 		SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_TOUCH_MOUSE_EVENTS, "0");
+		SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_PEN_TOUCH_EVENTS, "0");
 
 		// Don't let the accelerometer take over controller slot 0.
 		SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_ACCELEROMETER_AS_JOYSTICK, "0");
@@ -184,6 +185,8 @@ For your app to take full advantage of iPhone and iPad retina displays, you need
 graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
 graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 ```
+
+On iOS, you may need to set fullscreen true if you run into issues with touches where the statusbar might normally be.
 
 #### tvOS User Storage
 
