@@ -110,7 +110,7 @@ Unless you're working with savedata, using `System.IO.File` is highly discourage
 To load files, use `TitleContainer.OpenStream` instead. Save data should be handled with `Microsoft.Xna.Framework.Storage`, but if you already have established savedata out in the wild, isolate your filesystem calls as much as possible. Lord knows how many times I've done [this](../4:-FNA-and-Windows-API.md#environmentspecialfolder) to make Linux savedata not go directly in `$HOME`...
 
 ## Xbox GDK
-GDK support is now available to ID@Xbox licensees. All of the source code is fully public except for the NativeAOT toolchain; developers can request NativeAOT-GDKX access via Discord once they have signed the GDK agreements with Microsoft.
+Our GDK support is now 100% public source code! Once you have signed the GDK Agreement with Microsoft and have installed the Xbox GDK you can start with the [NativeAOT repository](https://github.com/FNA-XNA/NativeAOT-Xbox). Additionally, developers can request access to our `#xbox` Discord once they're an ID@Xbox licensee.
 
 ## Nintendo Switch
 
