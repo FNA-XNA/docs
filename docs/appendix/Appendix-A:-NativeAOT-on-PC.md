@@ -62,16 +62,56 @@ The rd.xml file informs the compiler of any types it should preserve during the 
 
 Even though we're AOT-compiling the project, we still recommend dynamically linking the native libraries rather than statically linking them. Note that this does _not_ mean dynamic loading; the NativeLibrary and DirectPInvoke items in the .csproj ensure that native calls are inlined directly into the executable, rather than requiring a `dlopen` call to load the library at runtime. This is more performant and reliable than the standard .NET PInvoke system, and is only possible with AOT.
 
-Finally, to actually link the fnalibs, follow these platform-specific instructions:
+Finally, to actually link the fnalibs, we need to set up the build environment appropriately:
 
-* **Windows:**
-    * Download the MSVC development build of SDL3, then use it to build the other libraries from source.
-    * Grab the .lib files from SDL3, FNA3D, FAudio, and Theorafile and place them in your app's .csproj directory.
-    * Build the application.
-    * Copy the contents of `fnalibs/x64` into the generated output directory.
-* **Linux:**
-    * NOTE: For maximum compatibility, we recommend you build using an environment with a low glibc version, such as Steam Linux Runtime 3.0.
-    * Build SDL3 from source or install the SDL3 development package from a package manager, then use it to build FNA3D, FAudio, and Theorafile from source.
-    * Copy all the resulting \*.so files into your LD_LIBRARY_PATH (e.g. `/usr/local/lib64`). Make sure the symversioning is preserved during the copy!
-    * Build the application.
-    * Copy the contents of `fnalibs/lib64` into the generated output directory.
+### Windows
+
+- Download the MSVC development build of SDL3, then use it to build the other libraries from source.
+- Grab the .lib files from SDL3, FNA3D, FAudio, and Theorafile and place them in your app's .csproj directory.
+- Build the application.
+- Copy the contents of `fnalibs/x64` into the generated output directory.
+
+### Linux
+
+Linux builds are best done in a Steam Linux Runtime container, which can be done both locally and via CI (including GitHub Actions).
+
+```sh
+# Set up image for the first time
+distrobox create -i registry.gitlab.steamos.cloud/steamrt/sniper/sdk sniper
+
+# Start up the container. It's as easy as that!
+distrobox enter sniper
+```
+
+Inside the container you will want to install the .NET SDK and the fnalibs:
+
+```sh
+wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
+rm packages-microsoft-prod.deb
+```
+
+```sh
+git clone --recursive https://github.com/FNA-XNA/FNA.git
+cd FNA/lib/FAudio
+cmake -B release -G Ninja . -DCMAKE_BUILD_TYPE=Release
+sudo ninja -C release install
+cd ../FNA3D
+cmake -B release -G Ninja . -DCMAKE_BUILD_TYPE=Release
+sudo ninja -C release install
+cd ../Theorafile
+make
+sudo cp libtheorafile /usr/local/lib/libtheorafile.so
+```
+
+Once the above is complete, `dotnet publish` should build and link a native Linux build. Copy the fnalibs next to the executable and ship!
+
+```sh
+cp /usr/lib/x86_64-linux-gnu/libSDL3.so.0 bin/Release/net8.0/linux-x64/publish/
+cp /usr/local/lib/libFAudio.so.0 bin/Release/net8.0/linux-x64/publish/
+cp /usr/local/lib/libFNA3D.so.0 bin/Release/net8.0/linux-x64/publish/
+cp /usr/local/lib/libtheorafile.so bin/Release/net8.0/linux-x64/publish/
+```
+
+You can see an example of an automated CI build [here](https://github.com/flibitijibibo/RogueLegacy1/blob/main/.github/workflows/ci.yml).
