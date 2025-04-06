@@ -93,13 +93,18 @@ rm packages-microsoft-prod.deb
 ```
 
 ```sh
-git clone --recursive https://github.com/FNA-XNA/FNA.git
-cd FNA/lib/FAudio
+git clone --recursive https://github.com/FNA-XNA/FAudio.git
+git clone --recursive https://github.com/FNA-XNA/FNA3D.git
+git clone --recursive https://github.com/FNA-XNA/Theorafile.git
+
+cd FAudio
 cmake -B release -G Ninja . -DCMAKE_BUILD_TYPE=Release
 sudo ninja -C release install
+
 cd ../FNA3D
 cmake -B release -G Ninja . -DCMAKE_BUILD_TYPE=Release
 sudo ninja -C release install
+
 cd ../Theorafile
 make
 sudo cp libtheorafile /usr/local/lib/libtheorafile.so
