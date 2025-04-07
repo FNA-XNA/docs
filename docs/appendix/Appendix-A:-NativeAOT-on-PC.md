@@ -107,16 +107,17 @@ sudo ninja -C release install
 
 cd ../Theorafile
 make
-sudo cp libtheorafile /usr/local/lib/libtheorafile.so
+sudo cp libtheorafile.so /usr/local/lib/libtheorafile.so
 ```
 
 Once the above is complete, `dotnet publish` should build and link a native Linux build. Copy the fnalibs next to the executable and ship!
 
 ```sh
-cp /usr/lib/x86_64-linux-gnu/libSDL3.so.0 bin/Release/net8.0/linux-x64/publish/
 cp /usr/local/lib/libFAudio.so.0 bin/Release/net8.0/linux-x64/publish/
 cp /usr/local/lib/libFNA3D.so.0 bin/Release/net8.0/linux-x64/publish/
 cp /usr/local/lib/libtheorafile.so bin/Release/net8.0/linux-x64/publish/
 ```
+
+Note that these instructions do not copy SDL3; this is already provided by the Sniper runtime so bundling SDL is optional. If you need to bundle it anyway, be sure to use the binaries provided by fnalibs-dailies instead!
 
 You can see an example of an automated CI build [here](https://github.com/flibitijibibo/RogueLegacy1/blob/main/.github/workflows/ci.yml).
