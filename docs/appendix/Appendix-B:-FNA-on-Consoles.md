@@ -107,7 +107,7 @@ Even if you do not support resizable windows, you need to be prepared for resize
 
 Unless you're working with savedata, using `System.IO.File` is highly discouraged. (And even then, savedata was supposed to be done with `Microsoft.Xna.Framework.Storage` in the XBLIG world). If you're loading files with `File.Open` specifically, your game may not even work on PC because the player may have the game installed in a location without write permissions!
 
-To load files, use `TitleContainer.OpenStream` instead. Save data should be handled with `Microsoft.Xna.Framework.Storage`, but if you already have established savedata out in the wild, isolate your filesystem calls as much as possible. Lord knows how many times I've done [this](../4:-FNA-and-Windows-API.md#environmentspecialfolder) to make Linux savedata not go directly in `$HOME`...
+To load files, use `TitleContainer.OpenStream` instead. We actually do _not_ recommend `Microsoft.Xna.Framework.Storage`; instead you should use [SDL3's Storage API](https://wiki.libsdl.org/SDL3/CategoryStorage) (this is provided in our included C# bindings). If you already have established savedata out in the wild, isolate your filesystem calls as much as possible. Lord knows how many times I've done [this](../4:-FNA-and-Windows-API.md#environmentspecialfolder) to make Linux savedata not go directly in `$HOME`...
 
 ## Xbox GDK
 

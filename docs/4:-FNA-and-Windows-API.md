@@ -87,9 +87,9 @@ The solution is to just check your code to be sure that you do not depend on any
 The best thing you can do to make your file reading portable is to use `TitleContainer.OpenStream` instead of `File.OpenRead`, as this deals with both directory separators as well as special path requirements for platforms with unique filesystems (but this does NOT deal with case sensitivity!). Other helpful features in C# are `Path.DirectorySeparatorChar` and `Path.Combine()`, found in `System.IO`.
 
 ### Environment.SpecialFolder
-For the most part, these simply don't work correctly on Linux or macOS.
+For the most part, these simply don't work correctly on Linux or macOS. Worse, PC storage is usually not applicable on consoles - more on this later.
 
-If you use StorageDevice for all your file I/O, don't worry - we take care of this for you.
+If you use StorageDevice for all your file I/O, don't worry - we take care of this for you:
 
 * For Linux/*BSD, save directories are meant to go in the location specified by the XDG specification.
 	* Config files should go in $XDG_CONFIG_HOME, or `~/.config/YourApp/`.
@@ -158,6 +158,8 @@ private static string GetSaveDirectory()
 }
 
 ```
+
+As mentioned previously, this is only effective on PC, and only sometimes - it is strongly recommended that you use [SDL3's Storage API](https://wiki.libsdl.org/SDL3/CategoryStorage) instead. This is safer, can improve disk I/O performance, and even works on console platforms.
 
 ### User32, Kernel32, etc.
 Some XNA games use the Windows API directly for features such as the event loop.
