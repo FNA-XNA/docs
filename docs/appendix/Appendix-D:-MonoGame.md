@@ -70,9 +70,8 @@ As a reminder, while MonoGame targets each platform with a different project ver
 | Xbox One        [2]| ✔️                   | ✔️                  |
 | Xbox Series X/S    | ✔️                   | 🚧                 |
 | PlayStation 4      | 🚧                  | ✔️                  |
-| PlayStation 5      | 🚧                  | ✔️                  |
+| PlayStation 5      | ✔️                  | ✔️                  |
 | Android            | ❌[3]               | ✔️                  |
-| GGP (formerly Stadia)      | ✔️           | 🚧                 |
 
 1. For Nintendo Switch, FNA uses Vulkan/OpenGL while MonoGame uses NVN.
 2. For Xbox One, FNA uses GDK and MonoGame uses XDK.
