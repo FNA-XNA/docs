@@ -1,6 +1,6 @@
 # Appendix B: FNA on Consoles
 
-FNA supports deploying to Xbox and Nintendo Switch via NativeAOT. FNA does not have any private branches for each platform; the public master branch of FNA is exactly what is used to ship for these targets. The platform code is contained entirely in SDL and the NativeAOT bootstrap.
+FNA supports deploying to consoles via NativeAOT. FNA does not have any private branches for each platform; the public master branch of FNA is exactly what is used to ship for these targets. The platform code is contained entirely in SDL and the NativeAOT bootstrap.
 
 ***
 
@@ -110,6 +110,7 @@ Unless you're working with savedata, using `System.IO.File` is highly discourage
 To load files, use `TitleContainer.OpenStream` instead. Save data should be handled with `Microsoft.Xna.Framework.Storage`, but if you already have established savedata out in the wild, isolate your filesystem calls as much as possible. Lord knows how many times I've done [this](../4:-FNA-and-Windows-API.md#environmentspecialfolder) to make Linux savedata not go directly in `$HOME`...
 
 ## Xbox GDK
+
 Our GDK support is now 100% public source code! Once you have signed the GDK Agreement with Microsoft and have installed the Xbox GDK you can start with the [NativeAOT repository](https://github.com/FNA-XNA/NativeAOT-Xbox). Additionally, developers can request access to our `#xbox` Discord channel once they join both the FNA and ID@Xbox Discord servers.
 
 ## Nintendo Switch
@@ -118,8 +119,6 @@ While there is no special code needed for Nintendo Switch support (100% of the p
 
 ## PlayStation
 
-FNA for PlayStation 5 is nearly complete - FNA and the fnalibs work (including SDL3), we just need to finish the port of SDL_GPU. For runtimes we are currently using NativeAOT, with Mono as our fallback plan.
+While there is no special code needed for PS5 support (100% of the platform code is in SDL and NativeAOT, two separate projects), all consulting and documentation is private, per NDA requirements. If you are a licensed developer, please get access to SDL-playstation (contact [Ryan C. Gordon](mailto:icculus@icculus.org) for this) and then get in touch with flibit on Discord. If you are NOT a licensed developer, you're on your own. None of us are able to get you hooked up, so please only get in touch AFTER you have PlayStation SDK access.
 
-PlayStation 4 is in a similar state, except we are not planning to port SDL_GPU to PS4, so unless someone else does it this platform support will likely be canceled.
-
-If you are a licensee, please get in touch with [Ryan](mailto:icculus@icculus.org) for SDL access, then once you have access to that, let us know!
+One detail we _can_ share is that shaders _must_ be precompiled ahead of time; as a result you will need to preprocess your Effect shaders (but you can continue to use the binaries as-is - no, really!). The best way to do this is to make an [FNA3D trace](https://github.com/FNA-XNA/FNA3D/tree/master/replay) of a complete playthrough of your game, then dump SPIR-V binaries with FNA3D's [dumping tool](https://github.com/FNA-XNA/FNA3D/tree/master/dumpspirv). These SPIR-V modules will come in handy to create a working PlayStation renderer.
