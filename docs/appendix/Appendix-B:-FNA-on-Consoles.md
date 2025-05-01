@@ -21,7 +21,6 @@ For non-PC builds it is generally a good idea to assume that platform-specific b
     static void Main(string[] args)
 #if NET
     {
-        Environment.SetEnvironmentVariable("FNA_PLATFORM_BACKEND", "SDL3");
         realArgs = args;
         SDL3.SDL.SDL_main_func mainFunction = FakeMain;
         SDL3.SDL.SDL_RunApp(0, IntPtr.Zero, mainFunction, IntPtr.Zero);
