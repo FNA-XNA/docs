@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>2a: Building XNA Games with FNA - FNA Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "2a: Building XNA Games with FNA";
+        var mkdocs_page_input_path = "2a:-Building-XNA-Games-with-FNA.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../1%3A-Setting-Up-FNA/">1: Setting Up FNA</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">2a: Building XNA Games with FNA</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-making-the-fna-solution">1. Making the FNA Solution</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-about-content-support">2. About Content Support</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#2a-about-effect-support">2a. About Effect Support</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2b-rebuilding-wmawmv-files">2b. Rebuilding WMA/WMV Files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2c-rebuilding-xact-wavebanks">2c. Rebuilding XACT WaveBanks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-window-icons">3. Window Icons</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-running-the-fna-output">4. Running the FNA Output</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2b%3A-Building-New-Games-with-FNA/">2b: Building New Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3%3A-Distributing-FNA-Games/">3: Distributing FNA Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4%3A-FNA-and-Windows-API/">4: FNA and Windows API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../5%3A-FNA-Extensions/">5: FNA Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../8%3A-Contributing-to-FNA/">8: Contributing to FNA</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-A%3A-NativeAOT-on-PC/">Appendix A: NativeAOT on PC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-B%3A-FNA-on-Consoles/">Appendix B: FNA on Consoles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-C%3A-FNA-on-Apple-Platforms/">Appendix C: FNA on Apple Platforms</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-D%3A-MonoGame/">Appendix D: MonoGame Compatibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">2a: Building XNA Games with FNA</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/2a:-Building-XNA-Games-with-FNA.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="2a-building-xna-games-with-fna">2a: Building XNA Games with FNA</h1>
+<p>This is a guide to getting your existing XNA game running on FNA. If you are creating a new game, please see <a href="../2b%3A-Building-New-Games-with-FNA/">this wiki page</a>.</p>
+<p>Note that this entire guide can be done on Windows - you do not need a Mac or a Linux box to perform anything described on this page.</p>
+<p>Also note that this is NOT strictly a guide on having your game fully ported to non-XNA platforms! FNA can only make XNA itself portable; whether or not your game is in any way portable is out of our hands. If this is a concern, look at "<a href="../4%3A-FNA-and-Windows-API/">FNA and Windows API</a>".</p>
+<h3 id="1-making-the-fna-solution">1. Making the FNA Solution</h3>
+<p>We strongly recommend making a brand new solution for the FNA version. It's possible to fiddle with your XNA solution to link your code against FNA, but it's probably just easier to make <code>YourGame.FNA.sln</code> and keep <code>YourGame.sln</code> as it is. See <a href="../1%3A-Setting-Up-FNA/#chapter-5-creating-new-projects">Page 1</a> for a quick refresher on how to do this!</p>
+<p>One thing you will NOT need to recreate is the content projects. When deploying to FNA, your content should already be complete and built. You can keep this in your solution if you like, but you will need to reference the XNA content pipeline here. You should not reference FNA in content projects!</p>
+<p>(As an aside, if you are creating <em>new</em> content instead of porting existing content, you should not feel pressured to use processing tools like the XNA/MonoGame content pipeline tools! It is perfectly reasonable to develop your own content system that can be designed and optimized to work well with you and your development team, and in fact that is what we recommend doing for new projects.)</p>
+<p>Once you've remade your solution with all of your game's subprojects, add FNA.csproj into your solution. FNA, despite using many different C# wrappers, is just a single project file. This simplifies project generation and quickly gives you access to, for example, SDL3# if you need it in your game code.</p>
+<p>Your projects' references are going to be the same as they were in XNA4, except now you will reference FNA instead of the XNA libraries.</p>
+<p>Once all of the projects have been made and are linking to FNA, your solution should now compile. Simple as that!</p>
+<h3 id="2-about-content-support">2. About Content Support</h3>
+<p>While we do our best to support 100% of the XNA content available, there are a few notable exceptions due to both technical and legal obstacles.</p>
+<h4 id="2a-about-effect-support">2a. About Effect Support</h4>
+<p>FNA uses MojoShader to parse and rebuild Effect shaders to non-D3D graphics APIs. This allows us to use the original XNB-packed Effects built by XNA and <code>fx_2_0</code> effect binaries built by <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb232919.aspx">FXC</a>, the Effect compiler from the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=6812">June 2010 DirectX SDK</a>. However, there are exactly three caveats to this:</p>
+<ul>
+<li>We do not attempt to undo half-pixel offsets applied by the game's shaders. If you don't know what this is, don't worry. If you do know what this is and have applied them in your engine, simply remove them from the FNA version of your game and it should visually match D3D without any problems.</li>
+<li>Another half-pixel-like issue present is in the VPOS attribute; D3D9 puts the VPOS at integer values while all other graphics APIs put it at half-pixel values (in contrast to the half-pixel offset described above, where it's the exact opposite). If you find that VPOS isn't acting as expected, take the input VPOS value and <code>floor()</code> it before doing anything else in the shader.</li>
+<li>For maximum compatibility, vertex input layouts must match the vertex shader input parameters <em>exactly</em>. D3D9 and OpenGL would quietly drop input streams that were unused in the vertex shader, but newer graphics APIs like D3D11 and Vulkan are far more strict about this. For example, if your vertex shader expects a <code>TEXCOORD0</code> input, but your VertexDeclaration does not include a TextureCoordinate with index 0, this is a hard error unless you forcibly use the OpenGL renderer exclusively.</li>
+</ul>
+<h4 id="2b-rebuilding-wmawmv-files">2b. Rebuilding WMA/WMV Files</h4>
+<p>XNA uses Windows Media Player for the <code>Song</code> and the <code>VideoPlayer</code> implementations. Obviously we cannot use this in a multiplatform reimplementation, so currently we do not support WMA/WMV files. Instead, we support <a href="http://www.vorbis.com/">Ogg Vorbis</a> and <a href="https://qoaformat.org/">QOA</a> for audio and <a href="http://www.theora.org/">Ogg Theora</a> for video.</p>
+<h4 id="2c-rebuilding-xact-wavebanks">2c. Rebuilding XACT WaveBanks</h4>
+<p>XACT for Windows supports a codec called <a href="http://wiki.multimedia.cx/index.php?title=Microsoft_xWMA">xWMA</a> for highly-compressed audio streams, rather than the XMA codec typically used on the 360. Like WMA support we do not have support for either of these, but you can still compress your WaveBanks with ADPCM. The file size will likely be larger, but the functionality of your XACT code/content should be exactly the same, and no changes are required if you do not use xWMA or XMA.</p>
+<h3 id="3-window-icons">3. Window Icons</h3>
+<p>Typically a Windows application will use the embedded .ico image for both the window icon and the icon used in other parts of the OS, such as the taskbar. While this does work on Windows, it actually turns out to be unusable on other platforms, so we instead use a separate bitmap file to set the process icon.</p>
+<p>For Linux (and optionally Windows, if you want a higher-res icon), simply place a bitmap file in the game's root directory. The bitmap's filename is the same string as the window title, minus the characters that are not allowed for filenames. The recommended image size is at least 512x512, as many desktops will use this icon for more than just the 16x16 image next to the window title.</p>
+<h3 id="4-running-the-fna-output">4. Running the FNA Output</h3>
+<p>Once the FNA version has been built, copy over your Content folder and native libraries (which you should have downloaded along with FNA itself) into the output folder. From there, the game should be able to run!</p>
+<p>This exact output will be what you run on Linux and Windows. The only difference will be the native libraries in addition to <code>FNA.dll.config</code>, which should be in your output folder even if you're on Windows. <code>FNA.dll.config</code> is what remaps the native DLL names to the proper names of the native libraries on non-Windows operating systems. Aside from this, everything else should work - the C# assemblies, the Content, everything. <a href="../3%3A-Distributing-FNA-Games/">Push this output to a Linux box and try them out!</a></p>
+<p>When using a developer environment on macOS, you will want to add an environment variable that sets <code>DYLD_LIBRARY_PATH=./osx/</code>, so that the IDE's runtime environment will find the fnalibs binaries.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../1%3A-Setting-Up-FNA/" class="btn btn-neutral float-left" title="1: Setting Up FNA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../2b%3A-Building-New-Games-with-FNA/" class="btn btn-neutral float-right" title="2b: Building New Games with FNA">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../1%3A-Setting-Up-FNA/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../2b%3A-Building-New-Games-with-FNA/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
