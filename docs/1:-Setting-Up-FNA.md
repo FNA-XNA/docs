@@ -8,7 +8,7 @@ The Linux development environment for FNA is supported on all distributions with
 
 You may be able to find VSCode and the .NET SDKs via apps like KDE Discover, but it's easier to get everything at once with a single portable terminal command:
 
-```
+```bash
 flatpak install com.visualstudio.code org.freedesktop.Sdk.Extension.mono6 org.freedesktop.Sdk.Extension.dotnet8
 ```
 
@@ -16,7 +16,7 @@ This installs VSCode, Mono, and .NET 8 all at once! If it asks which version of 
 
 All that's left is to expose the .NET and Mono SDKs to VSCode's sandbox:
 
-```
+```bash
 flatpak --user override --env=FLATPAK_ENABLE_SDK_EXT=mono6,dotnet8 com.visualstudio.code
 ```
 
@@ -54,7 +54,7 @@ If you are using an official zipped release of FNA, you only need to worry about
 ### Step 1: Clone FNA
 FNA uses several Git submodules to access the source to additional libraries, such as SDL3# and FAudio. To fully download FNA, add the `--recursive` parameter to your `git clone` command:
 
-```
+```bash
 git clone --recursive https://github.com/FNA-XNA/FNA
 ```
 

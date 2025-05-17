@@ -1,7 +1,11 @@
-*,h1, h2, h3, h4, h5, h6 {
+body, p, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Helvetica Neue', Helvetica, Inter, Roboto, 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+	font-weight: normal;
+}
 
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-
+code {
+	font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+	font-weight: normal;
 }
 
 .wy-side-nav-search {

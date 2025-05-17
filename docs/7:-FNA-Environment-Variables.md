@@ -48,7 +48,7 @@ In fullscreen mode we will continue to run at the desktop resolution with a faux
 As always, be sure that your RenderTargets and Viewports match the backbuffer size and NOT the window size!
 
 Lastly, when packaging for macOS, be sure this is in your app bundle's Info.plist:
-```
+```plist
 	<key>NSHighResolutionCapable</key>
 	<string>True</string>
 ```
@@ -74,7 +74,7 @@ This variable is accessible to users by passing `/usescancodes:1` as a launch op
 ### FNA_GAMEPAD_NUM_GAMEPADS
 XNA4 supports four controllers, per XInput's limitations. However, SDL gives us the ability to support more controllers when available. You can set this environment variable on/before program startup to set a controller count without modifying FNA:
 
-```
+```cs
 Environment.SetEnvironmentVariable("FNA_GAMEPAD_NUM_GAMEPADS", "8");
 ```
 
@@ -117,7 +117,7 @@ This variable is accessible to users by passing `/backbufferscalenearest:1` as a
 ### FNA3D_OPENGL_WINDOW_DEPTHSTENCILFORMAT
 OpenGL contexts are very clunky and require the RGB/Depth/Stencil sizes at window creation time rather than context creation time, and cannot be reset without destroying the window and GL context. By default we play it safe and create a window with a `Depth24Stencil8` backbuffer, but if you want to optimize on this you can set this environment variable to a `DepthFormat` enum value at program startup to override our settings. For example:
 
-```
+```cs
 SDL3.SDL.SDL_SetHintWithPriority(
     "FNA3D_OPENGL_WINDOW_DEPTHSTENCILFORMAT",
     "None",

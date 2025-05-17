@@ -19,7 +19,7 @@ Here are some common things we've seen that will get in the way of making your g
 ### 64-bit Support
 Unlike XNA, FNA supports both 64-bit and AnyCPU configurations. On Linux and macOS this does not really matter, as the Mono CLR does not care what the architecture is for managed binaries and MonoKickstart automatically picks the right library folder, but on Windows each target architecture needs its own version. These days you can safely assume 64-bit only, but if you absolutely require AnyCPU (be careful, modern Visual Studio releases will still prefer 32-bit for AnyCPU builds anyway!) you should add this code to the start of your Main function:
 
-```
+```cs
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -103,7 +103,7 @@ It is _strongly_ recommended that you try to determine these locations at runtim
 
 Here's an example for determining the save location at runtime:
 
-```
+```cs
 using System;
 using System.IO;
 using SDL3;
@@ -197,7 +197,7 @@ Subsystems like SDL_Video, SDL_Cursor, and SDL_Clipboard should be able to provi
 
 For example, if you want to use a messagebox:
 
-```
+```cs
 #if SDL3
 	SDL3.SDL.SDL_ShowSimpleMessageBox(
 		SDL3.SDL.SDL_MessageBoxFlags.SDL_MESSAGEBOX_ERROR,
@@ -230,7 +230,7 @@ C++/CLI is not available in Mono, so these binaries cannot run anywhere except o
 
 The solution is to separate the C# half from the native C/C++ half, and access the native half with P/Invoke calls and native C entry points. For example:
 
-```
+```cs
 /* somelib.h */
 #ifndef SOMELIB_H
 #define SOMELIB_H

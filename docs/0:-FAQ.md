@@ -42,7 +42,7 @@ FNA supports the XNA content pipeline for preservation reasons, but we _strongly
 ## How do I use shaders with FNA?
 FNA uses Direct3D 9 Effects, to match XNA's shader content format. Using fxc.exe, ideally from the DirectX SDK:
 
-```
+```dos
 fxc.exe /T fx_2_0 MyEffect.fx /Fo MyEffect.fxb
 ```
 

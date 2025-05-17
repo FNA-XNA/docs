@@ -2,7 +2,7 @@
 
 FNA's implementation of certain features may be configurable at build time - that is, parts of the implementation may be temporarily modified to allow for easier debugging. To enable these options, create a file next to your .sln file called `FNA.Settings.props`, which will look something like this:
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
         <PropertyGroup>
@@ -13,7 +13,7 @@ FNA's implementation of certain features may be configurable at build time - tha
 
 You can also use this file to sneak in other bits and pieces, such as adding SDL2_image to the build (as an aside, be sure to update FNA.dll.config with dllmaps if you actually do this):
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
         <ItemGroup>

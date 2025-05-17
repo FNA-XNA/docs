@@ -15,7 +15,7 @@ In order to build and deploy FNA apps for iOS/tvOS, you must have the following:
 3. The latest version of Xcode, downloaded from the macOS App Store or from the Apple Developer site
 4. The iOS/tvOS workloads for the .NET SDK. Once you have installed .NET on your Mac, run the following commands:
 
-```
+```zsh
 sudo dotnet workload install ios
 sudo dotnet workload install tvos
 ```
@@ -52,7 +52,7 @@ This will generate an "iOS Application" template project we can then modify like
   - Specify which device orientations you want to support (landscape, portrait, etc.)
   - Change the `UIRequiredDeviceCapabilities` value from `armv7` to `arm64`
   - If your game supports game controllers (MFi, Xbox, PlayStation, etc.) add the following:
-```
+```plist
    <key>GCSupportedGameControllers</key>  
    <array>
        <dict>
@@ -67,7 +67,7 @@ See [this Apple documentation](https://developer.apple.com/documentation/bundler
 
 3. Add the following to your game's .csproj:
 
-```
+```xml
 <PropertyGroup>
   <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
   <MtouchExtraArgs>--cxx --gcc_flags "-L$(MSBuildProjectDirectory) -force_load $(MSBuildProjectDirectory)/libSDL3.a -force_load $(MSBuildProjectDirectory)/libFAudio.a -force_load $(MSBuildProjectDirectory)/libFNA3D.a -force_load $(MSBuildProjectDirectory)/libtheorafile.a -force_load $(MSBuildProjectDirectory)/libmojoshader.a -framework AudioToolbox -framework CoreBluetooth -framework CoreHaptics -framework CoreMotion -framework OpenGLES -framework Metal"</MtouchExtraArgs>
@@ -90,7 +90,7 @@ This will generate a "tvOS Application" template project we can then modify like
 3. Update the `Info.plist` file as follows:
   - Set your application metadata (display name, bundle identifier, etc.)
   - If your game supports game controllers (MFi, Xbox, PlayStation, etc.) add the following:
-```
+```xml
    <key>GCSupportedGameControllers</key>  
    <array>
        <dict>
@@ -103,7 +103,7 @@ This will generate a "tvOS Application" template project we can then modify like
 ```
    See [this Apple documentation](https://developer.apple.com/documentation/bundleresources/information_property_list/gcsupportedgamecontrollers) for more information about how to support different kinds of controllers.
    - Point the app to the correct storyboard file, like so:
-```
+```xml
     <!-- Replace this... -->
     <key>UIMainStoryboardFile</key>
     <string>Main</string>
@@ -115,7 +115,7 @@ This will generate a "tvOS Application" template project we can then modify like
 
 4. Add the following to your game's .csproj:
 
-```
+```xml
 <PropertyGroup>
   <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
   <MtouchExtraArgs>--cxx --gcc_flags "-L$(MSBuildProjectDirectory) -force_load $(MSBuildProjectDirectory)/libSDL3.a -force_load $(MSBuildProjectDirectory)/libFAudio.a -force_load $(MSBuildProjectDirectory)/libFNA3D.a -force_load $(MSBuildProjectDirectory)/libtheorafile.a -force_load $(MSBuildProjectDirectory)/libmojoshader.a $(MSBuildProjectDirectory)/libtvStubs.a -framework AudioToolbox -framework CoreBluetooth -framework CoreHaptics -framework OpenGLES -framework Metal"</MtouchExtraArgs>
@@ -131,7 +131,7 @@ This will generate a "tvOS Application" template project we can then modify like
 #### Initialization
 To get your game booting on iOS/tvOS, update your `Main.cs` as follows:
 
-```
+```cs
 	static void Main(string[] args)
 #if __IOS__ || __TVOS__
 	{
@@ -170,7 +170,7 @@ To get your game booting on iOS/tvOS, update your `Main.cs` as follows:
 
 To avoid crashes when your app enters into a background state, add the following to your Game.Update method:
 
-```
+```cs
 if (!IsActive)
 {
 	SuppressDraw();
@@ -181,7 +181,7 @@ if (!IsActive)
 
 For your app to take full advantage of iPhone and iPad retina displays, you need to set your preferred backbuffer size to the full extent of the display. This should happen at the start of your game and in the `Window.OrientationChanged` event callback (if your app supports both portrait and landscape orientations).
 
-```
+```cs
 graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
 graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 ```
@@ -193,7 +193,7 @@ On iOS, you may need to set fullscreen true if you run into issues with touches 
 Note that tvOS does NOT have local storage available. There is temporary storage but it can be wiped by the OS at any time, so standard filesystem code will NOT work past a single instance of the program (this unfortunately includes `Microsoft.Xna.Framework.Storage`). To support save data you will need to implement some form of iCloud support, but on the bright side, this means iOS/tvOS can share that data. Our recommended solution for games with a guaranteed total save data size of <1MB is to use [TinyKVS](https://github.com/TheSpydog/TinyKVS).
 
 If you're using iCloud and receive an error about iCloudContainerEnvironment when submitting to the App Store, add this to your Entitlements.plist for that submission:
-```
+```xml
 <key>com.apple.developer.icloud-container-environment</key>
 <array>
   <string>Production</string>
