@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>3: Distributing FNA Games - FNA Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "3: Distributing FNA Games";
+        var mkdocs_page_input_path = "3:-Distributing-FNA-Games.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../1%3A-Setting-Up-FNA/">1: Setting Up FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2a%3A-Building-XNA-Games-with-FNA/">2a: Building XNA Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2b%3A-Building-New-Games-with-FNA/">2b: Building New Games with FNA</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">3: Distributing FNA Games</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overall-system-requirements">Overall System Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gnulinux">GNU/Linux</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#steam-deck-remote-debugging">Steam Deck Remote Debugging</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#single-assembly-portability-and-steam">Single-Assembly Portability and Steam</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#net-core">.NET Core</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#single-file-applications">Single-File Applications</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4%3A-FNA-and-Windows-API/">4: FNA and Windows API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../5%3A-FNA-Extensions/">5: FNA Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../8%3A-Contributing-to-FNA/">8: Contributing to FNA</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-A%3A-NativeAOT-on-PC/">Appendix A: NativeAOT on PC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-B%3A-FNA-on-Consoles/">Appendix B: FNA on Consoles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-C%3A-FNA-on-Apple-Platforms/">Appendix C: FNA on Apple Platforms</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-D%3A-MonoGame/">Appendix D: MonoGame Compatibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">3: Distributing FNA Games</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/3:-Distributing-FNA-Games.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3-distributing-fna-games">3: Distributing FNA Games</h1>
+<p>At some point you will likely want to <em>ship</em> your FNA game to customers, so here's a guide to shipping your game in a way that is hassle-free for players.</p>
+<p>Note that this guide is for .NET Framework and Mono applications - for those using .NET 8, refer to the .NET Core section of this page.</p>
+<hr />
+<h3 id="overall-system-requirements">Overall System Requirements</h3>
+<p>While we can't automatically determine CPU/RAM/Storage requirements (that's up to you!), we can provide a reasonably accurate requirement list for the following specs:</p>
+<pre><code class="language-text">Windows:
+OS: Windows 7, fully updated
+Graphics (Minimum): Direct3D 11 support (feature level 10_0)
+Graphics (Recommended): Vulkan support
+
+Linux:
+OS: glibc 2.31+, 64-bit only
+Graphics (Minimum): OpenGL 3.0+ support (2.1 with ARB extensions acceptable)
+Graphics (Recommended): Vulkan support
+
+Other: SDL_GameController devices fully supported
+</code></pre>
+<hr />
+<h3 id="windows">Windows</h3>
+<p>Because you're no longer shipping with XNA, you no longer need to provide the XNA4 redist package. Additionally, as of the latest SDL revision, we no longer require the DirectX redist to run correctly.</p>
+<p>However, as you might expect, you still need to include the appropriate .NET Framework installer. Match the version that you're targeting in VS and you're good to go.</p>
+<p>The native libraries needed by FNA are in the <a href="../1%3A-Setting-Up-FNA/#step-2-download-native-libraries">fnalibs.zip package</a> under the <code>x86/</code> folder. The <code>x64/</code> folder will only apply if you add <a href="../4%3A-FNA-and-Windows-API/#64-bit-support">64-bit support</a> to your Windows version.</p>
+<hr />
+<h3 id="gnulinux">GNU/Linux</h3>
+<p>Download the latest version of MonoKickstart <a href="https://github.com/flibitijibibo/MonoKickstart/actions">from CI</a>. You care mostly about the "Linux-x86_64" artifact; the BCL and MonoPosixHelper artifacts are optional.</p>
+<p>In the main archive you will notice the following:</p>
+<ul>
+<li><code>kick.bin.x86_64</code>, <code>monoconfig</code>, <code>monomachineconfig</code></li>
+<li>Lots and lots of DLL files.<ul>
+<li>If you don't know which ones you need, just use them all.</li>
+</ul>
+</li>
+</ul>
+<p>What you're going to do is place the game itself into the same folder as these Kick/DLL files, and you're also going to put the <code>lib64/</code> folder (NOT ITS CONTENTS) from the <a href="../1%3A-Setting-Up-FNA/#step-2-download-native-libraries">fnalibs.zip package</a> next to your game files. Any other native libaries you have will also go into the <code>lib64/</code> folder (for example, if you're using Steamworks.NET, you would put libsteam_api.so in that folder).</p>
+<p>These files you're looking at are a highly compacted Mono runtime that will be executing the C# assemblies, just as .NET would on Windows. The upside is, there are no system dependencies - the whole runtime is in this one folder, and all the native dependencies are in the lib folder. Convenient!</p>
+<p>However, note that not every single DLL in the C# standard library exists in this folder. Libs like System.Web.Services are not provided by default to save disk space, but if you need these you can grab them from the BCL archive.</p>
+<p><code>kick.bin.x86_64</code> is going to be renamed to the name of your main EXE file. For example:</p>
+<pre><code class="language-dos">flibitGame.exe
+flibitGame.bin.x86_64
+</code></pre>
+<p>You can optionally name it just <code>flibitGame</code> with no extension, if you prefer that for whatever reason.</p>
+<p>Once this is finished, you are ready to upload via <a href="https://partner.steamgames.com/doc/sdk/uploading">SteamPipe</a>, <a href="https://itch.io/docs/butler/">butler</a>, or the <a href="https://docs.gog.com/bc-build-game/">GOG Galaxy builder</a>.</p>
+<h4 id="steam-deck-remote-debugging">Steam Deck Remote Debugging</h4>
+<p>Using Visual Studio Code and the above packaging process, it's actually possible to attach to a Steam Deck for remote C# debugging! The process is as follows:</p>
+<ol>
+<li>Set up the Steam Deck devkit and upload your game, complete with debug symbols (see <a href="https://partner.steamgames.com/doc/steamdeck/loadgames">Valve's documentation</a>, you can ignore anything involving Proton as it's not used here!)</li>
+<li>On the Deck, go to your new devkit game and click <em>⚙️ -&gt; Properties</em></li>
+<li>Under <em>Shortcut -&gt; Launch Options</em>, enter the following excruciatingly long text:</li>
+</ol>
+<pre><code class="language-ini">MONO_BUNDLED_OPTIONS='--debugger-agent=address=0.0.0.0:55555,transport=dt_socket,server=y --debug=mdb-optimizations' %command%
+</code></pre>
+<p>We're hoping to streamline this step and have <a href="https://gitlab.steamos.cloud/devkit/steamos-devkit/-/issues/10">sent a patch to Valve for review</a>.</p>
+<ol>
+<li>Add a task in launch.json to connect to the Deck debug server:</li>
+</ol>
+<pre><code class="language-json">        {
+            &quot;name&quot;: &quot;Attach to Deck&quot;,
+            &quot;type&quot;: &quot;mono&quot;,
+            &quot;request&quot;: &quot;attach&quot;,
+            &quot;address&quot;: &quot;192.168.1.yoursteamdeckIP&quot;,
+            &quot;port&quot;: 55555
+        }
+</code></pre>
+<ol>
+<li>Launch the game and start the debugger, enjoy!</li>
+</ol>
+<h4 id="single-assembly-portability-and-steam">Single-Assembly Portability and Steam</h4>
+<p>When leveraging FNA's single-assembly portability, you can run a single binary on both Windows and Linux. For distribution, you still have to make two separate packages of roughly the same game.</p>
+<p>With Steam, however, there is a way to optimize this. If you architect your depots in the following manner...</p>
+<pre><code class="language-text">Depot 4206901 - Shared Content, Windows + SteamOS + Linux
+Depot 4206902 - Windows Depot, Windows
+Depot 4206903 - Linux Depot, SteamOS + Linux
+</code></pre>
+<p>The idea is that you upload the Windows fnalibs to the second depot, the Linux fnalibs and MonoKickstart environment to the third depot, then upload <em>the entire rest of the game</em> to the first depot. You can also put OS-specific binaries in their appropriate folders, if applicable (C# Steamworks wrappers like Steamworks.NET and Facepunch.Steamworks are the only example these days, but who knows).</p>
+<p>Because the folder layout is identical between the two, this means you can limit your upload process to a single depot, only updating the other two depots when updating FNA specifically. This dramatically reduces the workload and also reduces the chance for version sync issues! Sadly this only applies to Steam; itch and GOG do not have this feature.</p>
+<p>A good publicly-available example of this layout is the PC version of <a href="https://steamdb.info/app/1800730/depots/">I MAED A GAM3 W1TH Z0MB1ES 1NIT!!!1</a>.</p>
+<hr />
+<h3 id="net-core">.NET Core</h3>
+<p>The above guide works for .NET Framework and Mono applications, but does not work with .NET 8. The publishing system for modern .NET has completely changed and is described below.</p>
+<p><code>dotnet publish -r &lt;win-x64/linux-x64&gt; -c Release --self-contained</code> will produce the executable package, but each platform has different requirements for where the fnalibs must be placed.</p>
+<ul>
+<li><strong>Windows:</strong> Place the x64 fnalibs in the <code>publish</code> directory alongside your executable.</li>
+<li><strong>Linux:</strong> Place the lib64 fnalibs in the <code>publish</code> directory, in a sub-directory called <code>netcoredeps</code>.</li>
+</ul>
+<h4 id="single-file-applications">Single-File Applications</h4>
+<p>The above steps for publishing will produce a <code>publish</code> directory with an absolutely enormous amount of DLLs. If you want to build a single-file executable instead, just add this to a property group in your .csproj:</p>
+<pre><code class="language-xml">&lt;PublishSingleFile&gt;true&lt;/PublishSingleFile&gt;
+</code></pre>
+<p>However, if you do this, we request that you make an exception for FNA.dll so that it is not bundled into the exe like the rest of the app. This is not required, but it is beneficial for both end users and FNA developers, since it allows for dynamically swapping out the FNA.dll in the game's files (for debugging, modding, etc.).</p>
+<p>You can prevent FNA.dll from being bundled by changing the FNA ProjectReference in your game's .csproj to the following:</p>
+<pre><code class="language-xml">  &lt;ItemGroup&gt;
+    &lt;ProjectReference Include=&quot;path/to/FNA.Core.csproj&quot;&gt;
+      &lt;ExcludeFromSingleFile&gt;true&lt;/ExcludeFromSingleFile&gt;
+    &lt;/ProjectReference&gt;
+  &lt;/ItemGroup&gt;
+</code></pre>
+<p>On a similar note, please do not bundle the native fnalibs into the single-file executable, for the same reasons. (Don't worry, this will not happen unless you go out of your way to explicitly include them in the project.)</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2b%3A-Building-New-Games-with-FNA/" class="btn btn-neutral float-left" title="2b: Building New Games with FNA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../4%3A-FNA-and-Windows-API/" class="btn btn-neutral float-right" title="4: FNA and Windows API">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../2b%3A-Building-New-Games-with-FNA/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../4%3A-FNA-and-Windows-API/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

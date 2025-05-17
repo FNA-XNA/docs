@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Appendix B: FNA on Consoles - FNA Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix B: FNA on Consoles";
+        var mkdocs_page_input_path = "appendix/Appendix-B:-FNA-on-Consoles.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../1%3A-Setting-Up-FNA/">1: Setting Up FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../2a%3A-Building-XNA-Games-with-FNA/">2a: Building XNA Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../2b%3A-Building-New-Games-with-FNA/">2b: Building New Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../3%3A-Distributing-FNA-Games/">3: Distributing FNA Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../4%3A-FNA-and-Windows-API/">4: FNA and Windows API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../5%3A-FNA-Extensions/">5: FNA Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../8%3A-Contributing-to-FNA/">8: Contributing to FNA</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-A%3A-NativeAOT-on-PC/">Appendix A: NativeAOT on PC</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix B: FNA on Consoles</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#general-advice">General Advice</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#nativeaot">NativeAOT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bootstrapping">Bootstrapping</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#window-size-changes">Window Size Changes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filesystem-portability-again">Filesystem Portability (Again)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xbox-gdk">Xbox GDK</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nintendo-switch">Nintendo Switch</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#playstation">PlayStation</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-C%3A-FNA-on-Apple-Platforms/">Appendix C: FNA on Apple Platforms</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-D%3A-MonoGame/">Appendix D: MonoGame Compatibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Appendix</li>
+      <li class="breadcrumb-item active">Appendix B: FNA on Consoles</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/appendix/Appendix-B:-FNA-on-Consoles.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-b-fna-on-consoles">Appendix B: FNA on Consoles</h1>
+<p>FNA supports deploying to consoles via NativeAOT. FNA does not have any private branches for each platform; the public master branch of FNA is exactly what is used to ship for these targets. The platform code is contained entirely in SDL and the NativeAOT bootstrap.</p>
+<hr />
+<h2 id="general-advice">General Advice</h2>
+<p>While the runtimes require a console NDA, there are some things you can do to make your game more robust that just-so-happens to make console support easier, without access to any particular SDK. If you're familiar with consoles, none of these will be surprising:</p>
+<h3 id="nativeaot">NativeAOT</h3>
+<p>All console builds use NativeAOT as the runtime. If you want a solid head-start, you should read Appendix A. Don't underestimate this step, especially if your game heavily depends on .NET's reflection features!</p>
+<h3 id="bootstrapping">Bootstrapping</h3>
+<p>For non-PC builds it is generally a good idea to assume that platform-specific bootstrapping is needed - in FNA's case we make use of SDL3's <code>SDL_RunApp</code> functionality; your code should be able to stay the same except for the Main function:</p>
+<pre><code class="language-cs">    [STAThread]
+    static void Main(string[] args)
+#if NET
+    {
+        realArgs = args;
+        SDL3.SDL.SDL_main_func mainFunction = FakeMain;
+        SDL3.SDL.SDL_RunApp(0, IntPtr.Zero, mainFunction, IntPtr.Zero);
+    }
+
+    static string[] realArgs;
+    static int FakeMain(int argc, IntPtr argv)
+    {
+        RealMain(realArgs);
+        return 0;
+    }
+
+    static void RealMain(string[] args)
+#endif
+    {
+        // blah blah blah
+    }
+</code></pre>
+<h3 id="window-size-changes">Window Size Changes</h3>
+<p>Even if your window is not resizable, operating systems (including Windows!) may forcibly change the window size for a multitude of reasons, and so the graphics device will reset.</p>
+<p>Consider the following code:</p>
+<pre><code class="language-cs">void ApplyVideoSettings(int width, int height, bool fullscreen, bool vsync);
+{
+    // Update GraphicsDeviceManager...
+    graphics.PreferredBackBufferWidth = width;
+    graphics.PreferredBackBufferHeight = height;
+    graphics.SynchronizeWithVerticalRetrace = vsync;
+    graphics.IsFullScreen = fullscreen;
+
+    // Apply!
+    graphics.ApplyChanges();
+
+    // A bunch of engine stuff
+    menu.ResizeScreen();
+    renderer.RecreateRenderTargets();
+}
+</code></pre>
+<p>This is actually kind of wrong; even in fullscreen mode it is possible for the operating system to affect your window size and break your game. But you don't need to go through a bunch of trouble to support <code>AllowUserResizing</code> or anything like that, as XNA internally hooks up <code>ClientSizeChanged</code> to <code>GraphicsDeviceManager.ApplyChanges()</code>, which should lead to a reset that you can catch with <code>GraphicsDeviceManager.DeviceReset</code> events:</p>
+<pre><code class="language-cs">public MyGame() : base()
+{
+    graphics = new GraphicsDeviceManager(this);
+    graphics.DeviceCreated += OnDeviceCreated;
+    graphics.DeviceReset += OnDeviceReset;
+}
+
+private void OnDeviceCreated(object sender, EventArgs e)
+{
+    // A bunch of engine size stuff before Initialize()
+}
+
+private void OnDeviceReset(object sender, EventArgs e)
+{
+    // A bunch of engine stuff
+    menu.ResizeScreen();
+    renderer.RecreateRenderTargets();
+}
+
+void ApplyVideoSettings(int width, int height, bool fullscreen, bool vsync);
+{
+    // Update GraphicsDeviceManager...
+    graphics.PreferredBackBufferWidth = width;
+    graphics.PreferredBackBufferHeight = height;
+    graphics.SynchronizeWithVerticalRetrace = vsync;
+    graphics.IsFullScreen = fullscreen;
+
+    // Apply!
+    graphics.ApplyChanges();
+
+    // A bunch of engine stuff used to be here. It's gone now.
+}
+</code></pre>
+<p>Even if you do not support resizable windows, you need to be prepared for resizes to happen at absolutely any time in your program.</p>
+<h3 id="filesystem-portability-again">Filesystem Portability (Again)</h3>
+<p>Unless you're working with savedata, using <code>System.IO.File</code> is highly discouraged. (And even then, savedata was supposed to be done with <code>Microsoft.Xna.Framework.Storage</code> in the XBLIG world). If you're loading files with <code>File.Open</code> specifically, your game may not even work on PC because the player may have the game installed in a location without write permissions!</p>
+<p>To load files, use <code>TitleContainer.OpenStream</code> instead. We actually do <em>not</em> recommend <code>Microsoft.Xna.Framework.Storage</code>; instead you should use <a href="https://wiki.libsdl.org/SDL3/CategoryStorage">SDL3's Storage API</a> (this is provided in our included C# bindings). If you already have established savedata out in the wild, isolate your filesystem calls as much as possible. Lord knows how many times I've done <a href="../../4%3A-FNA-and-Windows-API/#environmentspecialfolder">this</a> to make Linux savedata not go directly in <code>$HOME</code>...</p>
+<h2 id="xbox-gdk">Xbox GDK</h2>
+<p>Our GDK support is now 100% public source code! Once you have signed the GDK Agreement with Microsoft and have installed the Xbox GDK you can start with the <a href="https://github.com/FNA-XNA/NativeAOT-Xbox">NativeAOT repository</a>. Additionally, developers can request access to our <code>#xbox</code> Discord channel once they join both the FNA and ID@Xbox Discord servers.</p>
+<h2 id="nintendo-switch">Nintendo Switch</h2>
+<p>While there is no special code needed for Nintendo Switch support (100% of the platform code is in SDL and NativeAOT, two separate projects), all consulting and documentation is private, per NDA requirements. If you are a licensed developer, please get access to SDL-switch (search the licensee forums) and then get in touch with flibit on Discord. If you are NOT a licensed developer, you're on your own. None of us are able to get you hooked up, so please only get in touch AFTER you have Switch SDK access.</p>
+<h2 id="playstation">PlayStation</h2>
+<p>While there is no special code needed for PS5 support (100% of the platform code is in SDL and NativeAOT, two separate projects), all consulting and documentation is private, per NDA requirements. If you are a licensed developer, please get access to SDL-playstation (contact <a href="mailto:icculus@icculus.org">Ryan C. Gordon</a> for this) and then get in touch with flibit on Discord. If you are NOT a licensed developer, you're on your own. None of us are able to get you hooked up, so please only get in touch AFTER you have PlayStation SDK access.</p>
+<p>One detail we <em>can</em> share is that shaders <em>must</em> be precompiled ahead of time; as a result you will need to preprocess your Effect shaders (but you can continue to use the binaries as-is - no, really!). The best way to do this is to make an <a href="https://github.com/FNA-XNA/FNA3D/tree/master/replay">FNA3D trace</a> of a complete playthrough of your game, then dump SPIR-V binaries with FNA3D's <a href="https://github.com/FNA-XNA/FNA3D/tree/master/dumpspirv">dumping tool</a>. These SPIR-V modules will come in handy to create a working PlayStation renderer.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Appendix-A%3A-NativeAOT-on-PC/" class="btn btn-neutral float-left" title="Appendix A: NativeAOT on PC"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Appendix-C%3A-FNA-on-Apple-Platforms/" class="btn btn-neutral float-right" title="Appendix C: FNA on Apple Platforms">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Appendix-A%3A-NativeAOT-on-PC/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Appendix-C%3A-FNA-on-Apple-Platforms/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
