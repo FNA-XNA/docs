@@ -16,7 +16,7 @@ All console builds use NativeAOT as the runtime. If you want a solid head-start,
 
 For non-PC builds it is generally a good idea to assume that platform-specific bootstrapping is needed - in FNA's case we make use of SDL3's `SDL_RunApp` functionality; your code should be able to stay the same except for the Main function:
 
-```
+```cs
     [STAThread]
     static void Main(string[] args)
 #if NET
@@ -45,7 +45,7 @@ Even if your window is not resizable, operating systems (including Windows!) may
 
 Consider the following code:
 
-```
+```cs
 void ApplyVideoSettings(int width, int height, bool fullscreen, bool vsync);
 {
     // Update GraphicsDeviceManager...
@@ -65,7 +65,7 @@ void ApplyVideoSettings(int width, int height, bool fullscreen, bool vsync);
 
 This is actually kind of wrong; even in fullscreen mode it is possible for the operating system to affect your window size and break your game. But you don't need to go through a bunch of trouble to support `AllowUserResizing` or anything like that, as XNA internally hooks up `ClientSizeChanged` to `GraphicsDeviceManager.ApplyChanges()`, which should lead to a reset that you can catch with `GraphicsDeviceManager.DeviceReset` events:
 
-```
+```cs
 public MyGame() : base()
 {
     graphics = new GraphicsDeviceManager(this);

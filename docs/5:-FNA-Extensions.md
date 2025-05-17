@@ -12,7 +12,7 @@ The GamePad extensions are unique in that there are a _lot_ of them (our policy 
 `public static string GetGUIDEXT(PlayerIndex playerIndex)` is a new method for `GamePad` that allows you to get the hardware GUID for a given controller. Since GUIDs are organized differently depending on the OS, we have abstracted the GUID string into a shortened, unified format that is consistent across operating systems.
 
 To use the GetGUIDEXT extension:
-```
+```cs
 public MyControllerType GetControllerType(PlayerIndex index)
 {
 	/* Try to only do this once on initialization! It's slow! */
@@ -37,7 +37,7 @@ public MyControllerType GetControllerType(PlayerIndex index)
 `public static void SetLightBarEXT(PlayerIndex playerIndex, Color color)` is a new method for `GamePad` that allows you to set the color of the light bar on the DualShock 4 and DualSense controllers. There is a matching `bool HasLightBarEXT` property in `GamePadCapabilities`.
 
 To use the SetLightBarEXT extension:
-```
+```cs
 public void UpdateLightBar()
 {
 	if (playerIsDead)
@@ -60,7 +60,7 @@ The function is used in exactly the same way as `SetVibration`, so wherever you 
 `public static bool GetGyroEXT/GetAccelerometerEXT` are new methods for `GamePad` that poll the state of a gyro in a controller, should they exist (the PS4 and Switch controllers have them, for example). There are matching `bool HasGyroEXT/HasAccelerometerEXT` properties in `GamePadCapabilities`.
 
 To use the extensions:
-```
+```cs
 public static void DoMotionControls()
 {
     Vector3 gyro, accel;
@@ -74,8 +74,8 @@ public static void DoMotionControls()
 
 A number of bitflags have been added to the `Buttons` enum - they are as follows:
 
-```
-Misc1EXT =	0x00000400,
+```cs
+Misc1EXT =   	0x00000400,
 Paddle1EXT =	0x00010000,
 Paddle2EXT =	0x00020000,
 Paddle3EXT =	0x00040000,
@@ -114,7 +114,7 @@ A handful of texture formats have been added for various reasons - they are list
 
 To use the FNALoggerEXT extension:
 
-```
+```cs
 static void Main(string[] args)
 {
     /* We recommend setting this before touching anything XNA-related! */
@@ -128,7 +128,7 @@ static void Main(string[] args)
 `public bool IsBorderlessEXT { get; set; }` is a new property for `GameWindow` that gives you the ability to show/hide the window border without having to perform direct interop on the `Handle` pointer.
 
 To use the IsBorderlessEXT extension:
-```
+```cs
 public void ApplyVideoSettings()
 {
 	graphicsDeviceManager.ApplyChanges();
@@ -142,7 +142,7 @@ public void ApplyVideoSettings()
 `public void SetStringMarker(string text)` is a new method for `GraphicsDevice` that abstracts access to functions like `glStringMarkerGREMEDY` and `D3DPERF_SetMarker`. It should only be accessed in a debug context!
 
 To use the SetStringMarkerEXT extension:
-```
+```cs
 [Conditional("DEBUG")]
 public void GraphicsDebugString(string text)
 {
@@ -164,7 +164,7 @@ public void DrawStuff()
 If [FNA_KEYBOARD_USE_SCANCODES](7:-FNA-Environment-Variables.md#fna_keyboard_use_scancodes) is enabled, the return value will always be the same as the input value.
 
 To use the GetKeyFromScancodeEXT extension:
-```
+```cs
 private Keys PlayerForward;
 private Keys PlayerBackward;
 private Keys PlayerStrafeLeft;
@@ -185,7 +185,7 @@ public void AssignDefaultKeys()
 `public static class Microsoft.Xna.Framework.TextInputEXT` is a new class that partially abstracts text input event handling.
 
 To use the TextInputEXT extension:
-```
+```cs
 using Microsoft.Xna.Framework.Input;
 
 private void OnTextInput(char c)
@@ -212,7 +212,7 @@ public void StopTextInput()
 
 In addition to standard text input, the TextInput event can push one of a series of symbols to represent various text input actions:
 
-```
+```text
 (char) 2 - Home
 (char) 3 - End
 (char) 8 - Backspace
@@ -225,7 +225,7 @@ In addition to standard text input, the TextInput event can push one of a series
 ### ClickedEXT
 `public static Action<int> ClickedEXT` is a new event for Mouse that allows you to receive notifications when a mouse button is clicked. One of the main flaws of the XNA Mouse API is that you are only able to get the "current" state of the mouse buttons, but mouse button input is unique due to the various ways input events can be sent. Consider the following code:
 
-```
+```cs
 // Accessible by the rest of the engine
 public bool ButtonDown { get; private set; }
 
@@ -250,7 +250,7 @@ For mouse input in particular it is surprisingly common for both a button down a
 
 ClickedEXT will send a button index each time a mouse button is clicked:
 
-```
+```cs
 // Reset this array at the end of each frame!
 private ButtonState[] mouseClicks = new ButtonState[5];
 private void OnClicked(int button)
@@ -270,7 +270,7 @@ This should be combined with the standard XNA Mouse API to get a fully accurate 
 
 The following is a basic example of ClickedEXT combined with GetState:
 
-```
+```cs
 // Using the code above...
 
 // ButtonState doesn't tell us enough, let's make our own!
@@ -317,7 +317,7 @@ Note that ClickedEXT can send multiple clicks for a single button if it is in fa
 `public static bool IsRelativeMouseModeEXT` is a new property for `Mouse` that allows you to change the behavior of `Mouse.GetState()` to get relative (rather than absolute) X/Y coordinates. As part of this, it also automatically locks the mouse to the window. This is particularly helpful for first-person games, where you would otherwise have to constantly call `Mouse.SetPosition()` to keep the mouse in place.
 
 To use the IsRelativeMouseModeEXT extension:
-```
+```cs
 public static bool EnableMouseCapture()
 {
     /* PSA: Please make mouse capture an option
@@ -386,7 +386,7 @@ While FNA supports rendering point vertex data, note that the feature is very st
 ### GetRenderTargetsNoAllocEXT
 `public int GetRenderTargetsNoAllocEXT(RenderTargetBinding[] output)` is a new method that acts similarly to GetRenderTargets, but allows for avoiding allocating a new array for each call:
 
-```
+```cs
 RenderTargetBinding[] oldTargets = new RenderTargetBinding[0]; // Declared somewhere else, I hope...
 int oldTargetCount = currentDevice.GetRenderTargetsNoAllocEXT(null);
 Array.Resize(ref oldTargets, oldTargetCount);
@@ -411,7 +411,7 @@ This is a new method for `Video` that works exactly as `Song` does - see the Son
 Note that `FingerId2EXT` is only used for `Pinch` and `PinchComplete` gestures, and it will have a value of -1 for any other gesture type.
 
 The following is a basic example of using these properties:
-```
+```cs
 // Keep track of which fingers were used for these gestures
 private int DragFinger = -1;
 private int PinchFinger1 = -1;

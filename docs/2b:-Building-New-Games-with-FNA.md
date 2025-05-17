@@ -600,7 +600,7 @@ XNA has multiple effects built in, for those who just want basic rendering witho
 
 When writing your own Effects, you must precompile them first. This is done with `FXC`, the Microsoft DirectX Shader Compiler, which you can find in the [DirectX SDK](https://www.microsoft.com/en-us/download/details.aspx?id=6812). To compile .fx files:
 
-```
+```dos
 fxc.exe /T fx_2_0 FNAEffect.fx /Fo FNAEffect.fxb
 ```
 

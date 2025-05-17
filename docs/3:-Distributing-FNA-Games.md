@@ -9,7 +9,7 @@ Note that this guide is for .NET Framework and Mono applications - for those usi
 ### Overall System Requirements
 While we can't automatically determine CPU/RAM/Storage requirements (that's up to you!), we can provide a reasonably accurate requirement list for the following specs:
 
-```
+```text
 Windows:
 OS: Windows 7, fully updated
 Graphics (Minimum): Direct3D 11 support (feature level 10_0)
@@ -52,7 +52,7 @@ However, note that not every single DLL in the C# standard library exists in thi
 
 `kick.bin.x86_64` is going to be renamed to the name of your main EXE file. For example:
 
-```
+```dos
 flibitGame.exe
 flibitGame.bin.x86_64
 ```
@@ -69,7 +69,7 @@ Using Visual Studio Code and the above packaging process, it's actually possible
 2. On the Deck, go to your new devkit game and click *⚙️ -> Properties*
 3. Under *Shortcut -> Launch Options*, enter the following excruciatingly long text:
 
-```
+```ini
 MONO_BUNDLED_OPTIONS='--debugger-agent=address=0.0.0.0:55555,transport=dt_socket,server=y --debug=mdb-optimizations' %command%
 ```
 
@@ -78,7 +78,6 @@ We're hoping to streamline this step and have [sent a patch to Valve for review]
 4. Add a task in launch.json to connect to the Deck debug server:
 
 ```json
-
         {
             "name": "Attach to Deck",
             "type": "mono",
@@ -96,7 +95,7 @@ When leveraging FNA's single-assembly portability, you can run a single binary o
 
 With Steam, however, there is a way to optimize this. If you architect your depots in the following manner...
 
-```
+```text
 Depot 4206901 - Shared Content, Windows + SteamOS + Linux
 Depot 4206902 - Windows Depot, Windows
 Depot 4206903 - Linux Depot, SteamOS + Linux
@@ -122,13 +121,13 @@ The above guide works for .NET Framework and Mono applications, but does not wor
 #### Single-File Applications
 
 The above steps for publishing will produce a `publish` directory with an absolutely enormous amount of DLLs. If you want to build a single-file executable instead, just add this to a property group in your .csproj:
-```
+```xml
 <PublishSingleFile>true</PublishSingleFile>
 ```
 However, if you do this, we request that you make an exception for FNA.dll so that it is not bundled into the exe like the rest of the app. This is not required, but it is beneficial for both end users and FNA developers, since it allows for dynamically swapping out the FNA.dll in the game's files (for debugging, modding, etc.).
 
 You can prevent FNA.dll from being bundled by changing the FNA ProjectReference in your game's .csproj to the following:
-```
+```xml
   <ItemGroup>
     <ProjectReference Include="path/to/FNA.Core.csproj">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>

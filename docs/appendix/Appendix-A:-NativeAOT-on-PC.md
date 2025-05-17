@@ -9,7 +9,7 @@ To get started, please read through the [official NativeAOT documentation](https
 To make a NativeAOT build, you should make .NET 8 project files for your game - instead of the usual FNA.csproj, you will reference FNA.Core.csproj. The code and content should largely be able to stay the same, with the exception of code that requires a JIT (i.e. you can't emit IL at runtime, as you might expect from ahead-of-time compilation).
 
 To make your .csproj compatible with NativeAOT, add the following:
-```
+```xml
   <PropertyGroup>
     <PublishAot>true</PublishAot>
   </PropertyGroup>
@@ -46,7 +46,7 @@ You will also need to add an "rd.xml" file to your project directory. This will 
 
 The rd.xml file informs the compiler of any types it should preserve during the linking stage. This is most often used to preserve types that are only accessed via reflection. You can read [the official doc page](https://github.com/dotnet/runtimelab/blob/feature/NativeAOT/docs/using-nativeaot/rd-xml-format.md) to learn more about it, but here's an example of what rd.xml might look like for a game that uses ContentReader to load a couple of generic types:
 
-```
+```xml
 <Directives>
     <Application>
         <Assembly Name="FNA">
