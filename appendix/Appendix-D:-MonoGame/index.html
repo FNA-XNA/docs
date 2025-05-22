@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Appendix D: MonoGame Compatibility - FNA Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix D: MonoGame Compatibility";
+        var mkdocs_page_input_path = "appendix/Appendix-D:-MonoGame.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../1%3A-Setting-Up-FNA/">1: Setting Up FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../2a%3A-Building-XNA-Games-with-FNA/">2a: Building XNA Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../2b%3A-Building-New-Games-with-FNA/">2b: Building New Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../3%3A-Distributing-FNA-Games/">3: Distributing FNA Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../4%3A-FNA-and-Windows-API/">4: FNA and Windows API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../5%3A-FNA-Extensions/">5: FNA Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../8%3A-Contributing-to-FNA/">8: Contributing to FNA</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-A%3A-NativeAOT-on-PC/">Appendix A: NativeAOT on PC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-B%3A-FNA-on-Consoles/">Appendix B: FNA on Consoles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-C%3A-FNA-on-Apple-Platforms/">Appendix C: FNA on Apple Platforms</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix D: MonoGame Compatibility</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#code-compatibility">Code Compatibility</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#api-compatibility">API Compatibility</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#project-compatibility">Project Compatibility</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#content-compatibility">Content Compatibility</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#content-pipeline">Content Pipeline</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#incompatible-formats">Incompatible Formats</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mgcb-fna-support">MGCB FNA Support</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#platform-compatibility">Platform Compatibility</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Appendix</li>
+      <li class="breadcrumb-item active">Appendix D: MonoGame Compatibility</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/appendix/Appendix-D:-MonoGame.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-d-monogame-compatibility">Appendix D: MonoGame Compatibility</h1>
+<p>FNA is designed to be a fully-compatible XNA 4.0 Refresh reimplementation that focuses on accuracy and preservation of the XNA catalog.</p>
+<p>MonoGame, in contrast, is an XNA-like framework that is designed to be <em>like</em> XNA, but not 100% the same. XNA compatibility is likely, but not guaranteed.</p>
+<p>FNA and MonoGame are mostly compatible with one another, but there are a handful of exceptions that are documented on this page.</p>
+<hr />
+<h2 id="code-compatibility">Code Compatibility</h2>
+<h3 id="api-compatibility">API Compatibility</h3>
+<p>MonoGame is mostly XNA4-compatible, but this is not a guarantee. The API is allowed to change mostly at the whims of whoever sends patches and/or has write access to the project. For a successor this makes sense because it is XNA-<em>like</em>, meaning it's meant to feel a lot like XNA without preservation taking priority over what the MonoGame community actually wants.</p>
+<p>In the context of FNA compatibility, this can be problematic if incompatible APIs are accidentally used. MonoGame API changes are not explicitly marked or documented, so the only way to be sure you're compatible is to constantly build against XNA or FNA.</p>
+<p>While FNA is extremely strict about API compatibility, we do have formal processes for adding features in the form of <a href="../../5%3A-FNA-Extensions/">extensions</a>, <a href="../../6%3A-FNA-Build-Options/">build options</a>, and <a href="../../7%3A-FNA-Environment-Variables/">environment variables</a>, all of which are very clearly marked and are explicitly mentioned in every release that affects them. These features are designed to fill in the absolute worst gaps in the XNA API (mouse events, borderless windows, etc.), and oftentimes this improves MonoGame compatibility. That said, all of these additions are subject to modification and removal, based on the needs of the ecosystem.</p>
+<h3 id="project-compatibility">Project Compatibility</h3>
+<p>MonoGame has a build system that generates project files for each platform, as every platform has a special build with different backend files and platform definitions. Some platforms share project files (DesktopGL for Windows/macOS/Linux, for example), but some platforms have multiple projects (WindowsDX vs. DesktopGL, for example).</p>
+<p>FNA has only one project file for all platforms and backends, and we do not use platform definitions for any reason and will ALWAYS ban them from the source code, with absolutely zero exceptions. Given that C# is managed code, we have opted to detect platform information at runtime instead, for the few scenarios that platform checks are needed. You are encouraged to do the same in your own code, to allow for single-assembly portability. "Write Once Run Anywhere" is usually a fat lie, but "Build Once Run Anywhere" is entirely feasible for managed assemblies.</p>
+<h2 id="content-compatibility">Content Compatibility</h2>
+<p>FNA and MonoGame are both compatible with almost all content built by the XNA Content Pipeline. FNA's exceptions are <a href="../../2a%3A-Building-XNA-Games-with-FNA/#2-about-content-support">explicitly documented</a>.</p>
+<h3 id="content-pipeline">Content Pipeline</h3>
+<p>MonoGame has their own Content Pipeline tool, called MGCB. It is meant to act as a successor to the XNA Content Pipeline and generates separate content for every platform.</p>
+<p>FNA does not have and will not have its own Content Pipeline tool. The lead developer of FNA has <a href="https://flibitijibibo.com/xnacontent.html">outlined his reasons for omitting this feature</a>. You are STRONGLY encouraged to develop your own content tools, as they will be simpler, easier to use, more specialized and optimized, and will probably take a few days to make, unlike an XNA-like pipeline which would probably take years to complete.</p>
+<p>That said, FNA is mostly compatible with MGCB, as MGCB creates data that is remarkably close to XNA-generated content (though it is not compatible with XNA). When building MGCB data for FNA, use the DesktopGL configuration.</p>
+<h3 id="incompatible-formats">Incompatible Formats</h3>
+<p>The following content formats are incompatible between FNA and MonoGame:</p>
+<p><strong>Effects</strong>. MonoGame opted to create its own shader format, called MGFX. Each platform has its own MGFX file that only works on that platform. FNA continues to support DXBC and Effect framework binaries generated by both the XNA pipeline as well as <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb232919(v=vs.85).aspx">FXC</a>, the offline compiler for DirectX shaders and effects,  from the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=6812">June 2010 DirectX SDK</a> (ideally; if you have your own FXC from a Windows SDK that works then that's fine too). The one effect binary will work on every platform and backend. To compile an existing XNA effect file with FXC:</p>
+<pre><code class="language-dos">fxc.exe /T fx_2_0 MyEffect.fx /Fo MyEffect.fxb
+</code></pre>
+<p>You can also call FXC as part of your MSBuild process, as <a href="https://github.com/AndrewRussellNet/FNA-Template/blob/master/build/BuildShaders.targets">Andrew Russell's FNA template does</a>.</p>
+<p>Note that FXC is usable with Wine, meaning shaders can be developed on Linux and macOS.</p>
+<p><strong>Songs/Videos</strong>. MonoGame has various formats and backends used on various platforms, but FNA uses Ogg Vorbis (or QOA) and Ogg Theora for all platforms.</p>
+<h3 id="mgcb-fna-support">MGCB FNA Support</h3>
+<p>Lennard Fonteijn has provided specialized code for MGCB that should allow for the use of MGCB with FNA, even for the formats listed above. You can find this code here:</p>
+<p><a href="https://gist.github.com/LennardF1989/a5d7d54c89cb6cd0e6bc9551b6fa6a48">OggSongProcessor and FxcEffectProcessor for FNA and MGCB</a></p>
+<h2 id="platform-compatibility">Platform Compatibility</h2>
+<p>As a reminder, while MonoGame targets each platform with a different project version, FNA supports all of its platforms with exactly one project with no special versions.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Platform</th>
+<th style="text-align: center;">FNA</th>
+<th style="text-align: center;">MonoGame</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Windows Direct3D</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: center;">Windows Vulkan</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td style="text-align: center;">Windows OpenGL</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: center;">Linux Vulkan</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td style="text-align: center;">Linux OpenGL</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: center;">macOS Metal</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td style="text-align: center;">macOS OpenGL</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: center;">iOS/tvOS Metal</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td style="text-align: center;">iOS/tvOS OpenGL</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: center;">Nintendo Switch [1]</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: center;">Xbox One        [2]</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: center;">Xbox Series X/S</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">🚧</td>
+</tr>
+<tr>
+<td style="text-align: center;">PlayStation 4</td>
+<td style="text-align: center;">🚧</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: center;">PlayStation 5</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: center;">Android</td>
+<td style="text-align: center;">❌[3]</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>For Nintendo Switch, FNA uses Vulkan/OpenGL while MonoGame uses NVN.</li>
+<li>For Xbox One, FNA uses GDK and MonoGame uses XDK.</li>
+<li>Android FNA is unofficially supported via <a href="https://github.com/0x0ade/FNADroid">FNADroid</a></li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Appendix-C%3A-FNA-on-Apple-Platforms/" class="btn btn-neutral float-left" title="Appendix C: FNA on Apple Platforms"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Appendix-F%3A-Upcoming-Support-Changes/" class="btn btn-neutral float-right" title="Appendix F: Upcoming Support Changes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Appendix-C%3A-FNA-on-Apple-Platforms/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Appendix-F%3A-Upcoming-Support-Changes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

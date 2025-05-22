@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>4: FNA and Windows API - FNA Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "4: FNA and Windows API";
+        var mkdocs_page_input_path = "4:-FNA-and-Windows-API.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../1%3A-Setting-Up-FNA/">1: Setting Up FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2a%3A-Building-XNA-Games-with-FNA/">2a: Building XNA Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2b%3A-Building-New-Games-with-FNA/">2b: Building New Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3%3A-Distributing-FNA-Games/">3: Distributing FNA Games</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">4: FNA and Windows API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#64-bit-support">64-bit Support</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#directinput-support">DirectInput Support</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#filesystem-portability">Filesystem Portability</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#environmentspecialfolder">Environment.SpecialFolder</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#user32-kernel32-etc">User32, Kernel32, etc.</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#systemdrawing">System.Drawing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#systemwindowsforms">System.Windows.Forms</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#using-the-fna-gamewindow-in-systemwindowsforms">Using the FNA GameWindow in System.Windows.Forms</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ccli-assemblies">C++/CLI Assemblies</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../5%3A-FNA-Extensions/">5: FNA Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../8%3A-Contributing-to-FNA/">8: Contributing to FNA</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-A%3A-NativeAOT-on-PC/">Appendix A: NativeAOT on PC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-B%3A-FNA-on-Consoles/">Appendix B: FNA on Consoles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-C%3A-FNA-on-Apple-Platforms/">Appendix C: FNA on Apple Platforms</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-D%3A-MonoGame/">Appendix D: MonoGame Compatibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">4: FNA and Windows API</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/4:-FNA-and-Windows-API.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="4-fna-and-windows-api">4: FNA and Windows API</h1>
+<p>While we have set out to make our XNA reimplementation as portable as possible, this work can only ever make XNA itself portable. We cannot make your game portable automatically!</p>
+<p>Here are some common things we've seen that will get in the way of making your game 100% portable:</p>
+<ul>
+<li><a href="#64-bit-support">64-bit Support</a></li>
+<li><a href="#directinput-support">DirectInput Support</a></li>
+<li><a href="#filesystem-portability">Filesystem Portability</a></li>
+<li><a href="#environmentspecialfolder">Environment.SpecialFolder</a></li>
+<li><a href="#user32-kernel32-etc">User32, Kernel32, etc.</a></li>
+<li><a href="#systemdrawing">System.Drawing</a></li>
+<li><a href="#systemwindowsforms">System.Windows.Forms</a></li>
+<li><a href="#using-the-fna-gamewindow-in-systemwindowsforms">Using the FNA GameWindow in System.Windows.Forms</a></li>
+<li><a href="#ccli-assemblies">C++/CLI Assemblies</a></li>
+</ul>
+<hr />
+<h3 id="64-bit-support">64-bit Support</h3>
+<p>Unlike XNA, FNA supports both 64-bit and AnyCPU configurations. On Linux and macOS this does not really matter, as the Mono CLR does not care what the architecture is for managed binaries and MonoKickstart automatically picks the right library folder, but on Windows each target architecture needs its own version. These days you can safely assume 64-bit only, but if you absolutely require AnyCPU (be careful, modern Visual Studio releases will still prefer 32-bit for AnyCPU builds anyway!) you should add this code to the start of your Main function:</p>
+<pre><code class="language-cs">using System;
+using System.IO;
+using System.Runtime.InteropServices;
+
+...
+
+[DllImport(&quot;kernel32.dll&quot;, CharSet = CharSet.Unicode, SetLastError = true)]
+[return: MarshalAs(UnmanagedType.Bool)]
+static extern bool SetDefaultDllDirectories(int directoryFlags);
+
+[DllImport(&quot;kernel32.dll&quot;, CharSet = CharSet.Unicode, SetLastError = true)]
+static extern void AddDllDirectory(string lpPathName);
+
+[DllImport(&quot;kernel32.dll&quot;, CharSet = CharSet.Unicode, SetLastError = true)]
+[return: MarshalAs(UnmanagedType.Bool)]
+static extern bool SetDllDirectory(string lpPathName);
+
+const int LOAD_LIBRARY_SEARCH_DEFAULT_DIRS = 0x00001000;
+
+...
+
+static void Main(string[] args)
+{
+    if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+    {
+        try
+        {
+            SetDefaultDllDirectories(LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
+            AddDllDirectory(Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                Environment.Is64BitProcess ? &quot;x64&quot; : &quot;x86&quot;
+            ));
+        }
+        catch
+        {
+            // Pre-Windows 7, KB2533623 
+            SetDllDirectory(Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                Environment.Is64BitProcess ? &quot;x64&quot; : &quot;x86&quot;
+            ));
+        }
+    }
+
+    ...
+}
+</code></pre>
+<p>With this you can keep the C# binaries at the top level, and the native libraries can be in <code>x86</code> and <code>x64</code> separately (we do this for you already in fnalibs.zip).</p>
+<h3 id="directinput-support">DirectInput Support</h3>
+<p>If you have a specialized DirectInput path for your XNA game, go ahead and take it out of your FNA build. FNA uses SDL_GameController for its GamePad implementation, which supports both XInput and DirectInput on Windows (and for Linux/macOS, we support the standard joystick input interfaces). Even for non-XInput controllers you can expect them to map to the 360 layout provided by GamePad; SDL_GameController pulls in configurations from its own internal database as well as the Steam Big Picture Mode database to automap any known joystick to the 360 layout. Additionally, FNA checks for <a href="https://github.com/gabomdq/SDL_GameControllerDB/">gamecontrollerdb.txt</a> in the game's root folder so that developers and customers without access to the other databases may add their own configurations as well. Lastly, our implementation is far more flexible - we support numerous extensions and environment variables to allow modernized input support, including vendor/product detection, higher player counts, motion controls, etc.</p>
+<p>For more information, see the <a href="https://wiki.libsdl.org/CategoryGameController">SDL_GameController documentation</a>.</p>
+<h3 id="filesystem-portability">Filesystem Portability</h3>
+<p>Here are three things you may get hit by when running an FNA title on Linux and macOS:</p>
+<ul>
+<li>Paths are separated with <code>/</code>, NOT with <code>\</code>! We do what we can to accommodate this in FNA, but <em>you should not depend on us saving you here!</em></li>
+<li>On Linux, filenames are case-sensitive! For example, <code>fileName</code> is NOT the same as <code>Filename</code>!</li>
+<li>There are no drive letters on Unix-like operating systems. For example, while a user folder on Windows is typically <code>C:\Users\flibitijibibo\</code>, on Linux it's typically <code>/home/flibitijibibo/</code>, and on macOS it's <code>/Users/flibitijibibo/</code>.</li>
+</ul>
+<p>There exists an environment variable called MONO_IOMAP that can attempt to resolve these for you, but you should not depend on this feature, as it is neither guaranteed to work nor is it performant! Your I/O performance can get hit by this!</p>
+<p>The solution is to just check your code to be sure that you do not depend on any Windows-specific behavior in your code. We recommend changing your code rather than your content's filenames, as that will retain consistency across all platforms without, say, having to worry about platform content folders X and Y when rebuilding your content. It's confusing and it probably won't work if you deploy from Windows anyway.</p>
+<p>The best thing you can do to make your file reading portable is to use <code>TitleContainer.OpenStream</code> instead of <code>File.OpenRead</code>, as this deals with both directory separators as well as special path requirements for platforms with unique filesystems (but this does NOT deal with case sensitivity!). Other helpful features in C# are <code>Path.DirectorySeparatorChar</code> and <code>Path.Combine()</code>, found in <code>System.IO</code>.</p>
+<h3 id="environmentspecialfolder">Environment.SpecialFolder</h3>
+<p>For the most part, these simply don't work correctly on Linux or macOS. Worse, PC storage is usually not applicable on consoles - more on this later.</p>
+<p>If you use StorageDevice for all your file I/O, don't worry - we take care of this for you:</p>
+<ul>
+<li>For Linux/*BSD, save directories are meant to go in the location specified by the XDG specification.<ul>
+<li>Config files should go in $XDG_CONFIG_HOME, or <code>~/.config/YourApp/</code>.</li>
+<li>Save data should go in $XDG_DATA_HOME, or <code>~/.local/share/YourApp/</code>.</li>
+</ul>
+</li>
+<li>For macOS, save directories are meant to go in the location required by Apple for certification.<ul>
+<li>All user data should go in <code>~/Library/Application Support/YourApp/</code>.</li>
+</ul>
+</li>
+<li>Other platforms may have their own specific needs for savedata.<ul>
+<li>For unspecified platforms, consider using <code>SDL_GetPrefPath</code>.</li>
+</ul>
+</li>
+</ul>
+<p>It is <em>strongly</em> recommended that you try to determine these locations at runtime, rather than with platform defs. You want to be able to leverage our single-assembly portability!</p>
+<p>Here's an example for determining the save location at runtime:</p>
+<pre><code class="language-cs">using System;
+using System.IO;
+using SDL3;
+
+public const string GameName = &quot;flibitGame&quot;;
+public static readonly string SaveDirectory = GetSaveDirectory();
+
+private static string GetSaveDirectory()
+{
+    string platform = SDL.SDL_GetPlatform();
+    if (platform.Equals(&quot;Windows&quot;))
+    {
+        return Path.Combine(
+            Environment.GetFolderPath(
+                Environment.SpecialFolder.MyDocuments
+            ),
+            &quot;SavedGames&quot;,
+            GameName
+        );
+    }
+    else if (platform.Equals(&quot;macOS&quot;))
+    {
+        string osConfigDir = Environment.GetEnvironmentVariable(&quot;HOME&quot;);
+        if (String.IsNullOrEmpty(osConfigDir))
+        {
+            return &quot;.&quot;; // Oh well.
+        }
+        osConfigDir += &quot;/Library/Application Support&quot;;
+        return Path.Combine(osConfigDir, GameName);
+    }
+    else if (   platform.Equals(&quot;Linux&quot;) ||
+            platform.Equals(&quot;FreeBSD&quot;) ||
+            platform.Equals(&quot;OpenBSD&quot;) ||
+            platform.Equals(&quot;NetBSD&quot;)   )
+    {
+        string osConfigDir = Environment.GetEnvironmentVariable(&quot;XDG_DATA_HOME&quot;);
+        if (String.IsNullOrEmpty(osConfigDir))
+        {
+            osConfigDir = Environment.GetEnvironmentVariable(&quot;HOME&quot;);
+            if (String.IsNullOrEmpty(osConfigDir))
+            {
+                return &quot;.&quot;; // Oh well.
+            }
+            osConfigDir += &quot;/.local/share&quot;;
+        }
+        return Path.Combine(osConfigDir, GameName);
+    }
+    else
+    {
+        return SDL.SDL_GetPrefPath(CompanyName, GameName);
+    }
+}
+
+</code></pre>
+<p>As mentioned previously, this is only effective on PC, and only sometimes - it is strongly recommended that you use <a href="https://wiki.libsdl.org/SDL3/CategoryStorage">SDL3's Storage API</a> instead. This is safer, can improve disk I/O performance, and even works on console platforms.</p>
+<h3 id="user32-kernel32-etc">User32, Kernel32, etc.</h3>
+<p>Some XNA games use the Windows API directly for features such as the event loop.</p>
+<p>FNA actually uses the SDL_Event loop internally, so you cannot directly replace the event loop as you would want to do with SDL_PollEvent. Instead, use SDL_AddEventWatch or SDL_SetEventFilter:</p>
+<p>https://wiki.libsdl.org/SDL_AddEventWatch
+https://wiki.libsdl.org/SDL_SetEventFilter</p>
+<p>When SDL pumps events, these callbacks will be called with the relevant events.</p>
+<p>For a more complete guide to the SDL API, see the SDL wiki:</p>
+<p>https://wiki.libsdl.org/APIByCategory</p>
+<p>Most (if not all) Win32 functions can be replaced with an equivalent SDL call.</p>
+<h3 id="systemdrawing">System.Drawing</h3>
+<p>For the most part this is a harmless namespace, unless you make a call that depends on GDI+. <code>System.Drawing.Imaging</code> is particularly painful in this respect.</p>
+<p>The problem is that on Linux and macOS, you will need libgdiplus, which has an <em>insane</em> amount of dependencies, absolutely none of which you want.</p>
+<p>Sometimes you can simply replace this code with values or constants that replace the GDI-dependent values, but sometimes you may need a real replacement for things like software surface manipulation. In this case, you can use the SDL_Surface API:</p>
+<p>https://wiki.libsdl.org/CategorySurface</p>
+<h3 id="systemwindowsforms">System.Windows.Forms</h3>
+<p>In many XNA games, there is frequent use of the <code>System.Windows.Forms</code> namespace for various operations, mostly related to window management.</p>
+<p>We strongly recommend replacing this with SDL when moving to FNA. The SDL documentation can be found here:</p>
+<p>https://wiki.libsdl.org/APIByCategory</p>
+<p>Subsystems like SDL_Video, SDL_Cursor, and SDL_Clipboard should be able to provide you with the same functionality found in System.Windows.Forms.</p>
+<p>For example, if you want to use a messagebox:</p>
+<pre><code class="language-cs">#if SDL3
+    SDL3.SDL.SDL_ShowSimpleMessageBox(
+        SDL3.SDL.SDL_MessageBoxFlags.SDL_MESSAGEBOX_ERROR,
+        title,
+        message,
+        game.Window.Handle
+    );
+);
+#else
+    System.Windows.Forms.MessageBox.Show(
+        message,
+        title
+    );
+#endif
+</code></pre>
+<h4 id="using-the-fna-gamewindow-in-systemwindowsforms">Using the FNA GameWindow in System.Windows.Forms</h4>
+<p>As mentioned in the previous section, you should NOT be using System.Windows.Forms when shipping an FNA game. However, if you simply want to use it for something like a developer-internal editor that's only used on Windows, there is still a way to hook the FNA window to a Form.</p>
+<p>Because the <code>GameWindow.Handle</code> no longer directly refers to a Win32 HWND, System.Windows.Forms code that depends on this handle will no longer work. But, there is still a way to keep most of your code here.</p>
+<p>For an example on how to use FNA's <code>GameWindow.Handle</code> IntPtr for System.Windows.Forms, see this example:</p>
+<p>https://gist.github.com/flibitijibibo/cf282bfccc1eaeb47550</p>
+<p>Note that you want the window to be borderless when attaching to a Panel. To do this, you can use the <code>GameWindow.IsBorderlessEXT</code> extension to remove the border.</p>
+<h3 id="ccli-assemblies">C++/CLI Assemblies</h3>
+<p>C++/CLI is not available in Mono, so these binaries cannot run anywhere except on Windows with .NET.</p>
+<p>The solution is to separate the C# half from the native C/C++ half, and access the native half with P/Invoke calls and native C entry points. For example:</p>
+<pre><code class="language-cs">/* somelib.h */
+#ifndef SOMELIB_H
+#define SOMELIB_H
+
+#include &lt;stdint.h&gt;
+
+#ifdef __cplusplus
+extern &quot;C&quot; {
+#endif
+
+#ifdef _WIN32
+    #define EXPORTFN __declspec(dllexport)
+    #define DELEGATECALL __stdcall
+#else
+    #define EXPORTFN
+    #define DELEGATECALL
+#endif
+
+typedef void (DELEGATECALL *SomeCallback)(int32_t);
+
+EXPORTFN void SomeFunction(SomeCallback callback);
+
+#undef EXPORTFN
+#undef DELEGATECALL
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SOMELIB_H */
+
+/* End somelib.h */
+
+/* somelib.c */
+#include &quot;somelib.h&quot;
+
+void SomeFunction(SomeCallback callback)
+{
+    callback(1337);
+}
+/* End somelib.c */
+
+/* SomeLib.cs */
+using System.Runtime.InteropServices;
+
+public static class SomeLib
+{
+    public delegate void SomeCallback(int result);
+
+    [DllImport(&quot;somelib.dll&quot;, CallingConvention = CallingConvenction.Cdecl)]
+    public static extern void SomeFunction(SomeCallback callback);
+}
+/* End SomeLib.cs */
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../3%3A-Distributing-FNA-Games/" class="btn btn-neutral float-left" title="3: Distributing FNA Games"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../5%3A-FNA-Extensions/" class="btn btn-neutral float-right" title="5: FNA Extensions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../3%3A-Distributing-FNA-Games/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../5%3A-FNA-Extensions/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

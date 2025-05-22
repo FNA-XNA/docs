@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>8: Contributing to FNA - FNA Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "8: Contributing to FNA";
+        var mkdocs_page_input_path = "8:-Contributing-to-FNA.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../1%3A-Setting-Up-FNA/">1: Setting Up FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2a%3A-Building-XNA-Games-with-FNA/">2a: Building XNA Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2b%3A-Building-New-Games-with-FNA/">2b: Building New Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3%3A-Distributing-FNA-Games/">3: Distributing FNA Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4%3A-FNA-and-Windows-API/">4: FNA and Windows API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../5%3A-FNA-Extensions/">5: FNA Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">8: Contributing to FNA</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#forks">Forks</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code-style">Code Style</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#external-libraries">External Libraries</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-A%3A-NativeAOT-on-PC/">Appendix A: NativeAOT on PC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-B%3A-FNA-on-Consoles/">Appendix B: FNA on Consoles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-C%3A-FNA-on-Apple-Platforms/">Appendix C: FNA on Apple Platforms</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-D%3A-MonoGame/">Appendix D: MonoGame Compatibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">8: Contributing to FNA</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/8:-Contributing-to-FNA.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="8-contributing-to-fna">8: Contributing to FNA</h1>
+<p>This is a rough guide for contributing to FNA. This should NOT be considered the be-all-end-all rulebook for FNA development, but it contains some basic examples of how the project is written and developed. In general, Rule #0 is simply to use your best judgement based on existing traditions in the code and its libraries.</p>
+<h2 id="forks">Forks</h2>
+<p>GitHub makes forking as easy as clicking a button. Here's when to click that button:</p>
+<ul>
+<li>When you're about to commit a patch</li>
+</ul>
+<p>Do NOT clutter up the <a href="https://github.com/FNA-XNA/FNA/network">network</a> with pointless forks! Either write something or just use our repository. We promise that the clone that you have locally on your machine will never be forcibly updated by us unless you explicitly type <code>git pull</code> (that's how Git works!), and we will always have stable releases <a href="https://fna.flibitijibibo.com/archive/">archived</a>. The network graph is critical for tracking developers' changes, if too many forks exist then the feature is forcibly turned off by GitHub!</p>
+<h2 id="code-style">Code Style</h2>
+<ul>
+<li>Line Endings: Unix newlines ('\n'), NOT Win32 newlines ('\r\n')!</li>
+<li>Tabs: Actual '\t' tabs, NOT SPACES!</li>
+<li>Blank Lines: NO TRAILING SPACE! Blank lines should be, you know, blank.</li>
+<li>Characters per line: ~100. When a line gets too long, start splitting it up into multiple lines. The number should only be considered a maximum value; if you find that you're doing a lot of extensive left-to-right reading rather than top-to-bottom, start splitting the lines up.</li>
+<li><code>i++/i--</code>: Do <code>i += 1</code> and <code>i -= 1</code> instead unless the increment is genuinely being used to its advantage. If it's that painful to do this, consider <code>foreach</code> instead.</li>
+<li>Do NOT use <code>var</code>! Use the actual type name!</li>
+<li><code>someMethod()</code> rather than <code>someMethod ()</code>, <code>someArray[x]</code> rather than <code>someArray [x]</code>, etc.</li>
+<li><code>(Type) cast</code> rather than <code>(Type)cast</code>.</li>
+<li>Use braces everywhere! I don't care if the if block is one line, braces! Use them!</li>
+<li>Single line comments: <code>// This code is derp</code> rather than <code>//this code is derp</code>.</li>
+<li>Multi-line comments: Use <code>/* */</code> blocks, rather than multiple lines of <code>//</code>.</li>
+</ul>
+<h2 id="external-libraries">External Libraries</h2>
+<p>As noted in the <a href="../">download documentation</a>, we use several third-party libraries to support FNA.</p>
+<p>A major rule for FNA is that we do NOT fork external libraries! Anything we change must be submitted to upstream, and must be of high enough quality to be merged. FNA's role is solely to reimplement XNA, nothing further. Any issue exhibited by the libraries <em>must be fixed in the library</em> for the benefit of the greater software ecosystem.</p>
+<p>The sources can be found here:</p>
+<ul>
+<li><a href="https://github.com/libsdl-org/SDL">SDL</a></li>
+<li><a href="https://github.com/FNA-XNA/FNA3D">FNA3D</a></li>
+<li><a href="https://github.com/FNA-XNA/FAudio">FAudio</a></li>
+<li><a href="https://github.com/FNA-XNA/Theorafile">Theorafile</a></li>
+</ul>
+<p>All libraries are built with the default settings.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../7%3A-FNA-Environment-Variables/" class="btn btn-neutral float-left" title="7: FNA Environment Variables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../appendix/Appendix-A%3A-NativeAOT-on-PC/" class="btn btn-neutral float-right" title="Appendix A: NativeAOT on PC">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../7%3A-FNA-Environment-Variables/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../appendix/Appendix-A%3A-NativeAOT-on-PC/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

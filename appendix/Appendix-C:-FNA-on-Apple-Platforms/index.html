@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Appendix C: FNA on Apple Platforms - FNA Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix C: FNA on Apple Platforms";
+        var mkdocs_page_input_path = "appendix/Appendix-C:-FNA-on-Apple-Platforms.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../1%3A-Setting-Up-FNA/">1: Setting Up FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../2a%3A-Building-XNA-Games-with-FNA/">2a: Building XNA Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../2b%3A-Building-New-Games-with-FNA/">2b: Building New Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../3%3A-Distributing-FNA-Games/">3: Distributing FNA Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../4%3A-FNA-and-Windows-API/">4: FNA and Windows API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../5%3A-FNA-Extensions/">5: FNA Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../8%3A-Contributing-to-FNA/">8: Contributing to FNA</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-A%3A-NativeAOT-on-PC/">Appendix A: NativeAOT on PC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-B%3A-FNA-on-Consoles/">Appendix B: FNA on Consoles</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix C: FNA on Apple Platforms</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-fnalibs">Building fnalibs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creatingpublishing-a-macos-project">Creating/Publishing a macOS Project</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-an-ios-project">Creating an iOS Project</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-a-tvos-project">Creating a tvOS Project</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#code-changes">Code Changes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#initialization">Initialization</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#background-safety">Background Safety</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#retina-displays">Retina Displays</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#tvos-user-storage">tvOS User Storage</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#content-changes">Content Changes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#texture-compression">Texture Compression</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#running-your-app">Running Your App</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#profiling">Profiling</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-D%3A-MonoGame/">Appendix D: MonoGame Compatibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Appendix</li>
+      <li class="breadcrumb-item active">Appendix C: FNA on Apple Platforms</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/appendix/Appendix-C:-FNA-on-Apple-Platforms.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-c-fna-on-apple-platforms">Appendix C: FNA on Apple Platforms</h1>
+<p>FNA supports deploying to macOS/iOS/tvOS via the .NET SDK. FNA does not have special branches or configurations for each platform; the public master branch of FNA and the configuration you're already used to is exactly what is used to ship for these targets. The platform code is contained entirely in SDL.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>This is the basic guide to getting your game running on macOS/iOS/tvOS. Once these steps are followed, your game should be able to boot on real hardware.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>In order to build and deploy FNA apps for iOS/tvOS, you must have the following:</p>
+<ol>
+<li>Mac hardware (required by Apple)</li>
+<li>The latest <a href="https://dotnet.microsoft.com/en-us/download/dotnet">.NET SDK</a> for macOS</li>
+<li>The latest version of Xcode, downloaded from the macOS App Store or from the Apple Developer site</li>
+<li>The iOS/tvOS workloads for the .NET SDK. Once you have installed .NET on your Mac, run the following commands:</li>
+</ol>
+<pre><code class="language-zsh">sudo dotnet workload install ios
+sudo dotnet workload install tvos
+</code></pre>
+<h3 id="building-fnalibs">Building fnalibs</h3>
+<p>macOS, iOS, and tvOS libraries are now built automatically and can be downloaded from <a href="https://github.com/FNA-XNA/fnalibs-dailies/actions">fnalibs-dailies</a>. You may need to be logged into GitHub to download these. Simulator libraries are not currently provided, so you will need to build those yourself if desired.</p>
+<p>Note: On newer macOS versions, you may need to run <code>xattr -c *.dylib</code> or <code>xattr -c *.a</code> on these libraries before using them in your projects to avoid security errors.</p>
+<h3 id="creatingpublishing-a-macos-project">Creating/Publishing a macOS Project</h3>
+<p>A macOS project is essentially the same as any other .NET Core build; the difference is in the publishing process:</p>
+<p><code>dotnet publish -r &lt;osx-x64&gt; -c Release --self-contained</code> will produce the executable package. Place the osx version of your fnalibs in the <code>publish</code> directory alongside your executable. Then use <code>install_name_tool -add_rpath @executable_path &lt;your_app_executable_name&gt;</code> to force the application to first look in the executable directory for the fnalibs, instead of <code>/usr/local/lib</code>.</p>
+<p>For NativeAOT, the directions in Appendix A largely apply here, with these added steps:</p>
+<ul>
+<li>Build SDL3 from source or install the SDL3 development package from a package manager, then use it to build the other libraries from source.</li>
+<li>Copy the resulting *.dylib files from SDL3, FNA3D, FAudio, and Theorafile into <code>/usr/local/lib</code>.</li>
+<li>Build the application.</li>
+<li>Copy the contents of <code>fnalibs/osx</code> into the generated output directory.</li>
+<li>Finally, to ensure your application uses the correct search path for SDL3, use <code>install_name_tool -change /usr/local/lib/libSDL3.0.dylib @rpath/libSDL3.0.dylib &lt;my-app-name&gt;</code>.</li>
+</ul>
+<p>That about covers macOS - iOS/tvOS are a whole different story:</p>
+<h3 id="creating-an-ios-project">Creating an iOS Project</h3>
+<p>Creating a .NET iOS project is almost identical to the process of <a href="https://github.com/FNA-XNA/FNA/wiki/1%3A-Setting-Up-FNA#chapter-5-creating-new-projects">creating a desktop .NET project</a>.
+The only difference is that instead of <code>dotnet new console</code>, you must run <code>dotnet new ios</code>.
+This will generate an "iOS Application" template project we can then modify like so:</p>
+<ol>
+<li>Delete the <code>SceneDelegate.cs</code> and <code>AppDelegate.cs</code> files</li>
+<li>Update the <code>Info.plist</code> file as follows:</li>
+<li>Set your application metadata (display name, bundle identifier, etc.)</li>
+<li>Specify which device orientations you want to support (landscape, portrait, etc.)</li>
+<li>Change the <code>UIRequiredDeviceCapabilities</code> value from <code>armv7</code> to <code>arm64</code></li>
+<li>If your game supports game controllers (MFi, Xbox, PlayStation, etc.) add the following:</li>
+</ol>
+<pre><code class="language-plist">   &lt;key&gt;GCSupportedGameControllers&lt;/key&gt;  
+   &lt;array&gt;
+       &lt;dict&gt;
+           &lt;key&gt;ProfileName&lt;/key&gt;
+           &lt;string&gt;ExtendedGamepad&lt;/string&gt;
+       &lt;/dict&gt;
+   &lt;/array&gt;  
+   &lt;key&gt;GCSupportsControllerUserInteraction&lt;/key&gt;  
+   &lt;true/&gt;
+</code></pre>
+<p>See <a href="https://developer.apple.com/documentation/bundleresources/information_property_list/gcsupportedgamecontrollers">this Apple documentation</a> for more information about how to support different kinds of controllers.</p>
+<ol>
+<li>Add the following to your game's .csproj:</li>
+</ol>
+<pre><code class="language-xml">&lt;PropertyGroup&gt;
+  &lt;MtouchNoSymbolStrip&gt;true&lt;/MtouchNoSymbolStrip&gt;
+  &lt;MtouchExtraArgs&gt;--cxx --gcc_flags &quot;-L$(MSBuildProjectDirectory) -force_load $(MSBuildProjectDirectory)/libSDL3.a -force_load $(MSBuildProjectDirectory)/libFAudio.a -force_load $(MSBuildProjectDirectory)/libFNA3D.a -force_load $(MSBuildProjectDirectory)/libtheorafile.a -force_load $(MSBuildProjectDirectory)/libmojoshader.a -framework AudioToolbox -framework CoreBluetooth -framework CoreHaptics -framework CoreMotion -framework OpenGLES -framework Metal&quot;&lt;/MtouchExtraArgs&gt;
+  &lt;_ExportSymbolsExplicitly&gt;false&lt;/_ExportSymbolsExplicitly&gt;
+  &lt;OptimizePNGs&gt;false&lt;/OptimizePNGs&gt;
+&lt;/PropertyGroup&gt;
+</code></pre>
+<ol>
+<li>Place all the native libraries in your project directory. They will be linked on build, as specified by the <code>MtouchExtraArgs</code> property you just added to the project.</li>
+<li>Add a project reference to FNA.Core.csproj, as per usual. And that's it for the project setup!</li>
+</ol>
+<h3 id="creating-a-tvos-project">Creating a tvOS Project</h3>
+<p>Creating a .NET tvOS project is almost identical to the process of <a href="https://github.com/FNA-XNA/FNA/wiki/1%3A-Setting-Up-FNA#chapter-5-creating-new-projects">creating a desktop .NET project</a>.
+The only difference is that instead of <code>dotnet new console</code>, you must run <code>dotnet new tvos</code>.
+This will generate a "tvOS Application" template project we can then modify like so:</p>
+<ol>
+<li>Delete the <code>ViewController.cs</code>, <code>ViewController.designer.cs</code>, and <code>AppDelegate.cs</code> files</li>
+<li>Rename <code>Main.storyboard</code> to <code>LaunchScreen.storyboard</code> and delete the following from line 10 of the file:
+<code>customClass="ViewController"</code></li>
+<li>Update the <code>Info.plist</code> file as follows:</li>
+<li>Set your application metadata (display name, bundle identifier, etc.)</li>
+<li>If your game supports game controllers (MFi, Xbox, PlayStation, etc.) add the following:</li>
+</ol>
+<pre><code class="language-xml">   &lt;key&gt;GCSupportedGameControllers&lt;/key&gt;  
+   &lt;array&gt;
+       &lt;dict&gt;
+           &lt;key&gt;ProfileName&lt;/key&gt;
+           &lt;string&gt;ExtendedGamepad&lt;/string&gt;
+       &lt;/dict&gt;
+   &lt;/array&gt;  
+   &lt;key&gt;GCSupportsControllerUserInteraction&lt;/key&gt;  
+   &lt;true/&gt;
+</code></pre>
+<p>See <a href="https://developer.apple.com/documentation/bundleresources/information_property_list/gcsupportedgamecontrollers">this Apple documentation</a> for more information about how to support different kinds of controllers.
+   - Point the app to the correct storyboard file, like so:</p>
+<pre><code class="language-xml">    &lt;!-- Replace this... --&gt;
+    &lt;key&gt;UIMainStoryboardFile&lt;/key&gt;
+    &lt;string&gt;Main&lt;/string&gt;
+
+    &lt;!-- ...with this! --&gt;
+    &lt;key&gt;UILaunchStoryboardName&lt;/key&gt;
+    &lt;string&gt;LaunchScreen&lt;/string&gt;
+</code></pre>
+<ol>
+<li>Add the following to your game's .csproj:</li>
+</ol>
+<pre><code class="language-xml">&lt;PropertyGroup&gt;
+  &lt;MtouchNoSymbolStrip&gt;true&lt;/MtouchNoSymbolStrip&gt;
+  &lt;MtouchExtraArgs&gt;--cxx --gcc_flags &quot;-L$(MSBuildProjectDirectory) -force_load $(MSBuildProjectDirectory)/libSDL3.a -force_load $(MSBuildProjectDirectory)/libFAudio.a -force_load $(MSBuildProjectDirectory)/libFNA3D.a -force_load $(MSBuildProjectDirectory)/libtheorafile.a -force_load $(MSBuildProjectDirectory)/libmojoshader.a $(MSBuildProjectDirectory)/libtvStubs.a -framework AudioToolbox -framework CoreBluetooth -framework CoreHaptics -framework OpenGLES -framework Metal&quot;&lt;/MtouchExtraArgs&gt;
+  &lt;_ExportSymbolsExplicitly&gt;false&lt;/_ExportSymbolsExplicitly&gt;
+  &lt;OptimizePNGs&gt;false&lt;/OptimizePNGs&gt;
+&lt;/PropertyGroup&gt;
+</code></pre>
+<ol>
+<li>Place all the native libraries in your project directory. They will be linked on build, as specified by the <code>MtouchExtraArgs</code> property you just added to the project.</li>
+<li>Add a project reference to FNA.Core.csproj, as per usual. And that's it for the project setup!</li>
+</ol>
+<h3 id="code-changes">Code Changes</h3>
+<h4 id="initialization">Initialization</h4>
+<p>To get your game booting on iOS/tvOS, update your <code>Main.cs</code> as follows:</p>
+<pre><code class="language-cs">    static void Main(string[] args)
+#if __IOS__ || __TVOS__
+    {
+        // Enable high DPI &quot;Retina&quot; support. Trust us, you'll want this.
+        SDL3.SDL.SDL_SetHint(&quot;FNA_GRAPHICS_ENABLE_HIGHDPI&quot;, &quot;1&quot;);
+
+        // Keep mouse and touch input separate.
+        SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_MOUSE_TOUCH_EVENTS, &quot;0&quot;);
+        SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_TOUCH_MOUSE_EVENTS, &quot;0&quot;);
+        SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_PEN_TOUCH_EVENTS, &quot;0&quot;);
+
+        // Don't let the accelerometer take over controller slot 0.
+        SDL3.SDL.SDL_SetHint(SDL3.SDL.SDL_HINT_ACCELEROMETER_AS_JOYSTICK, &quot;0&quot;);
+
+        realArgs = args;
+        SDL3.SDL.SDL_RunApp(0, IntPtr.Zero, FakeMain, IntPtr.Zero);
+    }
+
+    static string[] realArgs;
+
+    [ObjCRuntime.MonoPInvokeCallback(typeof(SDL3.SDL.SDL_main_func))]
+    static int FakeMain(int argc, IntPtr argv)
+    {
+        RealMain(realArgs);
+        return 0;
+    }
+
+    static void RealMain(string[] args)
+#endif
+    {
+        // your stuff
+    }
+</code></pre>
+<h4 id="background-safety">Background Safety</h4>
+<p>To avoid crashes when your app enters into a background state, add the following to your Game.Update method:</p>
+<pre><code class="language-cs">if (!IsActive)
+{
+    SuppressDraw();
+}
+</code></pre>
+<h4 id="retina-displays">Retina Displays</h4>
+<p>For your app to take full advantage of iPhone and iPad retina displays, you need to set your preferred backbuffer size to the full extent of the display. This should happen at the start of your game and in the <code>Window.OrientationChanged</code> event callback (if your app supports both portrait and landscape orientations).</p>
+<pre><code class="language-cs">graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+</code></pre>
+<p>On iOS, you may need to set fullscreen true if you run into issues with touches where the statusbar might normally be.</p>
+<h4 id="tvos-user-storage">tvOS User Storage</h4>
+<p>Note that tvOS does NOT have local storage available. There is temporary storage but it can be wiped by the OS at any time, so standard filesystem code will NOT work past a single instance of the program (this unfortunately includes <code>Microsoft.Xna.Framework.Storage</code>). To support save data you will need to implement some form of iCloud support, but on the bright side, this means iOS/tvOS can share that data. Our recommended solution for games with a guaranteed total save data size of &lt;1MB is to use <a href="https://github.com/TheSpydog/TinyKVS">TinyKVS</a>.</p>
+<p>If you're using iCloud and receive an error about iCloudContainerEnvironment when submitting to the App Store, add this to your Entitlements.plist for that submission:</p>
+<pre><code class="language-xml">&lt;key&gt;com.apple.developer.icloud-container-environment&lt;/key&gt;
+&lt;array&gt;
+  &lt;string&gt;Production&lt;/string&gt;
+&lt;/array&gt;
+</code></pre>
+<h3 id="content-changes">Content Changes</h3>
+<p>All your game assets (e.g. your Content/ folder) must be placed inside the Resources/ folder in your project directory. (On tvOS you will need to add this folder manually.) This will ensure they are copied into the app bundle.</p>
+<p>If you load any resources yourself via a FileStream, the stream must have a file access parameter of <code>FileAccess.Read</code> or you'll get a System.UnauthorizedAccessException.</p>
+<h4 id="texture-compression">Texture Compression</h4>
+<p>iOS/tvOS do NOT support DXT compression, so you will want to build uncompressed textures at compile time to avoid our fallback decompressor, which wastes lots of time and memory. We are open to considering other texture formats (namely, those supported by <a href="https://github.com/BinomialLLC/basis_universal">Basis</a>) once we have active use cases to look at.</p>
+<h3 id="running-your-app">Running Your App</h3>
+<p>Deploying your app to a simulator or physical device can be a bit tricky, but thankfully the .NET documentation can walk you through the process. <a href="https://learn.microsoft.com/en-us/dotnet/maui/ios/cli?view=net-maui-8.0">Please see this page for instructions</a>, but <strong>skip to step 5 of the introduction</strong>, as the preceding steps are only applicable to MAUI apps.</p>
+<p>As you might expect, you can substitute <code>ios</code> for <code>tvos</code> in the build line when running a tvOS app.</p>
+<p>Note that to run your app in the iOS/tvOS simulators on an Intel-based Mac, you must include x86_64 builds of your native libraries. For the fnalibs, these are automatically generated by the build scripts when run with "ios-sim" or "tvos-sim".</p>
+<h2 id="debugging">Debugging</h2>
+<p>Debugging an FNA game running on a physical device is not yet supported due to bugs with Visual Studio Code's MAUI extension.</p>
+<h2 id="profiling">Profiling</h2>
+<p>See <a href="https://github.com/xamarin/xamarin-macios/wiki/Profiling">this wiki page</a> from the official repository for instructions on how to profile your app.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>
+<p>If you get a bunch of this spam in your terminal during the build process: <code>Requested but did not find extension point with identifier ... for extension ...</code> don't be alarmed. These messages, while annoying, are harmless and can be ignored.</p>
+</li>
+<li>
+<p>If you don't see any <code>Console.WriteLine</code> messages or exception logs in the Terminal, try checking the <code>Console</code> app on macOS. Select your iOS/tvOS device from the menu on the left, then add your app's name as a Process filter in the top-right. This should show you all the logs relevant to your app. (We're fairly certain the lack of messages is a .NET tooling bug, so hopefully this will be resolved in the future.)</p>
+</li>
+<li>
+<p>If .NET whines that it "Could not find any provisioning profiles for iOS", you need to create a dummy Xcode iOS project with the same bundle identifier, which will create a provisioning profile. Then you shouldn't need to touch the Xcode project ever again.</p>
+</li>
+<li>
+<p>If you're not getting any sound, flip the ringer switch on the side of the phone to be unmuted. When you set your phone to silent, it mutes all sound from games, unlike other app types (such as media players).</p>
+</li>
+<li>
+<p>If you get a DllNotFoundException from a native library at runtime, make sure to include the native library in the <code>MtouchExtraArgs</code> property, alongside the fnalibs, like so: <code>-force_load $(MSBuildProjectDirectory)/{your_library}.a</code></p>
+</li>
+<li>
+<p>If a tvOS build fails because the linker complains about an "undefined symbol", that could mean one of two things...</p>
+<ol>
+<li>You forgot to add a native library to the <code>MtouchExtraArgs</code> property, as described earlier.</li>
+<li>There is an <code>extern</code> method somewhere in your code (or in the fnalibs) that refers to a function not defined for the tvOS platform. If it's a problem with one of the fnalibs, file an issue and we can take a look. If it's in your code, consider removing the extern declaration or wrapping it inside <code>#if !__TVOS__</code>.</li>
+</ol>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Appendix-B%3A-FNA-on-Consoles/" class="btn btn-neutral float-left" title="Appendix B: FNA on Consoles"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Appendix-D%3A-MonoGame/" class="btn btn-neutral float-right" title="Appendix D: MonoGame Compatibility">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Appendix-B%3A-FNA-on-Consoles/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Appendix-D%3A-MonoGame/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

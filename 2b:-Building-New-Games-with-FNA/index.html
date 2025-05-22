@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>2b: Building New Games with FNA - FNA Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "2b: Building New Games with FNA";
+        var mkdocs_page_input_path = "2b:-Building-New-Games-with-FNA.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../1%3A-Setting-Up-FNA/">1: Setting Up FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2a%3A-Building-XNA-Games-with-FNA/">2a: Building XNA Games with FNA</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">2b: Building New Games with FNA</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#before-you-start">Before You Start</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-xna">What is XNA?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-fna">What is FNA?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#your-first-game">Your First Game</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-first-program">The First Program</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-first-game-object">The First Game Object</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-first-input">The First Input</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-first-sprite">The First Sprite</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-first-sound">The First Sound</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-first-song">The First Song</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-first-video">The First Video</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-first-save">The First Save</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-first-effect">The First Effect</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3%3A-Distributing-FNA-Games/">3: Distributing FNA Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4%3A-FNA-and-Windows-API/">4: FNA and Windows API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../5%3A-FNA-Extensions/">5: FNA Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../8%3A-Contributing-to-FNA/">8: Contributing to FNA</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-A%3A-NativeAOT-on-PC/">Appendix A: NativeAOT on PC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-B%3A-FNA-on-Consoles/">Appendix B: FNA on Consoles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-C%3A-FNA-on-Apple-Platforms/">Appendix C: FNA on Apple Platforms</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-D%3A-MonoGame/">Appendix D: MonoGame Compatibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">2b: Building New Games with FNA</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/2b:-Building-New-Games-with-FNA.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="2b-building-new-games-with-fna">2b: Building New Games with FNA</h1>
+<h2 id="before-you-start">Before You Start</h2>
+<p>This is strictly a tutorial about using FNA. It is NOT a C# tutorial! If you are learning C# for the first time, use Microsoft's official <a href="https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/intro-to-csharp/">Introduction to C#</a> on MSDN first before continuing on.</p>
+<p>Also, be sure to finish <a href="../1%3A-Setting-Up-FNA/">Page 1</a> before starting this page!</p>
+<h2 id="what-is-xna">What is XNA?</h2>
+<p>XNA was, at its core, the software equivalent of an 80's Saturday morning cartoon based on a toy line: A massive advertisement masquerading as a real product. It was built to advertise many new (at the time) products in development at Microsoft:</p>
+<ul>
+<li>C# 2.0</li>
+<li>Direct3D Effects Framework</li>
+<li>XACT Audio Creation Tool</li>
+<li>XInput and the Xbox 360 Controller</li>
+<li>Xbox 360 + Windows Media Center</li>
+</ul>
+<p>From 2006 to 2010, Microsoft maintained XNA as a means of allowing independent game developers to ship small games written in C# on Xbox 360, via the "Xbox Live Indie Games" marketplace. The final XNA release also supported building for Windows Phone 7 devices.</p>
+<p>As for the XNA API, it was largely a C# wrapper for various DirectX components, but not quite all of them - many features are unavailable in favor of the aforementioned new-fangled DirectX products. For example, while there is a <code>GraphicsDevice</code> class that effectively acts as a 1:1 map of <code>ID3D10Device</code>, notably missing is support for low-level shaders and constant buffers; instead you are expected to use Effects for shader support.</p>
+<p>XNA was officially discontinued in 2012, and the Xbox Live Indie Games marketplace was shut down on November 2017.</p>
+<h2 id="what-is-fna">What is FNA?</h2>
+<p><a href="http://fna-xna.github.io">FNA</a> is a preservation project designed to accurately reimplement the XNA runtime libraries. When you have an XNA game, you should be able to take the source, compile it against FNA, and have a fully-functioning port. At its core, FNA is a portability library, but many continue to develop new games with FNA. This tutorial will help you make your own FNA games, without needing XNA as a prerequisite. If you are bringing an existing XNA game to FNA, follow <a href="../2a%3A-Building-XNA-Games-with-FNA/">this wiki page</a> instead.</p>
+<h2 id="your-first-game">Your First Game</h2>
+<p>See <a href="../1%3A-Setting-Up-FNA/#chapter-5-creating-new-projects">Page 1</a> for a quick refresher on making new projects. Once you have a project made, you can then proceed:</p>
+<h2 id="the-first-program">The First Program</h2>
+<p>This is the smallest possible program using the framework portion of XNA:</p>
+<pre><code class="language-cs">using System;
+using Microsoft.Xna.Framework;
+
+static class Program
+{
+    [STAThread]
+    static void Main(string[] args)
+    {
+        using (Game g = new Game())
+        {
+            new GraphicsDeviceManager(g);
+            g.Run();
+        }
+    }
+}
+</code></pre>
+<p>This should compile into a folder like <code>bin/Debug/</code>. Next to your executable, you will put the native libraries you downloaded earlier into this folder. You only need to worry about the libraries for your development platform; the rest will be for when you <a href="../3%3A-Distributing-FNA-Games/">distribute your game</a>. For example, if you're building an AnyCPU program on Windows x64, you would take the contents of the native library archive's <code>x64</code> folder and put them next to your exe.</p>
+<p>When using a developer environment on macOS, you will want to add an environment variable that sets <code>DYLD_LIBRARY_PATH=./osx/</code> (or wherever your dylib files are), so that the IDE's runtime environment will find the fnalibs binaries.</p>
+<p>When running this program, you might see some random trash in the window; that is most likely old graphics memory from another program you were running. Aside from that, the game is fully functional; it is reading input, running updates, and presenting frames to the window. But if this is the whole program, where do we put the rest of the game?</p>
+<h2 id="the-first-game-object">The First Game Object</h2>
+<p>The trick is that you're not going to create a <code>Game</code> directly. Instead, you're going to inherit it!</p>
+<pre><code class="language-cs">using System;
+using Microsoft.Xna.Framework;
+
+class FNAGame : Game
+{
+    [STAThread]
+    static void Main(string[] args)
+    {
+        using (FNAGame g = new FNAGame())
+        {
+            g.Run();
+        }
+    }
+
+    private FNAGame()
+    {
+        // This gets assigned to something internally, don't worry...
+        new GraphicsDeviceManager(this);
+    }
+}
+</code></pre>
+<p>But again, there's still no place to put the game. That's because <code>Game</code> has several <code>protected</code> methods that you are meant to implement. Here's what it looks like with the most commonly-used methods:</p>
+<pre><code class="language-cs">using System;
+using Microsoft.Xna.Framework;
+
+class FNAGame : Game
+{
+    [STAThread]
+    static void Main(string[] args)
+    {
+        using (FNAGame g = new FNAGame())
+        {
+            g.Run();
+        }
+    }
+
+    private FNAGame()
+    {
+        GraphicsDeviceManager gdm = new GraphicsDeviceManager(this);
+
+        // Typically you would load a config here...
+        gdm.PreferredBackBufferWidth = 1280;
+        gdm.PreferredBackBufferHeight = 720;
+        gdm.IsFullScreen = false;
+        gdm.SynchronizeWithVerticalRetrace = true;
+    }
+
+    protected override void Initialize()
+    {
+        /* This is a nice place to start up the engine, after
+         * loading configuration stuff in the constructor
+         */
+        base.Initialize();
+    }
+
+    protected override void LoadContent()
+    {
+        // Load textures, sounds, and so on in here...
+        base.LoadContent();
+    }
+
+    protected override void UnloadContent()
+    {
+        // Clean up after yourself!
+        base.UnloadContent();
+    }
+
+    protected override void Update(GameTime gameTime)
+    {
+        // Run game logic in here. Do NOT render anything here!
+        base.Update(gameTime);
+    }
+
+    protected override void Draw(GameTime gameTime)
+    {
+        // Render stuff in here. Do NOT run game logic in here!
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+        base.Draw(gameTime);
+    }
+}
+</code></pre>
+<h2 id="the-first-input">The First Input</h2>
+<p>It's not a game without input, right? FNA exposes <code>GamePad</code>, <code>Keyboard</code>, and <code>Mouse</code> for user input. There is also a <code>Microsoft.Xna.Framework.Input.Touch</code> namespace for touch screen support.</p>
+<p>Input isn't terribly complicated; you store two copies of input state, one for current input and another for previous input. This lets you detect presses and releases, in addition to just checking for a button being down:</p>
+<pre><code class="language-cs">using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+
+class FNAGame : Game
+{
+    [STAThread]
+    static void Main(string[] args)
+    {
+        using (FNAGame g = new FNAGame())
+        {
+            g.Run();
+        }
+    }
+
+    private KeyboardState keyboardPrev = new KeyboardState();
+    private MouseState mousePrev = new MouseState();
+    private GamePadState gpPrev = new GamePadState();
+
+    private FNAGame()
+    {
+        new GraphicsDeviceManager(this);
+    }
+
+    protected override void Update(GameTime gameTime)
+    {
+        // Poll input
+        KeyboardState keyboardCur = Keyboard.GetState();
+        MouseState mouseCur = Mouse.GetState();
+        GamePadState gpCur = GamePad.GetState(PlayerIndex.One);
+
+        // Check for presses
+        if (keyboardCur.IsKeyDown(Keys.Space) &amp;&amp; keyboardPrev.IsKeyUp(Keys.Space))
+        {
+            System.Console.WriteLine(&quot;Space bar was pressed!&quot;);
+        }
+        if (mouseCur.RightButton == ButtonState.Released &amp;&amp; mousePrev.RightButton == ButtonState.Pressed)
+        {
+            System.Console.WriteLine(&quot;Right mouse button was released!&quot;);
+        }
+        if (gpCur.Buttons.A == ButtonState.Pressed &amp;&amp; gpPrev.Buttons.A == ButtonState.Pressed)
+        {
+            System.Console.WriteLine(&quot;A button is being held!&quot;);
+        }
+
+        // Current is now previous!
+        keyboardPrev = keyboardCur;
+        mousePrev = mouseCur;
+        gpPrev = gpCur;
+
+        base.Update(gameTime);
+    }
+
+    protected override void Draw(GameTime gameTime)
+    {
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+        base.Draw(gameTime);
+    }
+}
+</code></pre>
+<p>Be sure to read all of the input APIs for more details! You may also be interested in some <a href="../5%3A-FNA-Extensions/">extensions to the XNA spec</a> that improve input support in FNA.</p>
+<h2 id="the-first-sprite">The First Sprite</h2>
+<p>Finally, some graphics! In XNA, there is a class called <code>SpriteBatch</code> that makes sprite drawing relatively easy. Combine that with your own textures and you have the foundation of a 2D renderer.</p>
+<p>This sample loads a PNG named "FNATexture", located in a "Content" folder, and renders it with a SpriteBatch:</p>
+<pre><code class="language-cs">using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+class FNAGame : Game
+{
+    [STAThread]
+    static void Main(string[] args)
+    {
+        using (FNAGame g = new FNAGame())
+        {
+            g.Run();
+        }
+    }
+
+    private SpriteBatch batch;
+    private Texture2D texture;
+
+    private FNAGame()
+    {
+        new GraphicsDeviceManager(this);
+
+        // All content loaded will be in a &quot;Content&quot; folder
+        Content.RootDirectory = &quot;Content&quot;;
+    }
+
+    protected override void LoadContent()
+    {
+        // Create the batch...
+        batch = new SpriteBatch(GraphicsDevice);
+
+        // ... then load a texture from ./Content/FNATexture.png
+        texture = Content.Load&lt;Texture2D&gt;(&quot;FNATexture&quot;);
+    }
+
+    protected override void UnloadContent()
+    {
+        batch.Dispose();
+        texture.Dispose();
+    }
+
+    protected override void Draw(GameTime gameTime)
+    {
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+
+        // Draw the texture to the corner of the screen
+        batch.Begin();
+        batch.Draw(texture, Vector2.Zero, Color.White);
+        batch.End();
+
+        base.Draw(gameTime);
+    }
+}
+</code></pre>
+<p>If all went well, the PNG you chose should now be displayed! When drawing sprites, be absolutely sure that you draw as many as you possibly can before calling <code>End()</code>; batches are meant to be large, singular groups rather than lots of small, fragmented groups. The more you put in a single batch, the better your program will perform.</p>
+<p>And whatever you do, do NOT use <code>SpriteSortMode.Immediate</code>!</p>
+<h2 id="the-first-sound">The First Sound</h2>
+<p>In addition to XACT, there is also a <code>SoundEffect</code> API available. It's as simple as loading a .wav file and mashing <code>Play()</code>:</p>
+<pre><code class="language-cs">using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Input;
+
+class FNAGame : Game
+{
+    [STAThread]
+    static void Main(string[] args)
+    {
+        using (FNAGame g = new FNAGame())
+        {
+            g.Run();
+        }
+    }
+
+    private SoundEffect sound;
+    private KeyboardState keyboardPrev = new KeyboardState();
+
+    private FNAGame()
+    {
+        new GraphicsDeviceManager(this);
+
+        // All content loaded will be in a &quot;Content&quot; folder
+        Content.RootDirectory = &quot;Content&quot;;
+    }
+
+    protected override void LoadContent()
+    {
+        // Sound is ./Content/FNASound.wav
+        sound = Content.Load&lt;SoundEffect&gt;(&quot;FNASound&quot;);
+    }
+
+    protected override void UnloadContent()
+    {
+        sound.Dispose();
+    }
+
+    protected override void Update(GameTime gameTime)
+    {
+        KeyboardState keyboardCur = Keyboard.GetState();
+
+        if (keyboardCur.IsKeyDown(Keys.Space) &amp;&amp; keyboardPrev.IsKeyUp(Keys.Space))
+        {
+            sound.Play();
+        }
+
+        keyboardPrev = keyboardCur;
+    }
+
+    protected override void Draw(GameTime gameTime)
+    {
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+        base.Draw(gameTime);
+    }
+}
+</code></pre>
+<p>There is lots of deeper functionality, including instance management, 3D audio APIs, and even a streaming sound object, useful for streaming from larger files (for example, sending decoded data from an Ogg Vorbis music file).</p>
+<h2 id="the-first-song">The First Song</h2>
+<p>XNA includes a <code>Media</code> namespace, which includes support for basic playback of music and video files. FNA supports Ogg Vorbis and QOA for the <code>Song</code> implementation:</p>
+<pre><code class="language-cs">using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
+
+class FNAGame : Game
+{
+    [STAThread]
+    static void Main(string[] args)
+    {
+        using (FNAGame g = new FNAGame())
+        {
+            g.Run();
+        }
+    }
+
+    private Song song;
+
+    private FNAGame()
+    {
+        new GraphicsDeviceManager(this);
+
+        // All content loaded will be in a &quot;Content&quot; folder
+        Content.RootDirectory = &quot;Content&quot;;
+    }
+
+    protected override void LoadContent()
+    {
+        // Song is ./Content/FNASong.ogg
+        song = Content.Load&lt;Song&gt;(&quot;FNASong&quot;);
+    }
+
+    protected override void UnloadContent()
+    {
+        song.Dispose();
+    }
+
+    protected override void Update(GameTime gameTime)
+    {
+        // Just keep playing the song over and over
+        if (MediaPlayer.State == MediaState.Stopped)
+        {
+            MediaPlayer.Play(song);
+        }
+        base.Update(gameTime);
+    }
+
+    protected override void Draw(GameTime gameTime)
+    {
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+        base.Draw(gameTime);
+    }
+}
+</code></pre>
+<h2 id="the-first-video">The First Video</h2>
+<p><code>Video</code> objects are a fair bit more involved than <code>Song</code>. In addition to playing the sound, a <code>VideoPlayer</code> will provide the frames in the form of a texture, which you can then render however you like:</p>
+<pre><code class="language-cs">using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Graphics;
+
+class FNAGame : Game
+{
+    [STAThread]
+    static void Main(string[] args)
+    {
+        using (FNAGame g = new FNAGame())
+        {
+            g.Run();
+        }
+    }
+
+    private GraphicsDeviceManager gdm;
+    private Video video;
+    private VideoPlayer videoPlayer;
+    private SpriteBatch batch;
+
+    private FNAGame()
+    {
+        gdm = new GraphicsDeviceManager(this);
+
+        // All content loaded will be in a &quot;Content&quot; folder
+        Content.RootDirectory = &quot;Content&quot;;
+    }
+
+    protected override void LoadContent()
+    {
+        // Video is ./Content/FNAVideo.ogv
+        video = Content.Load&lt;Video&gt;(&quot;FNAVideo&quot;);
+        batch = new SpriteBatch(GraphicsDevice);
+
+        gdm.PreferredBackBufferWidth = video.Width;
+        gdm.PreferredBackBufferHeight = video.Height;
+        gdm.ApplyChanges();
+
+        // Just loop the video over and over
+        videoPlayer = new VideoPlayer();
+        videoPlayer.IsLooped = true;
+        videoPlayer.Play(video);
+    }
+
+    protected override void UnloadContent()
+    {
+        batch.Dispose();
+        videoPlayer.Dispose();
+        video = null;
+    }
+
+    protected override void Draw(GameTime gameTime)
+    {
+        // Draw the video frame to the window, which should be the same size
+        batch.Begin(SpriteSortMode.Deferred, BlendState.Opaque);
+        batch.Draw(videoPlayer.GetTexture(), Vector2.Zero, Color.White);
+        batch.End();
+        base.Draw(gameTime);
+    }
+}
+</code></pre>
+<h2 id="the-first-save">The First Save</h2>
+<p>XNA provides two filesystem APIs: <code>TitleContainer</code> and <code>StorageContainer</code>. <code>TitleContainer</code> is how you should open files in the game folder (provided <code>Content.Load()</code> does not do what you want), and is pretty much exactly the same as <code>File.OpenRead</code>. <code>StorageContainer</code> is a lot more involved, however:</p>
+<pre><code class="language-cs">using System;
+using Microsoft.Xna.Framework.Storage;
+
+void DoStorageContainerThing()
+{
+    IAsyncResult result;
+
+    result = StorageDevice.BeginShowSelector(null, null);
+    while (!result.IsCompleted)
+    {
+        // Just hang out for a bit...
+        System.Threading.Thread.Sleep(1);
+    }
+    StorageDevice device = StorageDevice.EndShowSelector(result);
+
+    result = device.BeginOpenContainer(&quot;SaveData&quot;, null, null);
+    while (!result.IsCompleted)
+    {
+        // Just hang out for a bit...
+        System.Threading.Thread.Sleep(1);
+    }
+    StorageContainer container = device.EndOpenContainer(result);
+
+    // Do stuff!
+
+    // Clean up after yourself! Maybe keep `device` from getting collected.
+    container.Dispose();
+}
+</code></pre>
+<p>From there, <code>container</code>'s API is self-explanatory. There are Create/Delete/Exists/Open/GetNames APIs for directories and files. Pretty much what you'd expect!</p>
+<p>The container's path is <code>$SAVELOC/$CONTAINERNAME/$PLAYERINDEX</code>:</p>
+<ul>
+<li><code>$SAVELOC</code> looks something like this... and before you ask, yes, XNA really based the save folder on the EXE name:</li>
+</ul>
+<pre><code class="language-cs">string platform = SDL.SDL_GetPlatform();
+string exeName = Path.GetFileNameWithoutExtension(
+    AppDomain.CurrentDomain.FriendlyName
+).Replace(&quot;.vshost&quot;, &quot;&quot;);
+if (platform.Equals(&quot;Windows&quot;))
+{
+    return Path.Combine(
+        Environment.GetFolderPath(
+            Environment.SpecialFolder.MyDocuments
+        ),
+        &quot;SavedGames&quot;,
+        exeName
+    );
+}
+if (platform.Equals(&quot;Mac OS X&quot;))
+{
+    string osConfigDir = Environment.GetEnvironmentVariable(&quot;HOME&quot;);
+    if (String.IsNullOrEmpty(osConfigDir))
+    {
+        return &quot;.&quot;; // Oh well.
+    }
+    return Path.Combine(
+        osConfigDir,
+        &quot;Library/Application Support&quot;,
+        exeName
+    );
+}
+if (    platform.Equals(&quot;Linux&quot;) ||
+    platform.Equals(&quot;FreeBSD&quot;) ||
+    platform.Equals(&quot;OpenBSD&quot;) ||
+    platform.Equals(&quot;NetBSD&quot;)   )
+{
+    string osConfigDir = Environment.GetEnvironmentVariable(&quot;XDG_DATA_HOME&quot;);
+    if (String.IsNullOrEmpty(osConfigDir))
+    {
+        osConfigDir = Environment.GetEnvironmentVariable(&quot;HOME&quot;);
+        if (String.IsNullOrEmpty(osConfigDir))
+        {
+            return &quot;.&quot;; // Oh well.
+        }
+        osConfigDir += &quot;/.local/share&quot;;
+    }
+    return Path.Combine(osConfigDir, exeName);
+}
+return SDL.SDL_GetPrefPath(null, exeName);
+</code></pre>
+<ul>
+<li><code>$CONTAINERNAME</code> is the name you passed to <code>BeginOpenContainer</code>.</li>
+<li><code>$PLAYERINDEX</code> is either <code>AllPlayers</code> if you didn't pass a PlayerIndex, or <code>Player1</code> through <code>Player4</code>.</li>
+</ul>
+<h2 id="the-first-effect">The First Effect</h2>
+<p>NOTE: This is an advanced subject! You may want to read the <a href="https://docs.microsoft.com/en-us/windows/win32/direct3d9/dx9-graphics-reference-effects">official Effects documentation</a> first.</p>
+<p>XNA and FNA use Direct3D Effects for shader support. Effects are groups of HLSL shaders bundled together into one file, which can be executed in separate subgroups called "techniques" and "passes". The XNA API is slightly dumbed down compared to the stock Effects API:</p>
+<pre><code class="language-cs">using Microsoft.Xna.Framework.Graphics;
+
+// Effects can be loaded as content!
+Effect effect = Content.Load&lt;Effect&gt;(&quot;FNAEffect&quot;);
+
+// You can set parameters...
+effect.Parameters[&quot;MadeUpParameter&quot;].SetValue(0.0f);
+
+// Set techniques...
+effect.CurrentTechnique = effect.Techniques[&quot;MadeUpTechnique&quot;];
+
+// ... and then render each pass in the technique!
+foreach (EffectPass p in effect.CurrentTechnique.Passes)
+{
+    p.Apply(); // Sets the shaders, passes the parameters
+    GraphicsDevice.DrawIndexedPrimitives(...);
+}
+
+// Clean up after yourself!
+effect.Dispose();
+</code></pre>
+<p>XNA has multiple effects built in, for those who just want basic rendering without having to write shaders. Examples include <code>BasicEffect</code>, <code>AlphaTestEffect</code>, and <code>EnvironmentMapEffect</code>.</p>
+<p>When writing your own Effects, you must precompile them first. This is done with <code>FXC</code>, the Microsoft DirectX Shader Compiler, which you can find in the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=6812">DirectX SDK</a>. To compile .fx files:</p>
+<pre><code class="language-dos">fxc.exe /T fx_2_0 FNAEffect.fx /Fo FNAEffect.fxb
+</code></pre>
+<p>Note that FXC works with Wine, so on Linux and macOS you can still develop shaders by calling <code>wine fxc.exe</code>.</p>
+<p>To see some examples of .fx files, look at the <a href="https://github.com/FNA-XNA/FNA/tree/master/src/Graphics/Effect/StockEffects/HLSL">stock effects</a>!</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2a%3A-Building-XNA-Games-with-FNA/" class="btn btn-neutral float-left" title="2a: Building XNA Games with FNA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../3%3A-Distributing-FNA-Games/" class="btn btn-neutral float-right" title="3: Distributing FNA Games">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../2a%3A-Building-XNA-Games-with-FNA/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../3%3A-Distributing-FNA-Games/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

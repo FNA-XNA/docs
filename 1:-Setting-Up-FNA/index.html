@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>1: Setting Up FNA - FNA Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1: Setting Up FNA";
+        var mkdocs_page_input_path = "1:-Setting-Up-FNA.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">1: Setting Up FNA</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#chapter-1a-linux-setup">Chapter 1a: Linux Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chapter-1b-windows-setup">Chapter 1b: Windows Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chapter-2-visual-studio-code-extensions">Chapter 2: Visual Studio Code Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chapter-3-download-and-update-fna">Chapter 3: Download and Update FNA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-clone-fna">Step 1: Clone FNA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-download-native-libraries">Step 2: Download Native Libraries</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-update-fna">Step 3: Update FNA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-4-join-the-fna-discord">Step 4: Join the FNA Discord</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chapter-4-building-old-visual-studio-projects">Chapter 4: Building Old Visual Studio Projects</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chapter-5-creating-new-projects">Chapter 5: Creating New Projects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#net-framework-fixes">.NET Framework Fixes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#net-core-fixes">.NET Core Fixes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#visual-studio-anycpu-fix">Visual Studio AnyCPU Fix</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2a%3A-Building-XNA-Games-with-FNA/">2a: Building XNA Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2b%3A-Building-New-Games-with-FNA/">2b: Building New Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3%3A-Distributing-FNA-Games/">3: Distributing FNA Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4%3A-FNA-and-Windows-API/">4: FNA and Windows API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../5%3A-FNA-Extensions/">5: FNA Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../8%3A-Contributing-to-FNA/">8: Contributing to FNA</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-A%3A-NativeAOT-on-PC/">Appendix A: NativeAOT on PC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-B%3A-FNA-on-Consoles/">Appendix B: FNA on Consoles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-C%3A-FNA-on-Apple-Platforms/">Appendix C: FNA on Apple Platforms</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-D%3A-MonoGame/">Appendix D: MonoGame Compatibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1: Setting Up FNA</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/1:-Setting-Up-FNA.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-setting-up-fna">1: Setting Up FNA</h1>
+<p>This page has two parts: The first sets up the FNA team's recommended development environment, and the second prepares FNA itself. If you already have a development environment you like, you can skip to the <a href="#chapter-3-download-and-update-fna">Download FNA section</a> if you want, but note that our environment prepares you for <a href="../3%3A-Distributing-FNA-Games/#steam-deck-remote-debugging">remote debugging on Steam Deck</a>.</p>
+<h2 id="chapter-1a-linux-setup">Chapter 1a: Linux Setup</h2>
+<p>The Linux development environment for FNA is supported on all distributions with Flatpak support, including SteamOS! (But, if you absolutely <em>must</em> know, the FNA team uses <a href="https://fedoraproject.org/workstation/">Fedora Workstation</a>.)</p>
+<p>You may be able to find VSCode and the .NET SDKs via apps like KDE Discover, but it's easier to get everything at once with a single portable terminal command:</p>
+<pre><code class="language-bash">flatpak install com.visualstudio.code org.freedesktop.Sdk.Extension.mono6 org.freedesktop.Sdk.Extension.dotnet8
+</code></pre>
+<p>This installs VSCode, Mono, and .NET 8 all at once! If it asks which version of the SDKs to install, select 24.08.</p>
+<p>All that's left is to expose the .NET and Mono SDKs to VSCode's sandbox:</p>
+<pre><code class="language-bash">flatpak --user override --env=FLATPAK_ENABLE_SDK_EXT=mono6,dotnet8 com.visualstudio.code
+</code></pre>
+<h2 id="chapter-1b-windows-setup">Chapter 1b: Windows Setup</h2>
+<p>At minimum you will need to install the following software:</p>
+<ul>
+<li><a href="https://code.visualstudio.com/download">Visual Studio Code</a></li>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet">.NET 8 SDK</a></li>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net462-developer-pack-offline-installer">.NET 4.6.2 Developer Pack</a></li>
+<li><a href="https://www.mono-project.com/download/stable/#download-win">Mono for 64-bit Windows</a></li>
+</ul>
+<p>When setting up projects, Windows has an additional setup step. An important part of multiplatform development is filesystem case sensitivity - for example, on Linux and console platforms, "filename" is NOT the same as "FileName"! To ensure that developers follow this rule, it is recommended to make your project folders case sensitive on Windows.</p>
+<p>To do this, open a Command Prompt as Administrator, then (carefully!) enter the following command:</p>
+<pre><code>fsutil.exe file SetCaseSensitiveInfo &quot;C:\path\to\your\project&quot; enable
+</code></pre>
+<p>(While we're on the subject, remember <a href="../4%3A-FNA-and-Windows-API/#filesystem-portability">not to use <code>\\</code> for file paths</a>!)</p>
+<h2 id="chapter-2-visual-studio-code-extensions">Chapter 2: Visual Studio Code Extensions</h2>
+<p>After starting VSCode, hit Ctrl+Shift+X to go to the extensions view, then search for "C# Dev Kit". Install the kit from the marketplace and let it download all of the components. You should be able to clear the search results and see the various new installed extensions!</p>
+<p>Lastly, search for and install the "Mono Debug" extension.</p>
+<h2 id="chapter-3-download-and-update-fna">Chapter 3: Download and Update FNA</h2>
+<p>We strongly recommend using Git to download and update FNA. This tutorial will guide you through this process.</p>
+<p>If you are using an official zipped release of FNA, you only need to worry about step 2.</p>
+<h3 id="step-1-clone-fna">Step 1: Clone FNA</h3>
+<p>FNA uses several Git submodules to access the source to additional libraries, such as SDL3# and FAudio. To fully download FNA, add the <code>--recursive</code> parameter to your <code>git clone</code> command:</p>
+<pre><code class="language-bash">git clone --recursive https://github.com/FNA-XNA/FNA
+</code></pre>
+<p>This will clone FNA, then clone all of the submodules into the appropriate locations.</p>
+<h3 id="step-2-download-native-libraries">Step 2: Download Native Libraries</h3>
+<p>FNA uses several native libraries for various pieces of functionality, such as window management, input, and audio output.</p>
+<p>Here's what we use and why:</p>
+<ul>
+<li>SDL: Used for window management, input, image I/O, etc.</li>
+<li>FNA3D: Only required if you use the Graphics namespace.</li>
+<li>FAudio: Only required if you use the Audio or Media namespaces.</li>
+<li>Theorafile: Only required if you use VideoPlayer.</li>
+</ul>
+<p>You can find the libraries precompiled at our <a href="https://github.com/FNA-XNA/fnalibs-dailies/actions">fnalibs-dailies</a> repository. The "fnalibs" archive contains all of the native libraries for Windows and Linux.</p>
+<h3 id="step-3-update-fna">Step 3: Update FNA</h3>
+<p>It is <em>strongly</em> recommended that you update at least once a month. FNA releases are always on the first of every month, so you may simply want to make a calendar reminder for yourself to redownload FNA and fnalibs.zip at the beginning of each month.</p>
+<p>To update FNA, simply enter the FNA directory and run <code>git pull</code>. This will update to the latest FNA version, assuming you have not made local changes that conflict with the upstream changes. If you do have local changes, store them elsewhere and update, or revert your changes. (By the way, if you really do have local changes, please let us know! We want working code in upstream, and it will make your life easier, we promise!)</p>
+<p>Sometimes, FNA will update one of its submodules. When this occurs, run <code>git submodule update --init --recursive</code> and the submodules will fully update. Again, this assumes that you have not made local changes to the submodules.</p>
+<h3 id="step-4-join-the-fna-discord">Step 4: Join the FNA Discord</h3>
+<p>Aside from the commit log, a good place to keep an eye on major FNA changes is to join the <a href="https://discord.gg/2Gg8zju">Discord server</a>. This is where announcements and development discussion occur; in particular, there are channels allocated for general development, XNA preservation research, private console development, and experimental platform development.</p>
+<h2 id="chapter-4-building-old-visual-studio-projects">Chapter 4: Building Old Visual Studio Projects</h2>
+<p>For those using old pre-.NET Core solutions, you will want to make these changes to allow building your solution:</p>
+<ol>
+<li>Right click the C# Dev Kit extension and disable it, leaving all other extensions alone</li>
+<li>Right click the C# extension and select Extension Settings</li>
+<li>Search for useModernDotNet, uncheck Use Modern .NET</li>
+<li>Search for useOmnisharp, check Use Omnisharp</li>
+<li>Create a <code>.vscode</code> folder next to your solution, then add a <code>tasks.json</code> file containing something like this:</li>
+</ol>
+<pre><code class="language-json">{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    &quot;version&quot;: &quot;2.0.0&quot;,
+    &quot;tasks&quot;: [
+        {
+            &quot;label&quot;: &quot;build&quot;,
+            &quot;type&quot;: &quot;shell&quot;,
+            &quot;command&quot;: &quot;msbuild&quot;,
+            &quot;args&quot;: [
+                // Ask msbuild to generate full paths for file names.
+                &quot;/property:GenerateFullPaths=true&quot;,
+                &quot;/t:build&quot;,
+                // Do not generate summary otherwise it leads to duplicate errors in Problems panel
+                &quot;/consoleloggerparameters:NoSummary&quot;,
+                &quot;THIS_IS_YOUR_GAME.sln&quot;,
+                &quot;/p:Configuration=Debug&quot;
+            ],
+            &quot;group&quot;: &quot;build&quot;,
+            &quot;presentation&quot;: {
+                // Reveal the output only if unrecognized errors occur.
+                &quot;reveal&quot;: &quot;silent&quot;
+            },
+            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            &quot;problemMatcher&quot;: &quot;$msCompile&quot;
+        }
+    ]
+}
+</code></pre>
+<p>With this in place, you should now be able to build (<em>Terminal -&gt; Run Build Task</em>)!</p>
+<h2 id="chapter-5-creating-new-projects">Chapter 5: Creating New Projects</h2>
+<p>Making an FNA project is relatively simple for basically every C# IDE, though the process has changed in recent years:</p>
+<p>For Visual Studio Code, you can use the built-in terminal to navigate to your project folder, then run <code>dotnet new sln --name YourProjectName</code> to create a new solution, <code>dotnet new console --name YourProjectName</code> to create an empty project, and <code>dotnet sln add YourProjectName/YourProjectName.csproj</code> to add it to the solution. Visual Studio and MonoDevelop have New Solution wizards for creating empty C# projects.</p>
+<p>Once the empty project is created, you can go to the Solution Explorer and right click the solution, click "Add Existing Project", then add FNA (FNA.NetFramework.csproj for .NET Framework and Mono, FNA.Core.csproj for .NET 8, or FNA.csproj for old Visual Studio projects). You can then right click the empty project and add FNA as a Project Reference.</p>
+<p>For existing XNA projects, we recommend targeting .NET Framework and Mono for better compatibility. For new projects, we recommend .NET 8.</p>
+<h3 id="net-framework-fixes">.NET Framework Fixes</h3>
+<p>When targeting .NET Framework via Visual Studio Code, be sure to open <code>YourProjectName/YourProjectName.csproj</code> and change the target framework to <code>net4.0</code>! </p>
+<p>You'll also find that running/debugging takes a few more steps - we're lobbying to streamline this process, but if you want to get debugging ASAP, you can open the folder where your .sln file is, make a <code>.vscode/</code> folder, then rip off this <code>launch.json</code> file and place it in the <code>.vscode/</code> folder:</p>
+<pre><code class="language-json">{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;Launch&quot;,
+            &quot;type&quot;: &quot;mono&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;program&quot;: &quot;${workspaceRoot}/path/to/your/bin/Debug/net4.0/Game.exe&quot;,
+            &quot;cwd&quot;: &quot;${workspaceRoot}&quot;,
+            &quot;env&quot;: {
+                &quot;LD_LIBRARY_PATH&quot;: &quot;${workspaceRoot}/path/to/your/fnalibs/lib64/&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Attach&quot;,
+            &quot;type&quot;: &quot;mono&quot;,
+            &quot;request&quot;: &quot;attach&quot;,
+            &quot;address&quot;: &quot;localhost&quot;,
+            &quot;port&quot;: 55555
+        }
+    ]
+}
+</code></pre>
+<p>With this in place, you should now be able to launch the program after it's built (<em>Run -&gt; Start Debugging</em>, or F5!)!</p>
+<h3 id="net-core-fixes">.NET Core Fixes</h3>
+<p>DllMap is a critical component of .NET portability that maps native library names to appropriate equivalents on multiple platforms. For example, while Windows might look for <code>fmod_studio.dll</code>, Linux will instead look for <code>libfmodstudio.so.XX</code>, which is nontrivial for the runtime to figure out on its own. By adding a config file like <a href="https://github.com/FNA-XNA/FNA/blob/master/app.config">this one</a>, we're able to automatically map DLL names for all platforms without resorting to per-platform builds with customized DLL names.</p>
+<p>Shamefully, this is currently absent from .NET Core. We will continue to lobby for adding this feature back to modern .NET, but for now we have developed a workaround called <a href="https://github.com/FNA-XNA/FNA/blob/master/src/Utilities/FNADllMap.cs">FNADllMap</a>. We strongly encourage everyone to copy this file directly and add it to every single project, particularly those that use DllImport, so that all managed EXE/DLL files have a rough equivalent of real DllMap support.</p>
+<h3 id="visual-studio-anycpu-fix">Visual Studio AnyCPU Fix</h3>
+<p>For Visual Studio 2019 users, follow these additional steps to allow VS to build your project properly for 64-bit:</p>
+<ol>
+<li>In the Visual Studio toolbar, click on the Solution Platforms dropdown menu (where it says 'Any CPU'), and click on 'Configuration Manager...'</li>
+<li>In the Configuration Manager window that appears, change the 'Active solution platform' to x64. Notice that the referenced FNA project changes to x64, but your project remains 'Any CPU'</li>
+<li>Address this discrepancy by clicking on the platform dropdown for your project and clicking New</li>
+<li>In the New Project Platform dialog that appears, create a new platform using x64 from the dropdown. Copying settings from Any CPU is fine, and make sure the 'Create new solution platforms' is unchecked</li>
+</ol>
+<p>You can now build your project for x64!</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../0%3A-FAQ/" class="btn btn-neutral float-left" title="0: FAQ"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../2a%3A-Building-XNA-Games-with-FNA/" class="btn btn-neutral float-right" title="2a: Building XNA Games with FNA">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../0%3A-FAQ/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../2a%3A-Building-XNA-Games-with-FNA/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

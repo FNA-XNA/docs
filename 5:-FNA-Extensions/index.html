@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>5: FNA Extensions - FNA Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5: FNA Extensions";
+        var mkdocs_page_input_path = "5:-FNA-Extensions.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../1%3A-Setting-Up-FNA/">1: Setting Up FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2a%3A-Building-XNA-Games-with-FNA/">2a: Building XNA Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2b%3A-Building-New-Games-with-FNA/">2b: Building New Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3%3A-Distributing-FNA-Games/">3: Distributing FNA Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4%3A-FNA-and-Windows-API/">4: FNA and Windows API</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">5: FNA Extensions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#gamepad-extensions">GamePad Extensions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#getguidext">GetGUIDEXT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setlightbarext">SetLightBarEXT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#settriggervibrationext">SetTriggerVibrationEXT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#getgyroextgetaccelerometerext">GetGyroEXT/GetAccelerometerEXT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#button-extensions">Button Extensions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#content-extensions">Content Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#surfaceformat-extensions">SurfaceFormat Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fnaloggerext">FNALoggerEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#isborderlessext">IsBorderlessEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setstringmarkerext">SetStringMarkerEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getkeyfromscancodeext">GetKeyFromScancodeEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#textinputext">TextInputEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#clickedext">ClickedEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#isrelativemousemodeext">IsRelativeMouseModeEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#submitfloatbufferext">SubmitFloatBufferEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#texturedatafromstreamext">TextureDataFromStreamEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ddsfromstreamext">DDSFromStreamEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getformatsizeext-getblocksizesquaredext">GetFormatSizeEXT, GetBlockSizeSquaredEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setdatapointerext">SetDataPointerEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pointlistext">PointListEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getrendertargetsnoallocext">GetRenderTargetsNoAllocEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setaudiotrackext-setvideotrackext">SetAudioTrackEXT, SetVideoTrackEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fromuriext">FromUriEXT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fingeridext">FingerIdEXT</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../8%3A-Contributing-to-FNA/">8: Contributing to FNA</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-A%3A-NativeAOT-on-PC/">Appendix A: NativeAOT on PC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-B%3A-FNA-on-Consoles/">Appendix B: FNA on Consoles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-C%3A-FNA-on-Apple-Platforms/">Appendix C: FNA on Apple Platforms</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-D%3A-MonoGame/">Appendix D: MonoGame Compatibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix/Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5: FNA Extensions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/5:-FNA-Extensions.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="5-fna-extensions">5: FNA Extensions</h1>
+<p>FNA, in rare cases, will provide extensions to the XNA 4.0 Refresh specification in order to simplify often-unportable tasks, provide feature parity with other projects such as the MonoGame project, and so on.</p>
+<hr />
+<h3 id="gamepad-extensions">GamePad Extensions</h3>
+<p>The GamePad extensions are unique in that there are a <em>lot</em> of them (our policy is generally to not extend the spec unless it's a life-or-death situation) and that they are pretty much universally recommended to use, unlike the other extensions which generally exist for very specific use cases. FNA currently has the following extensions for controller support:</p>
+<h4 id="getguidext">GetGUIDEXT</h4>
+<p><code>public static string GetGUIDEXT(PlayerIndex playerIndex)</code> is a new method for <code>GamePad</code> that allows you to get the hardware GUID for a given controller. Since GUIDs are organized differently depending on the OS, we have abstracted the GUID string into a shortened, unified format that is consistent across operating systems.</p>
+<p>To use the GetGUIDEXT extension:</p>
+<pre><code class="language-cs">public MyControllerType GetControllerType(PlayerIndex index)
+{
+    /* Try to only do this once on initialization! It's slow! */
+    string guid = GamePad.GetGUIDEXT(index);
+    if (guid.Equals(&quot;4c05c405&quot;) || guid.Equals(&quot;4c05cc09&quot;))
+    {
+        return MyControllerType.PS4;
+    }
+    if (guid.Equals(&quot;4c05e60c&quot;))
+    {
+        return MyControllerType.PS5;
+    }
+    if (guid.Equals(&quot;7e050920&quot;) || guid.Equals(&quot;7e053003&quot;))
+    {
+        return MyControllerType.Nintendo;
+    }
+    return MyControllerType.Xbox;
+}
+</code></pre>
+<h4 id="setlightbarext">SetLightBarEXT</h4>
+<p><code>public static void SetLightBarEXT(PlayerIndex playerIndex, Color color)</code> is a new method for <code>GamePad</code> that allows you to set the color of the light bar on the DualShock 4 and DualSense controllers. There is a matching <code>bool HasLightBarEXT</code> property in <code>GamePadCapabilities</code>.</p>
+<p>To use the SetLightBarEXT extension:</p>
+<pre><code class="language-cs">public void UpdateLightBar()
+{
+    if (playerIsDead)
+    {
+        GamePad.SetLightBarEXT(index, Color.Red);
+    }
+    else
+    {
+        GamePad.SetLightBarEXT(index, Color.Green);
+    }
+}
+</code></pre>
+<h4 id="settriggervibrationext">SetTriggerVibrationEXT</h4>
+<p><code>public static bool SetTriggerVibrationEXT</code> is a new method for <code>GamePad</code> that allows setting the speed of motors specifically found in the triggers - this is found in the Xbox One controller, for example. There is a matching <code>bool HasTriggerVibrationMotorsEXT</code> property in <code>GamePadCapabilities</code>.</p>
+<p>The function is used in exactly the same way as <code>SetVibration</code>, so wherever you have a SetVibration in your game you will probably want a SetTriggerVibrationEXT call as well, should you choose to support trigger-specific haptics.</p>
+<h4 id="getgyroextgetaccelerometerext">GetGyroEXT/GetAccelerometerEXT</h4>
+<p><code>public static bool GetGyroEXT/GetAccelerometerEXT</code> are new methods for <code>GamePad</code> that poll the state of a gyro in a controller, should they exist (the PS4 and Switch controllers have them, for example). There are matching <code>bool HasGyroEXT/HasAccelerometerEXT</code> properties in <code>GamePadCapabilities</code>.</p>
+<p>To use the extensions:</p>
+<pre><code class="language-cs">public static void DoMotionControls()
+{
+    Vector3 gyro, accel;
+    GamePad.GetGyroEXT(PlayerIndex.One, out gyro);
+    GamePad.GetAccelerometerEXT(PlayerIndex.One, out accel);
+    // Have fun!
+}
+</code></pre>
+<h4 id="button-extensions">Button Extensions</h4>
+<p>A number of bitflags have been added to the <code>Buttons</code> enum - they are as follows:</p>
+<pre><code class="language-cs">Misc1EXT =      0x00000400,
+Paddle1EXT =    0x00010000,
+Paddle2EXT =    0x00020000,
+Paddle3EXT =    0x00040000,
+Paddle4EXT =    0x00080000,
+TouchPadEXT =   0x00100000
+</code></pre>
+<p>Polling these works the same way as the other buttons, call <code>GamePadState.IsButtonDown/IsButtonUp</code> to check for them. Note that we did NOT add properties to the GamePadButtons struct, nor did we add a new GamePadState struct, but we did add matching properties to <code>GamePadCapabilities</code>.</p>
+<h3 id="content-extensions">Content Extensions</h3>
+<p>Unlike XNA, <code>Content.Load&lt;&gt;</code> can also import raw (non-XNB) assets in various file formats. The list of supported formats for each content type is as follows:</p>
+<ul>
+<li>
+<p><strong>Effect:</strong> FXB</p>
+</li>
+<li>
+<p><strong>Song:</strong> OGG/OGA, QOA</p>
+</li>
+<li>
+<p><strong>SoundEffect:</strong> WAV</p>
+</li>
+<li>
+<p><strong>Texture2D:</strong> BMP, GIF, JPEG, PNG, TGA, TIFF, DDS, QOI</p>
+</li>
+<li>
+<p><strong>TextureCube:</strong> DDS</p>
+</li>
+<li>
+<p><strong>Video:</strong> OGG/OGV</p>
+</li>
+</ul>
+<h3 id="surfaceformat-extensions">SurfaceFormat Extensions</h3>
+<p>A handful of texture formats have been added for various reasons - they are listed below:</p>
+<ul>
+<li><code>ColorBgraEXT</code> allows the use of BGRA8 texture data, rather than SurfaceFormat.Color's RGBA8 format. This is likely only useful if you are preserving data packed by the XNA 3.1 content pipeline.</li>
+<li><code>ColorSrgbEXT</code> and <code>Dxt5SrgbEXT</code> expose sRGB colorspaces to Textures and RenderTargets, where supported.</li>
+<li><code>Bc7EXT</code> and <code>Bc7SrgbEXT</code> expose BC7 compression support, where supported.</li>
+</ul>
+<h3 id="fnaloggerext">FNALoggerEXT</h3>
+<p><code>public static class Microsoft.Xna.Framework.FNALoggerEXT</code> is a new class that exposes FNA's internal logging system. Simply assign the Log functions inside to use your own logging system, if desired.</p>
+<p>To use the FNALoggerEXT extension:</p>
+<pre><code class="language-cs">static void Main(string[] args)
+{
+    /* We recommend setting this before touching anything XNA-related! */
+    FNALoggerEXT.LogInfo = (msg) =&gt; MyLogger.Log(&quot;FNA&quot;, &quot;INFORMATION&quot;, msg);
+    FNALoggerEXT.LogWarn = (msg) =&gt; MyLogger.Log(&quot;FNA&quot;, &quot;WARNING&quot;, msg);
+    FNALoggerEXT.LogError = (msg) =&gt; MyLogger.Log(&quot;FNA&quot;, &quot;ERROR&quot;, msg);
+}
+</code></pre>
+<h3 id="isborderlessext">IsBorderlessEXT</h3>
+<p><code>public bool IsBorderlessEXT { get; set; }</code> is a new property for <code>GameWindow</code> that gives you the ability to show/hide the window border without having to perform direct interop on the <code>Handle</code> pointer.</p>
+<p>To use the IsBorderlessEXT extension:</p>
+<pre><code class="language-cs">public void ApplyVideoSettings()
+{
+    graphicsDeviceManager.ApplyChanges();
+
+    /* We recommend setting this after calling ApplyChanges! */
+    game.Window.IsBorderlessEXT = wantsBorderless;
+}
+</code></pre>
+<h3 id="setstringmarkerext">SetStringMarkerEXT</h3>
+<p><code>public void SetStringMarker(string text)</code> is a new method for <code>GraphicsDevice</code> that abstracts access to functions like <code>glStringMarkerGREMEDY</code> and <code>D3DPERF_SetMarker</code>. It should only be accessed in a debug context!</p>
+<p>To use the SetStringMarkerEXT extension:</p>
+<pre><code class="language-cs">[Conditional(&quot;DEBUG&quot;)]
+public void GraphicsDebugString(string text)
+{
+    graphicsDevice.SetStringMarkerEXT(text);
+}
+
+public void DrawStuff()
+{
+    GraphicsDebugString(&quot;First set of polygons&quot;);
+    graphicsDevice.DrawIndexedPrimitives(...);
+    GraphicsDebugString(&quot;Second set of polygons&quot;);
+    graphicsDevice.DrawIndexedPrimitives(...);
+}
+</code></pre>
+<h3 id="getkeyfromscancodeext">GetKeyFromScancodeEXT</h3>
+<p><code>public static Keys GetKeyFromScancodeEXT(Keys scancode)</code> is a new method for <code>Keyboard</code> that translates a <code>Keys</code> value, interpreted as a scancode, into the actual <code>Keys</code> value based on the current keyboard layout. For example, on an AZERTY keyboard, GetKeyFromScancode(Keys.Q) will return Keys.A.</p>
+<p>If <a href="../7%3A-FNA-Environment-Variables/#fna_keyboard_use_scancodes">FNA_KEYBOARD_USE_SCANCODES</a> is enabled, the return value will always be the same as the input value.</p>
+<p>To use the GetKeyFromScancodeEXT extension:</p>
+<pre><code class="language-cs">private Keys PlayerForward;
+private Keys PlayerBackward;
+private Keys PlayerStrafeLeft;
+private Keys PlayerStrafeRight;
+private Keys PlayerUse;
+public void AssignDefaultKeys()
+{
+    // Typically you might just assign a Keys value directly. Not here!
+    PlayerForward =     Keyboard.GetKeyFromScancodeEXT(Keys.W);
+    PlayerBackward =    Keyboard.GetKeyFromScancodeEXT(Keys.S);
+    PlayerStrafeLeft =  Keyboard.GetKeyFromScancodeEXT(Keys.A);
+    PlayerStrafeRight = Keyboard.GetKeyFromScancodeEXT(Keys.D);
+    PlayerUse =         Keyboard.GetKeyFromScancodeEXT(Keys.E);
+}
+</code></pre>
+<h3 id="textinputext">TextInputEXT</h3>
+<p><code>public static class Microsoft.Xna.Framework.TextInputEXT</code> is a new class that partially abstracts text input event handling.</p>
+<p>To use the TextInputEXT extension:</p>
+<pre><code class="language-cs">using Microsoft.Xna.Framework.Input;
+
+private void OnTextInput(char c)
+{
+    if (c == (char) 22)
+    {
+        System.Console.WriteLine(&quot;PASTED: &quot; + SDL3.SDL.SDL_GetClipboardText());
+    }
+    System.Console.WriteLine(&quot;TEXT ENTERED: &quot; + c.ToString());
+}
+
+public void StartTextInput()
+{
+    TextInputEXT.TextInput += OnTextInput;
+    TextInputEXT.StartTextInput();
+}
+
+public void StopTextInput()
+{
+    TextInputEXT.StopTextInput();
+    TextInputEXT.TextInput -= OnTextInput;
+}
+</code></pre>
+<p>In addition to standard text input, the TextInput event can push one of a series of symbols to represent various text input actions:</p>
+<pre><code class="language-text">(char) 2 - Home
+(char) 3 - End
+(char) 8 - Backspace
+(char) 9 - Tab
+(char) 13 - Enter
+(char) 127 - Delete
+(char) 22 - Control+V (Paste operator)
+</code></pre>
+<h3 id="clickedext">ClickedEXT</h3>
+<p><code>public static Action&lt;int&gt; ClickedEXT</code> is a new event for Mouse that allows you to receive notifications when a mouse button is clicked. One of the main flaws of the XNA Mouse API is that you are only able to get the "current" state of the mouse buttons, but mouse button input is unique due to the various ways input events can be sent. Consider the following code:</p>
+<pre><code class="language-cs">// Accessible by the rest of the engine
+public bool ButtonDown { get; private set; }
+
+// Somewhere in the event loop...
+if (evt.type == MOUSEBUTTONDOWN)
+{
+    ButtonDown = true;
+}
+else if (evt.type == MOUSEBUTTONUP)
+{
+    ButtonDown = false;
+}
+
+// Somewhere in the game...
+if (Input.ButtonDown)
+{
+    // Stuff!
+}
+</code></pre>
+<p>For mouse input in particular it is surprisingly common for both a button down and a button up event to show up in a single frame, so when you poll for the "current" state, you miss out on at least one input change, leading to dropped input. This is far more noticeable when using a mouse that uses tap/touch events to send mouse buttons, rather than a physical button (for example, laptop trackpads).</p>
+<p>ClickedEXT will send a button index each time a mouse button is clicked:</p>
+<pre><code class="language-cs">// Reset this array at the end of each frame!
+private ButtonState[] mouseClicks = new ButtonState[5];
+private void OnClicked(int button)
+{
+    mouseClicks[button] = ButtonState.Pressed;
+}
+</code></pre>
+<p>This should be combined with the standard XNA Mouse API to get a fully accurate mouse button state:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">ClickedEXT</th>
+<th style="text-align: center;">GetState</th>
+<th style="text-align: center;">Final State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">Clicked, Pressing</td>
+</tr>
+<tr>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">Released</td>
+</tr>
+<tr>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">Clicked, Released</td>
+</tr>
+<tr>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">Pressing</td>
+</tr>
+</tbody>
+</table>
+<p>The following is a basic example of ClickedEXT combined with GetState:</p>
+<pre><code class="language-cs">// Using the code above...
+
+// ButtonState doesn't tell us enough, let's make our own!
+public enum InputState
+{
+    Released,
+    Pressing,
+    Clicked
+}
+public InputState LeftMouseButton { get; private set; }
+
+// GetState storage
+MouseState mPrevState, mState = new MouseState();
+
+public void UpdateInput()
+{
+    mPrevState = mState;
+    mState = Mouse.GetState();
+
+    // Easiest route is to 'or' the click with the current state
+    ButtonState leftButton = mState.LeftButton | mouseClicks[0];
+
+    if (leftButton == ButtonState.Released)
+    {
+        LeftMouseButton = InputState.Released;
+    }
+    else if (mPrevState.LeftButton == ButtonState.Released)
+    {
+        LeftMouseButton = InputState.Clicked;
+    }
+    else
+    {
+        LeftMouseButton = InputState.Pressing;
+    }
+
+    // Remember to clear your click storage each frame!
+    mouseClicks[0] = ButtonState.Released;
+}
+</code></pre>
+<p>Note that ClickedEXT can send multiple clicks for a single button if it is in fact clicked multiple times (for example, if the game hitches briefly and gives the user time to click repeatedly in one frame).</p>
+<h3 id="isrelativemousemodeext">IsRelativeMouseModeEXT</h3>
+<p><code>public static bool IsRelativeMouseModeEXT</code> is a new property for <code>Mouse</code> that allows you to change the behavior of <code>Mouse.GetState()</code> to get relative (rather than absolute) X/Y coordinates. As part of this, it also automatically locks the mouse to the window. This is particularly helpful for first-person games, where you would otherwise have to constantly call <code>Mouse.SetPosition()</code> to keep the mouse in place.</p>
+<p>To use the IsRelativeMouseModeEXT extension:</p>
+<pre><code class="language-cs">public static bool EnableMouseCapture()
+{
+    /* PSA: Please make mouse capture an option
+     * in your settings menu if it's not required!
+     * Also, maybe disable this when !IsActive.
+     */
+    Mouse.IsRelativeMouseModeEXT = true;
+}
+
+public static void UpdateMouseInput()
+{
+    Vector2 cursorChange;
+    CurrentMouseState = Mouse.GetState();
+#if FNA
+    // Yup, that's it!
+    cursorChange = new Vector2(CurrentMouseState.X, CurrentMouseState.Y);
+#else
+    // I don't feel so good...
+    cursorChange = new Vector2(
+        CurrentMouseState.X - screenCenter.X,
+        CurrentMouseState.Y - screenCenter.Y
+    );
+    Mouse.SetPosition(screenCenter.X, screenCenter.Y); // BARF
+#endif
+}
+</code></pre>
+<h3 id="submitfloatbufferext">SubmitFloatBufferEXT</h3>
+<p><code>public void SubmitFloatBufferEXT(float[] buffer)</code> is a new method for <code>DynamicSoundEffectInstance</code> that allows you to directly submit float samples to the source, without having to convert to signed 16-bit PCM data. Typically this is used to directly stream float samples that are often provided by default in audio decoders.</p>
+<p>This function is used exactly as the official <code>SubmitBuffer</code> method is used in XNA.</p>
+<h3 id="texturedatafromstreamext">TextureDataFromStreamEXT</h3>
+<p><code>public static void TextureDataFromStreamEXT(Stream stream, out int width, out int height, out byte[] pixels)</code> is a new method for Texture2D that functions similarly to <code>Texture2D.FromStream()</code>, except that it does not generate a Texture2D instance. This is a convenience function that will only decode the image data for you.</p>
+<h3 id="ddsfromstreamext">DDSFromStreamEXT</h3>
+<p><code>public static Texture DDSFromStreamEXT(GraphicsDevice graphicsDevice, Stream stream)</code> is a new method for Texture2D/TextureCube that functions similarly to <code>Texture2D.FromStream()</code>, but is specialized for loading DDS texture files. Currently this extension supports the Dxt1, Dxt3, Dxt5, ColorBgraEXT, and Dxt5SrgbEXT formats.</p>
+<p>This extension also allows loading DDS image files via the <code>Content.Load&lt;Texture2D/TextureCube&gt;()</code> methods.</p>
+<h3 id="getformatsizeext-getblocksizesquaredext">GetFormatSizeEXT, GetBlockSizeSquaredEXT</h3>
+<p>Two new methods for <code>Texture</code> are exposed to help with allocating texture staging memory.</p>
+<p>The <code>Texture.GetBlockSizeSquaredEXT</code> method allows querying the number of pixels in a block for compressed textures. You can use this in order to round sizes up/down to the nearest block, or to calculate how large a buffer needs to be for a compressed texture of a given size. Most compressed texture formats have a block size of <code>4</code> (and thus a <code>BlockSizeSquared</code> of <code>16</code>), but not all do. For formats that are not compressed, this method returns <code>1</code>.</p>
+<p>The <code>Texture.GetFormatSizeEXT</code> method allows querying the number of bytes in a single block (or texel, for formats where the block size is <code>1</code>). For the <code>Color</code> format, for example, this is <code>4</code>.</p>
+<p>By combining these two methods you can calculate the appropriate buffer size for any arbitrary GetData call, like so:</p>
+<pre><code class="language-csharp">var elementSize = Texture.GetFormatSizeEXT(texture.Format);
+var blockSizeSquared = Texture.GetBlockSizeSquaredEXT(texture.Format);
+var buffer = new byte[texture.Width * texture.Height * elementSize / blockSizeSquared];
+texture.GetData(buffer);
+</code></pre>
+<h3 id="setdatapointerext">SetDataPointerEXT</h3>
+<p><code>public void SetDataPointerEXT</code> is a new method for Buffer and Texture objects that lets you send data directly via IntPtrs rather than arrays. This is ideal for scenarios where you know your input data is valid and want to skip all the managed validation/marshaling that happens with the normal SetData functions.</p>
+<p>Be warned: When I say this skips all the validation, I mean it! This will crash if you don't know what you're doing!</p>
+<h3 id="pointlistext">PointListEXT</h3>
+<p><code>PointListEXT</code> is an additional enum value for PrimitiveType that allows for point rendering.</p>
+<p>While FNA supports rendering point vertex data, note that the feature is very strict - we do not expose <em>any</em> other aspect of point rendering that existed in XNA3 and older graphics APIs. Point sprites are always enabled, and you are expected to specify point size and manage min/max sizes either in your vertex data or vertex shader, whichever is more appropriate for your application.</p>
+<h3 id="getrendertargetsnoallocext">GetRenderTargetsNoAllocEXT</h3>
+<p><code>public int GetRenderTargetsNoAllocEXT(RenderTargetBinding[] output)</code> is a new method that acts similarly to GetRenderTargets, but allows for avoiding allocating a new array for each call:</p>
+<pre><code class="language-cs">RenderTargetBinding[] oldTargets = new RenderTargetBinding[0]; // Declared somewhere else, I hope...
+int oldTargetCount = currentDevice.GetRenderTargetsNoAllocEXT(null);
+Array.Resize(ref oldTargets, oldTargetCount);
+currentDevice.GetRenderTargetsNoAllocEXT(oldTargets);
+</code></pre>
+<h3 id="setaudiotrackext-setvideotrackext">SetAudioTrackEXT, SetVideoTrackEXT</h3>
+<p><code>public void SetAudioTrackEXT(int track)</code> and <code>public void SetVideoTrackEXT(int track)</code> are new methods for Video that enable support for multiple tracks in a single video file. This is useful for supporting multiple languages without having to duplicate video data.</p>
+<p>Note that this function may have some delay when set mid-stream, as the decoder may need to complete its current audio packet before moving to the new track. To ensure a 100% clean track, call this before calling <code>VideoPlayer.Play()</code>!</p>
+<p>Currently, you are only allowed to change audio tracks mid-stream when the channel count and sample rate match the previous track. Changing to a track with a different wave format is unsupported unless done before playback begins.</p>
+<p>Video tracks must match in width, height, and YUV format. Mixing image formats in a single file is unsupported.</p>
+<h3 id="fromuriext">FromUriEXT</h3>
+<p>This is a new method for <code>Video</code> that works exactly as <code>Song</code> does - see the Song API for details!</p>
+<h3 id="fingeridext">FingerIdEXT</h3>
+<p><code>public int GestureSample.FingerIdEXT</code> and <code>public int GestureSample.FingerId2EXT</code> are new properties for GestureSample that allow you to determine exactly which touch finger(s) were involved in the gesture. </p>
+<p>Note that <code>FingerId2EXT</code> is only used for <code>Pinch</code> and <code>PinchComplete</code> gestures, and it will have a value of -1 for any other gesture type.</p>
+<p>The following is a basic example of using these properties:</p>
+<pre><code class="language-cs">// Keep track of which fingers were used for these gestures
+private int DragFinger = -1;
+private int PinchFinger1 = -1;
+private int PinchFinger2 = -1;
+
+// Somewhere later...
+
+while (TouchPanel.IsGestureAvailable)
+{
+    GestureSample gesture = TouchPanel.ReadGesture();
+    if (gesture.GestureType == GestureType.Drag)
+    {
+        DragFinger = gesture.FingerIdEXT;
+    }
+    else if (gesture.GestureType == GestureType.Pinch)
+    {
+        PinchFinger1 = gesture.FingerIdEXT;
+        PinchFinger2 = gesture.FingerId2EXT;
+    }
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../4%3A-FNA-and-Windows-API/" class="btn btn-neutral float-left" title="4: FNA and Windows API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../6%3A-FNA-Build-Options/" class="btn btn-neutral float-right" title="6: FNA Build Options">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../4%3A-FNA-and-Windows-API/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../6%3A-FNA-Build-Options/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

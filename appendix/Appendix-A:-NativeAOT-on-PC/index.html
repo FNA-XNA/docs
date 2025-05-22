@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Appendix A: NativeAOT on PC - FNA Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix A: NativeAOT on PC";
+        var mkdocs_page_input_path = "appendix/Appendix-A:-NativeAOT-on-PC.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../0%3A-FAQ/">0: FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../1%3A-Setting-Up-FNA/">1: Setting Up FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../2a%3A-Building-XNA-Games-with-FNA/">2a: Building XNA Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../2b%3A-Building-New-Games-with-FNA/">2b: Building New Games with FNA</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../3%3A-Distributing-FNA-Games/">3: Distributing FNA Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../4%3A-FNA-and-Windows-API/">4: FNA and Windows API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../5%3A-FNA-Extensions/">5: FNA Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../6%3A-FNA-Build-Options/">6: FNA Build Options</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../7%3A-FNA-Environment-Variables/">7: FNA Environment Variables</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../8%3A-Contributing-to-FNA/">8: Contributing to FNA</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix A: NativeAOT on PC</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#project-setup">Project Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#aot-type-preservation">AOT Type Preservation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#native-libraries">Native Libraries</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-B%3A-FNA-on-Consoles/">Appendix B: FNA on Consoles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-C%3A-FNA-on-Apple-Platforms/">Appendix C: FNA on Apple Platforms</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-D%3A-MonoGame/">Appendix D: MonoGame Compatibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Appendix-F%3A-Upcoming-Support-Changes/">Appendix F: Upcoming Support Changes</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">FNA Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Appendix</li>
+      <li class="breadcrumb-item active">Appendix A: NativeAOT on PC</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/FNA-XNA/docs/blob/main/docs/appendix/Appendix-A:-NativeAOT-on-PC.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-a-nativeaot-on-pc">Appendix A: NativeAOT on PC</h1>
+<p>FNA now has support for <a href="https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/">NativeAOT</a>, a new .NET toolchain which allows you to build your game into an ahead-of-time compiled native executable.</p>
+<h2 id="project-setup">Project Setup</h2>
+<p>To get started, please read through the <a href="https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/">official NativeAOT documentation</a>. Make sure to install the prerequisites listed for your OS.</p>
+<p>To make a NativeAOT build, you should make .NET 8 project files for your game - instead of the usual FNA.csproj, you will reference FNA.Core.csproj. The code and content should largely be able to stay the same, with the exception of code that requires a JIT (i.e. you can't emit IL at runtime, as you might expect from ahead-of-time compilation).</p>
+<p>To make your .csproj compatible with NativeAOT, add the following:</p>
+<pre><code class="language-xml">  &lt;PropertyGroup&gt;
+    &lt;PublishAot&gt;true&lt;/PublishAot&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;RdXmlFile Include=&quot;rd.xml&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;ItemGroup Condition=&quot;'$(OS)' != 'Windows_NT'&quot;&gt;
+    &lt;NativeLibrary Include=&quot;-lSDL3&quot; /&gt;
+    &lt;NativeLibrary Include=&quot;-lFNA3D&quot; /&gt;
+    &lt;NativeLibrary Include=&quot;-lFAudio&quot; /&gt;
+    &lt;NativeLibrary Include=&quot;-ltheorafile&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;ItemGroup Condition=&quot;'$(OS)' == 'Windows_NT'&quot;&gt;
+    &lt;NativeLibrary Include=&quot;SDL3.lib&quot; /&gt;
+    &lt;NativeLibrary Include=&quot;FNA3D.lib&quot; /&gt;
+    &lt;NativeLibrary Include=&quot;FAudio.lib&quot; /&gt;
+    &lt;NativeLibrary Include=&quot;libtheorafile.lib&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;DirectPInvoke Include=&quot;SDL3&quot; /&gt;
+    &lt;DirectPInvoke Include=&quot;FNA3D&quot; /&gt;
+    &lt;DirectPInvoke Include=&quot;FAudio&quot; /&gt;
+    &lt;DirectPInvoke Include=&quot;libtheorafile&quot; /&gt;
+  &lt;/ItemGroup&gt;
+</code></pre>
+<p>You will also need to add an "rd.xml" file to your project directory. This will be explained in the next sections.</p>
+<h2 id="aot-type-preservation">AOT Type Preservation</h2>
+<p>The rd.xml file informs the compiler of any types it should preserve during the linking stage. This is most often used to preserve types that are only accessed via reflection. You can read <a href="https://github.com/dotnet/runtimelab/blob/feature/NativeAOT/docs/using-nativeaot/rd-xml-format.md">the official doc page</a> to learn more about it, but here's an example of what rd.xml might look like for a game that uses ContentReader to load a couple of generic types:</p>
+<pre><code class="language-xml">&lt;Directives&gt;
+    &lt;Application&gt;
+        &lt;Assembly Name=&quot;FNA&quot;&gt;
+          &lt;Type Name=&quot;Microsoft.Xna.Framework.Content.ListReader`1[[System.Char,mscorlib]]&quot; Dynamic=&quot;Required All&quot; /&gt;
+          &lt;Type Name=&quot;Microsoft.Xna.Framework.Content.ArrayReader`1[[Microsoft.Xna.Framework.Vector3,FNA]]&quot; Dynamic=&quot;Required All&quot; /&gt;
+        &lt;/Assembly&gt;
+        &lt;Assembly Name=&quot;mscorlib&quot; /&gt;
+    &lt;/Application&gt;
+&lt;/Directives&gt;
+</code></pre>
+<h2 id="native-libraries">Native Libraries</h2>
+<p>Even though we're AOT-compiling the project, we still recommend dynamically linking the native libraries rather than statically linking them. Note that this does <em>not</em> mean dynamic loading; the NativeLibrary and DirectPInvoke items in the .csproj ensure that native calls are inlined directly into the executable, rather than requiring a <code>dlopen</code> call to load the library at runtime. This is more performant and reliable than the standard .NET PInvoke system, and is only possible with AOT.</p>
+<p>Finally, to actually link the fnalibs, we need to set up the build environment appropriately:</p>
+<h3 id="windows">Windows</h3>
+<ul>
+<li>Download the MSVC development build of SDL3, then use it to build the other libraries from source.</li>
+<li>Grab the .lib files from SDL3, FNA3D, FAudio, and Theorafile and place them in your app's .csproj directory.</li>
+<li>Build the application.</li>
+<li>Copy the contents of <code>fnalibs/x64</code> into the generated output directory.</li>
+</ul>
+<h3 id="linux">Linux</h3>
+<p>Linux builds are best done in a Steam Linux Runtime container, which can be done both locally and via CI (including GitHub Actions).</p>
+<pre><code class="language-sh"># Set up image for the first time
+distrobox create -i registry.gitlab.steamos.cloud/steamrt/sniper/sdk sniper
+
+# Start up the container. It's as easy as that!
+distrobox enter sniper
+</code></pre>
+<p>Inside the container you will want to install the .NET SDK and the fnalibs:</p>
+<pre><code class="language-sh">wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update &amp;&amp; sudo apt-get install -y dotnet-sdk-8.0
+rm packages-microsoft-prod.deb
+</code></pre>
+<pre><code class="language-sh">git clone --recursive https://github.com/FNA-XNA/FAudio.git
+git clone --recursive https://github.com/FNA-XNA/FNA3D.git
+git clone --recursive https://github.com/FNA-XNA/Theorafile.git
+
+cd FAudio
+cmake -B release -G Ninja . -DCMAKE_BUILD_TYPE=Release
+sudo ninja -C release install
+
+cd ../FNA3D
+cmake -B release -G Ninja . -DCMAKE_BUILD_TYPE=Release
+sudo ninja -C release install
+
+cd ../Theorafile
+make
+sudo cp libtheorafile.so /usr/local/lib/libtheorafile.so
+</code></pre>
+<p>Once the above is complete, <code>dotnet publish</code> should build and link a native Linux build. Copy the fnalibs next to the executable and ship!</p>
+<pre><code class="language-sh">cp /usr/local/lib/libFAudio.so.0 bin/Release/net8.0/linux-x64/publish/
+cp /usr/local/lib/libFNA3D.so.0 bin/Release/net8.0/linux-x64/publish/
+cp /usr/local/lib/libtheorafile.so bin/Release/net8.0/linux-x64/publish/
+</code></pre>
+<p>Note that these instructions do not copy SDL3; this is already provided by the Sniper runtime so bundling SDL is optional. If you need to bundle it anyway, be sure to use the binaries provided by fnalibs-dailies instead!</p>
+<p>You can see an example of an automated CI build <a href="https://github.com/flibitijibibo/RogueLegacy1/blob/main/.github/workflows/ci.yml">here</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../8%3A-Contributing-to-FNA/" class="btn btn-neutral float-left" title="8: Contributing to FNA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Appendix-B%3A-FNA-on-Consoles/" class="btn btn-neutral float-right" title="Appendix B: FNA on Consoles">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/FNA-XNA/docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../8%3A-Contributing-to-FNA/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Appendix-B%3A-FNA-on-Consoles/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
