@@ -24,6 +24,8 @@ sudo dotnet workload install tvos
 
 macOS, iOS, and tvOS libraries are now built automatically and can be downloaded from [fnalibs-dailies](https://github.com/FNA-XNA/fnalibs-dailies/actions). You may need to be logged into GitHub to download these. Simulator libraries are not currently provided, so you will need to build those yourself if desired.
 
+Note: On newer macOS versions, you may need to run `xattr -c *.dylib` or `xattr -c *.a` on these libraries before using them in your projects to avoid security errors.
+
 ### Creating/Publishing a macOS Project
 
 A macOS project is essentially the same as any other .NET Core build; the difference is in the publishing process:
