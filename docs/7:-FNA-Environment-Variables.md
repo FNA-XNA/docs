@@ -95,7 +95,7 @@ The XNA specification includes multiple surface formats capable of using an HDR 
 
 Note that this only exposes the ability to set the colorspace of the swapchain and nothing else - any and all colorspace conversion still has to be done by the application. Additionally, be careful when adding user-facing support for HDR; it should be treated as the equivalent of a full kernel modeset, so it is very expensive and fragile to attempt anywhere except on startup!
 
-This feature is only supported on Vulkan and D3D11.
+This feature is only supported on SDL_GPU and D3D11.
 
 ### FNA3D_ENABLE_LATESWAPTEAR
 For many years FNA would default to using `FIFO_RELAXED`/[EXT_swap_control_tear](https://www.khronos.org/registry/OpenGL/extensions/EXT/GLX_EXT_swap_control_tear.txt) VSync to improve performance when games temporarily performed below the display's refresh rate. However, in recent years this has fallen out of fashion; most platforms don't support this feature at all and the platforms that _did_ support it have opted to avoid presentation systems that involve tearing at all (in favor of other systems like "mailbox" presentation). Additionally, refresh rates have rapidly become unstandardized within the last hardware generation, so fixed-rate games would see tearing if the game rate was below the refresh rate of the monitor. Some may still want to try using the late swap tear feature with their OS/driver/display combo, however, so users can set this to "1" if they'd like.
