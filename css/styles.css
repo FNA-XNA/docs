@@ -1,0 +1,56 @@
+body, p, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Helvetica Neue', Helvetica, Inter, Roboto, 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+}
+
+code {
+	font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+	font-weight: normal;
+}
+
+.wy-side-nav-search {
+
+    background-color: #7933ea;
+
+}
+
+.wy-nav-top {
+
+    background-color: #7933ea;
+
+}
+
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+
+    color: #ac78ff;
+
+}
+
+.wy-menu-vertical a:active {
+
+    background-color: #7933ea;
+}
+
+a {
+
+    color:#7933ea;
+
+}
+
+a:hover {
+
+    color: #111;
+    text-decoration: underline;
+
+}
+
+.wy-menu-vertical a:hover {
+
+    color: #FFFF
+
+}
+
+.wy-side-nav-search input[type="text"] {
+
+    border-radius: 5px;
+
+}
