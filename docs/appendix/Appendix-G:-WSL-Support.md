@@ -16,7 +16,7 @@ After these steps are complete, you only need to enter `wsl` in PowerShell to en
 
 ## Caveats
 
-There is only one remaining caveat for testing, which is that the D3D12 swapchain on Linux is passed to windows via host memory - essentially, it's going from GPU -> CPU -> GPU. This is incredibly slow, especially at high resolutions, so for testing purposes you may want to use a smaller window size (i.e. 1280x720) to avoid Windows-bound performance issues.
+There is only one remaining caveat for testing, which is that the D3D12 swapchain on Linux is passed to Windows via host memory - essentially, it's going from GPU -> CPU -> GPU. This is incredibly slow, especially at high resolutions, so for testing purposes you may want to use a smaller window size (i.e. 1280x720) to avoid Windows-bound performance issues.
 
 The above issue is being tracked [here](https://github.com/microsoft/wslg/issues/387).
 
