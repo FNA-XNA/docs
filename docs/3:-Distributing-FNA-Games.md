@@ -115,8 +115,8 @@ The above guide works for .NET Framework and Mono applications, but does not wor
 
 `dotnet publish -r <win-x64/linux-x64> -c Release --self-contained` will produce the executable package, but each platform has different requirements for where the fnalibs must be placed.
 
-* **Windows:** Place the x64 fnalibs in the `publish` directory alongside your executable.
-* **Linux:** Place the lib64 fnalibs in the `publish` directory alongside your executable, then patch the executable to search in lib64 for dependencies:
+* **Windows:** Place the _contents_ of the x64 fnalibs folder in the `publish` directory alongside your executable.
+* **Linux:** Place the lib64 fnalibs folder in the `publish` directory alongside your executable, then patch the executable to search in lib64 for dependencies:
 
 ```
 patchelf --force-rpath --add-rpath '$ORIGIN/lib64' flibitGame
