@@ -127,6 +127,8 @@ You can also automate this in your csproj:
 <Exec Command="patchelf --force-rpath --add-rpath '$ORIGIN/lib64' $(OutDir)/flibitGame" />
 ```
 
+patchelf can be found in your distribution's package manager, or at the official [releases page](https://github.com/NixOS/patchelf/releases/latest) for Linux and Windows.
+
 #### Single-File Applications
 
 The above steps for publishing will produce a `publish` directory with an absolutely enormous amount of DLLs. If you want to build a single-file executable instead, just add this to a property group in your .csproj:
