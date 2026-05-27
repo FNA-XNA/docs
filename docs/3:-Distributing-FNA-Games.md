@@ -157,8 +157,8 @@ MSBuild technically supports something called `ExcludeFromSingleFile`, which you
   </ItemGroup>
 </Target>
 <Target Name="RestoreToBundle" AfterTargets="GenerateSingleFileBundle">
-  <Copy SourceFiles="$(IntermediateOutputPath)/flibitGame.dll" DestinationFolder="$(PublishDir)" />
-  <Copy SourceFiles="$(IntermediateOutputPath)/FNA.dll" DestinationFolder="$(PublishDir)" />
+  <Copy SourceFiles="$(OutDir)/flibitGame.dll" DestinationFolder="$(PublishDir)" />
+  <Copy SourceFiles="$(OutDir)/FNA.dll" DestinationFolder="$(PublishDir)" />
 </Target>
 ```
 
