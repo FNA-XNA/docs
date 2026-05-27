@@ -137,13 +137,19 @@ The above steps for publishing will produce a `publish` directory with an absolu
 ```
 However, if you do this, we request that you make an exception for FNA.dll so that it is not bundled into the exe like the rest of the app. This is not required, but it is beneficial for both end users and FNA developers, since it allows for dynamically swapping out the FNA.dll in the game's files (for debugging, modding, etc.).
 
-You can prevent FNA.dll from being bundled by changing the FNA ProjectReference in your game's .csproj to the following:
+MSBuild technically supports something called `ExcludeFromSingleFile` but this only works with direct project references; instead you can do something like this in your csproj to explicitly exclude DLLs from the bundle (including the main entry assembly):
+
 ```xml
+<Target Name="ExcludeFromBundle" BeforeTargets="GenerateSingleFileBundle" DependsOnTargets="PrepareForBundle">
   <ItemGroup>
-    <ProjectReference Include="path/to/FNA.Core.csproj">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </ProjectReference>
+    <FilesToBundle Remove="$(IntermediateOutputPath)flibitGame.dll" />
+    <FilesToBundle Remove="$(IntermediateOutputPath)FNA.dll" />
   </ItemGroup>
+</Target>
+<Target Name="RestoreToBundle" AfterTargets="GenerateSingleFileBundle">
+  <Copy SourceFiles="$(OutDir)/flibitGame.dll" DestinationFolder="$(PublishDir)" />
+  <Copy SourceFiles="$(OutDir)/FNA.dll" DestinationFolder="$(PublishDir)" />
+</Target>
 ```
 
 On a similar note, please do not bundle the native fnalibs into the single-file executable, for the same reasons. (Don't worry, this will not happen unless you go out of your way to explicitly include them in the project.)
