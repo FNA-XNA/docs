@@ -137,7 +137,17 @@ The above steps for publishing will produce a `publish` directory with an absolu
 ```
 However, if you do this, we request that you make an exception for FNA.dll so that it is not bundled into the exe like the rest of the app. This is not required, but it is beneficial for both end users and FNA developers, since it allows for dynamically swapping out the FNA.dll in the game's files (for debugging, modding, etc.).
 
-MSBuild technically supports something called `ExcludeFromSingleFile` but this only works with direct project references; instead you can do something like this in your csproj to explicitly exclude DLLs from the bundle (including the main entry assembly):
+MSBuild technically supports something called `ExcludeFromSingleFile`, which you should use for the FNA reference...
+
+```xml
+  <ItemGroup>
+    <ProjectReference Include="path/to/FNA.Core.csproj">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </ProjectReference>
+  </ItemGroup>
+```
+
+... but this only works with direct project references; you can also do something like this in your csproj to explicitly exclude DLLs from the bundle (including the main entry assembly):
 
 ```xml
 <Target Name="ExcludeFromBundle" BeforeTargets="GenerateSingleFileBundle" DependsOnTargets="PrepareForBundle">
